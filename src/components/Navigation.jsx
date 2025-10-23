@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sparkles, Calendar, Archive, Phone } from 'lucide-react'
+import Logo from './Logo'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,14 +37,14 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-lg overflow-hidden">
-              <img 
-                src="/Asset_ICON_Black.png" 
-                alt="ICON Entertainmentz Logo" 
+              <Logo 
+                variant="black"
                 className="w-full h-full object-contain"
+                width={40}
               />
             </div>
             <div>
-              <h1 className="text-xl font-icon font-bold text-gray-900 icon-text">
+              <h1 className="text-xl font-bold text-gray-900 icon-text">
                 ICON
               </h1>
               <p className="text-xs text-gray-600 -mt-1">Entertainmentz</p>

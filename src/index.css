@@ -21,7 +21,18 @@
 }
 
 @layer components {
+  @font-face {
+    font-family: 'Conquera';
+    src: url('/fonts/conquera-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   .icon-text {
+    font-family: 'Conquera', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     font-family: 'Conquera', 'Arial Black', sans-serif;
     font-weight: bold;
     letter-spacing: 0.02em;
