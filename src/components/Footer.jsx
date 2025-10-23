@@ -33,7 +33,7 @@ const Footer = () => {
                 />
               </div>
               <div>
-                <h3 className="text-lg font-icon font-bold text-gray-900 icon-text">ICON</h3>
+                <h3 className="text-lg font-bold text-gray-900 icon-text">ICON</h3>
                 <p className="text-sm text-gray-600">Entertainmentz</p>
               </div>
             </div>
@@ -110,7 +110,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-600">
-            © {currentYear} <span className="font-icon icon-text text-orange-500">ICON</span> Entertainmentz. All rights reserved.
+            © {currentYear} <span className="icon-text text-orange-500">ICON</span> Entertainmentz. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm text-gray-600">
             <a href="#" className="hover:text-orange-500 transition-colors duration-200">Privacy Policy</a>

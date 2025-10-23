@@ -112,7 +112,7 @@ const AboutUs = () => {
             </motion.div>
             
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Welcome to <span className="text-orange-400 font-icon icon-text">ICON</span>
+              Welcome to <span className="text-orange-400 icon-text">ICON</span>
             </h1>
             <h2 className="text-xl md:text-2xl text-orange-400 font-semibold mb-4">
               Entertainmentz
@@ -172,7 +172,7 @@ const AboutUs = () => {
               Who We Are
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Born in the heart of Austin, Texas, <span className="font-icon icon-text text-orange-500">ICON</span> Entertainmentz has become the premier destination 
+              Born in the heart of Austin, Texas, <span className="icon-text text-orange-500">ICON</span> Entertainmentz has become the premier destination 
               for authentic Indian entertainment experiences across the United States.
             </p>
           </motion.div>
@@ -189,7 +189,7 @@ const AboutUs = () => {
               </h3>
               <p className="text-gray-600 leading-relaxed">
                 Founded with a vision to bridge cultures and celebrate the rich heritage of India, 
-                <span className="font-icon icon-text text-orange-500"> ICON</span> Entertainmentz started as a small initiative in Austin and has grown into a 
+                <span className="icon-text text-orange-500">ICON</span> Entertainmentz started as a small initiative in Austin and has grown into a 
                 nationally recognized entertainment company.
               </p>
               <p className="text-gray-600 leading-relaxed">
@@ -277,7 +277,7 @@ const AboutUs = () => {
               Ready to Experience the Magic?
             </h2>
             <p className="text-xl text-orange-100 max-w-2xl mx-auto">
-              Join thousands of others who have experienced the magic of <span className="font-icon icon-text text-white">ICON</span> Entertainmentz events
+              Join thousands of others who have experienced the magic of <span className="icon-text text-white">ICON</span> Entertainmentz events
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/events" className="btn-secondary bg-white text-orange-500 hover:bg-gray-50">
