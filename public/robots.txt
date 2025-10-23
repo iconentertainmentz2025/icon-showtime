@@ -1,0 +1,49 @@
+# Robots.txt for ICON Entertainmentz
+# Updated: December 18, 2024
+
+User-agent: *
+Allow: /
+
+# Block access to development files
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vite/
+Disallow: /dist/
+Disallow: /.env
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /vite.config.js
+Disallow: /tailwind.config.js
+
+# Allow access to important files
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.webp$
+
+# Sitemap location
+Sitemap: https://icon-entertainmentz.com/sitemap.xml
+
+# Crawl delay (in seconds) - be respectful to servers
+Crawl-delay: 1
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Crawl-delay: 0
+Allow: /
+
+User-agent: Bingbot
+Crawl-delay: 1
+Allow: /
+
+User-agent: Slurp
+Crawl-delay: 1
+Allow: /
