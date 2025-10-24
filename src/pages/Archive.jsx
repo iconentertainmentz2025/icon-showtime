@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Calendar, MapPin, Users, Search, Filter, Image, Play, Star, ExternalLink } from 'lucide-react'
 import SEOData from '../components/SEOData'
+import { trackCustomEvents } from '../utils/analytics'
 
 const Archive = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -78,16 +79,35 @@ const Archive = () => {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "ICON Entertainmentz Event Archive",
-    "description": "Browse our collection of past Indian cultural events, Bollywood concerts, and festivals",
+    "description": "Browse our collection of past Indian cultural events, Bollywood concerts, and festivals across the USA",
+    "url": "https://icon-entertainmentz.com/archive",
     "mainEntity": {
       "@type": "ItemList",
       "name": "Past Events Archive",
-      "description": "Historical collection of ICON Entertainmentz events showcasing our rich entertainment legacy"
+      "description": "Historical collection of ICON Entertainmentz events showcasing our rich entertainment legacy",
+      "numberOfItems": pastEvents.length,
+      "itemListElement": pastEvents.map((event, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Event",
+          "name": event.title,
+          "startDate": event.date,
+          "location": {
+            "@type": "Place",
+            "name": event.venue,
+            "address": event.location
+          },
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+        }
+      }))
     },
     "publisher": {
       "@type": "Organization",
       "name": "ICON Entertainmentz",
-      "url": "https://icon-entertainmentz.com"
+      "url": "https://icon-entertainmentz.com",
+      "logo": "https://icon-entertainmentz.com/Asset_ICON.png"
     }
   }
 

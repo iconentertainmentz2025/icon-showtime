@@ -16,7 +16,7 @@ const Events = () => {
     titleSponsor: "Spicy Matka, Leander",
     specialGuest: "Faria Abdullah",
     specialHost: "RJ Hemant",
-    eventbriteLink: "https://www.eventbrite.com/e/iconic-countdown-2026-tickets-1829421622319?aff=oddtdtcreator",
+    eventbriteLink: "https://iconiccountdown2026.eventbrite.com",
     ticketTiers: [
       {
         name: "General Admission - EARLY BIRD",
@@ -65,7 +65,7 @@ const Events = () => {
       "LED Dance Floor",
       "Live DJ All Night",
       "Dance Performances",
-      "Midnight Cake Cutting Ceremony with Faria Abdullah"
+      "12AM Cake Cutting Ceremony with Faria Abdullah"
     ],
     features: [
       {
@@ -98,9 +98,10 @@ const Events = () => {
       weekday: 'long', 
       year: 'numeric', 
       month: 'long', 
-      day: 'numeric' 
+      day: 'numeric',
+      timeZone: 'America/Chicago'
     }
-    return new Date(dateString).toLocaleDateString('en-US', options)
+    return new Date(dateString + 'T12:00:00').toLocaleDateString('en-US', options)
   }
 
   const eventsStructuredData = {
@@ -171,14 +172,7 @@ const Events = () => {
       />
       
       {/* Hero Section with Event Details */}
-            <section className="relative bg-gradient-to-br from-orange-100 via-orange-50 to-white">
-        <div className="absolute inset-0">
-          <img 
-            src="/images/nye-bg.jpg" 
-            alt="Event Banner" 
-            className="w-full h-full object-contain opacity-10"
-          />
-        </div>
+      <section className="relative bg-gradient-to-br from-orange-100 via-orange-50 to-white">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Title Sponsor */}
           <div className="text-center mb-8">
@@ -257,7 +251,6 @@ const Events = () => {
                   <Star className="w-4 h-4 mr-1" />
                   Early Bird Tickets
                 </div>
-                <p className="text-lg font-semibold">Starting from {featuredEvent.price}</p>
               </div>
             </div>
           </div>
@@ -341,7 +334,7 @@ const Events = () => {
                     </div>
                     <h4 className="font-semibold text-gray-900 mb-1">{featuredEvent.specialGuest}</h4>
                     <p className="text-orange-600 text-sm font-medium mb-2">Tollywood Star</p>
-                    <p className="text-gray-600 text-sm">Live Performance & Midnight Celebration</p>
+                    <p className="text-gray-600 text-sm">Live Performance & 12AM Cake Cutting</p>
                   </div>
                   <div className="text-center">
                     <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
@@ -374,14 +367,14 @@ const Events = () => {
                     <h4 className="font-semibold text-gray-900 mb-2">Tickets On Sale Now!</h4>
                     <p className="text-gray-600 text-sm mb-4">Secure your spot at Austin's biggest Desi New Year celebration!</p>
                     <a 
-                      href={featuredEvent.eventbriteLink}
+                      href="https://iconiccountdown2026.eventbrite.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => trackCustomEvents.ticketClick(`${featuredEvent.title} - Sidebar`)}
                       className="inline-flex items-center justify-center w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200"
                     >
                       <Ticket className="w-5 h-5 mr-2" />
-                      Book Tickets on Eventbrite
+                      Buy Tickets
                     </a>
                   </div>
 
@@ -490,12 +483,12 @@ const Events = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-orange-600">
+      <section className="py-16 bg-gray-900">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Don't Miss This Spectacular Event!
           </h2>
-          <p className="text-xl text-orange-100 mb-8">
+          <p className="text-xl text-gray-300 mb-8">
             Join us for an unforgettable evening of Indian culture and entertainment. Limited seats available.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -504,7 +497,7 @@ const Events = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackCustomEvents.ticketClick(`${featuredEvent.title} - CTA`)}
-              className="inline-flex items-center px-8 py-4 bg-white text-orange-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+              className="inline-flex items-center px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-lg"
             >
               <Ticket className="w-5 h-5 mr-2" />
               Buy Tickets Now
@@ -512,7 +505,7 @@ const Events = () => {
             <a 
               href="tel:+15128840540"
               onClick={() => trackCustomEvents.phoneCall()}
-              className="inline-flex items-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors duration-200"
+              className="inline-flex items-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200"
             >
               <Phone className="w-5 h-5 mr-2" />
               Call for Group Bookings

@@ -22,6 +22,21 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
+      {/* Newsletter Section - Highly Visible */}
+      <div className="bg-gradient-to-r from-orange-500 to-orange-600 py-12">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-3xl font-bold text-white mb-3">Stay Updated with ICON</h3>
+            <p className="text-orange-100 text-lg mb-6">
+              Subscribe to our newsletter for exclusive event updates, special offers, and early bird tickets!
+            </p>
+            <div className="max-w-md mx-auto">
+              <Newsletter />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -85,33 +100,23 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Newsletter & Social Media */}
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-gray-900">Stay Updated</h4>
-              <p className="text-sm text-gray-600">
-                Subscribe to our newsletter for exclusive event updates and special offers.
-              </p>
-              <Newsletter />
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-gray-900">Follow Us</h4>
-              <div className="flex space-x-3">
-                {socialLinks.map((social, index) => {
-                  const Icon = social.icon
-                  return (
-                    <a
-                      key={index}
-                      href={social.href}
-                      className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-gray-600 hover:text-orange-500 hover:border-orange-500 transition-all duration-200"
-                      aria-label={social.label}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  )
-                })}
-              </div>
+          {/* Social Media */}
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-gray-900">Follow Us</h4>
+            <div className="flex space-x-3">
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-gray-600 hover:text-orange-500 hover:border-orange-500 transition-all duration-200"
+                    aria-label={social.label}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>

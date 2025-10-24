@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Loader2, CheckCircle2, XCircle } from 'lucide-react';
+import { trackCustomEvents } from '../utils/analytics';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
@@ -25,6 +26,7 @@ const Newsletter = () => {
         setStatus('success');
         setMessage(data.message);
         setEmail('');
+        trackCustomEvents.newsletterSignup();
       } else {
         setStatus('error');
         setMessage(data.message);

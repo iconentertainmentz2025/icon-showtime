@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Instagram, Facebook, Youtube, Twitter, Calendar, Users, Star } from 'lucide-react'
 import SEOData from '../components/SEOData'
+import { trackCustomEvents } from '../utils/analytics'
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -32,6 +33,7 @@ const Contact = () => {
 
       if (response.ok) {
         setSubmitStatus({ type: 'success', message: data.message })
+        trackCustomEvents.contactForm(formData.eventType || 'general')
         setFormData({
           name: '',
           email: '',
@@ -155,10 +157,15 @@ const Contact = () => {
   const contactStructuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
+    "name": "Contact ICON Entertainmentz",
+    "description": "Get in touch with ICON Entertainmentz for event bookings, partnerships, and cultural event planning in Austin, Texas and across the USA",
+    "url": "https://icon-entertainmentz.com/contact",
     "mainEntity": {
       "@type": "Organization",
       "name": "ICON Entertainmentz",
       "url": "https://icon-entertainmentz.com",
+      "logo": "https://icon-entertainmentz.com/Asset_ICON.png",
+      "description": "Premier Indian entertainment events company specializing in Bollywood concerts and cultural festivals",
       "contactPoint": [
         {
           "@type": "ContactPoint",
@@ -170,7 +177,7 @@ const Contact = () => {
         },
         {
           "@type": "ContactPoint",
-          "email": "events@icon-entertainmentz.com",
+          "email": "info@icon-entertainmentz.com",
           "contactType": "event booking",
           "areaServed": "US"
         }
@@ -220,6 +227,10 @@ const Contact = () => {
                 <a
                   key={index}
                   href={info.action}
+                  onClick={() => {
+                    if (info.title === 'Email Us') trackCustomEvents.emailClick()
+                    if (info.title === 'Call Us') trackCustomEvents.phoneCall()
+                  }}
                   className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group"
                 >
                   <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-600 transition-colors duration-300">
@@ -432,6 +443,9 @@ const Contact = () => {
                       <a
                         key={index}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackCustomEvents.socialMedia(social.label)}
                         className="border border-gray-200 rounded-lg p-3 flex items-center space-x-2 text-gray-700 hover:border-orange-500 hover:text-orange-500 transition-all duration-300"
                       >
                         <Icon className="w-5 h-5" />

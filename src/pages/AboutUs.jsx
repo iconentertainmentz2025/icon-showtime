@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Star, Heart, Music } from 'lucide-react'
 import SEOData from '../components/SEOData'
+import { trackCustomEvents } from '../utils/analytics'
 
 const AboutUs = () => {
   const features = [
@@ -114,10 +115,18 @@ const AboutUs = () => {
               Bringing authentic Indian entertainment experiences to communities across America
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Link to="/events" className="btn-primary inline-flex items-center">
+              <Link 
+                to="/events" 
+                onClick={() => trackCustomEvents.eventInquiry('About Us - Hero CTA')}
+                className="btn-primary inline-flex items-center"
+              >
                 Explore Events <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link to="/contact" className="btn-secondary">
+              <Link 
+                to="/contact" 
+                onClick={() => trackCustomEvents.contactForm('about_us_hero')}
+                className="btn-secondary"
+              >
                 Plan Your Event
               </Link>
             </div>
@@ -233,7 +242,7 @@ const AboutUs = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-orange-500">
+      <section className="section-padding bg-gray-900">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -244,14 +253,23 @@ const AboutUs = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               Ready to Experience the Magic?
             </h2>
-            <p className="text-xl text-orange-100 max-w-2xl mx-auto">
-              Join thousands of others who have experienced the magic of <span className="icon-text text-white">ICON</span> Entertainmentz events
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Join thousands of others who have experienced the magic of <span className="icon-text text-orange-500">ICON</span> Entertainmentz events
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/events" className="btn-secondary bg-white text-orange-500 hover:bg-gray-50">
+              <Link 
+                to="/events" 
+                onClick={() => trackCustomEvents.eventInquiry('About Us - Bottom CTA')}
+                className="inline-flex items-center justify-center px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-lg"
+              >
                 View Upcoming Events
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-orange-500">
+              <Link 
+                to="/contact" 
+                onClick={() => trackCustomEvents.contactForm('about_us_bottom')}
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200"
+              >
                 Plan Your Event
               </Link>
             </div>
