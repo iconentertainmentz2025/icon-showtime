@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sparkles, Calendar, Archive, Phone } from 'lucide-react'
+import { Menu, X, Sparkles, Calendar, Archive, Phone, Mail } from 'lucide-react'
 import Logo from './Logo'
 
 const Navigation = () => {
@@ -22,6 +22,7 @@ const Navigation = () => {
     { path: '/events', label: 'Events', icon: Calendar },
     { path: '/archive', label: 'Archive', icon: Archive },
     { path: '/contact', label: 'Contact', icon: Phone },
+    { path: '/newsletter', label: 'Newsletter', icon: Mail },
   ]
 
   const toggleMenu = () => setIsOpen(!isOpen)

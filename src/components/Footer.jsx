@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Twitter } from 'lucide-react'
+import Newsletter from './Newsletter'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/icon_entertainmentz/', label: 'Instagram' },
-    { icon: Facebook, href: 'https://www.facebook.com/iconentertainmentz', label: 'Facebook' },
-    { icon: Youtube, href: 'https://www.youtube.com/iconentertainmentz', label: 'YouTube' },
+    { icon: Facebook, href: 'https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/#', label: 'Facebook' },
+    { icon: Youtube, href: 'https://www.youtube.com/@ICONEntertainmentz', label: 'YouTube' },
     { icon: Twitter, href: 'https://twitter.com/iconentertainmentz', label: 'Twitter' },
   ]
 
@@ -16,6 +17,7 @@ const Footer = () => {
     { label: 'Upcoming Events', href: '/events' },
     { label: 'Event Archive', href: '/archive' },
     { label: 'Contact Us', href: '/contact' },
+    { label: 'Newsletter', href: '/newsletter' },
   ]
 
   return (
@@ -76,34 +78,41 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Phone className="w-4 h-4 text-orange-500" />
-                <a href="tel:+1234567890" className="hover:text-orange-500 transition-colors duration-200">
-                  +1 (234) 567-8900
+                <a href="tel:+15128840540" className="hover:text-orange-500 transition-colors duration-200">
+                  +1 (512) 884-0540
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Social Media */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gray-900">Follow Us</h4>
-            <div className="flex space-x-3">
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-gray-600 hover:text-orange-500 hover:border-orange-500 transition-all duration-200"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                )
-              })}
+          {/* Newsletter & Social Media */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-gray-900">Stay Updated</h4>
+              <p className="text-sm text-gray-600">
+                Subscribe to our newsletter for exclusive event updates and special offers.
+              </p>
+              <Newsletter />
             </div>
-            <p className="text-sm text-gray-500">
-              Stay updated with our latest events and announcements
-            </p>
+
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-gray-900">Follow Us</h4>
+              <div className="flex space-x-3">
+                {socialLinks.map((social, index) => {
+                  const Icon = social.icon
+                  return (
+                    <a
+                      key={index}
+                      href={social.href}
+                      className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-gray-600 hover:text-orange-500 hover:border-orange-500 transition-all duration-200"
+                      aria-label={social.label}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
 

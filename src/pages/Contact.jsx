@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { useForm } from '@formspree/react'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Instagram, Facebook, Youtube, Twitter, Calendar, Users, Star } from 'lucide-react'
 import SEOData from '../components/SEOData'
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("xpwzgwrq") // Replace with your Formspree form ID
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +13,45 @@ const Contact = () => {
     eventType: '',
     message: ''
   })
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const response = await fetch('/.netlify/functions/contact-submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: data.message })
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          eventType: '',
+          message: ''
+        })
+      } else {
+        setSubmitStatus({ type: 'error', message: data.message })
+      }
+    } catch (error) {
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Failed to submit form. Please try again.' 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   const handleInputChange = (e) => {
     setFormData({
@@ -32,22 +71,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+1 (512) 555-0123",
-      subDetails: "Mon-Fri 9AM-6PM CST",
-      action: "tel:+15125550123"
+      details: "+1 (512) 884-0540",
+      action: "tel:+15128840540"
     },
     {
       icon: MapPin,
       title: "Visit Us",
       details: "Austin, Texas",
       subDetails: "By appointment only",
-      action: "#"
-    },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      details: "Mon-Fri: 9AM-6PM",
-      subDetails: "Weekends by appointment",
       action: "#"
     }
   ]
@@ -65,9 +96,8 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/icon_entertainmentz/', label: 'Instagram', color: 'hover:text-pink-400' },
-    { icon: Facebook, href: 'https://www.facebook.com/iconentertainmentz', label: 'Facebook', color: 'hover:text-blue-400' },
-    { icon: Youtube, href: 'https://www.youtube.com/iconentertainmentz', label: 'YouTube', color: 'hover:text-red-400' },
-    { icon: Twitter, href: 'https://twitter.com/iconentertainmentz', label: 'Twitter', color: 'hover:text-sky-400' },
+    { icon: Facebook, href: 'https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/#', label: 'Facebook', color: 'hover:text-blue-400' },
+    { icon: Youtube, href: 'https://www.youtube.com/@ICONEntertainmentz', label: 'YouTube', color: 'hover:text-red-400' }
   ]
 
   const reasons = [
@@ -88,7 +118,7 @@ const Contact = () => {
     }
   ]
 
-  if (state.succeeded) {
+  if (submitStatus?.type === 'success') {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center space-y-6 max-w-md mx-auto px-4">
@@ -102,7 +132,17 @@ const Contact = () => {
             Thank you for reaching out. We'll get back to you within 24 hours.
           </p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={() => {
+              setSubmitStatus(null);
+              setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                subject: '',
+                eventType: '',
+                message: ''
+              });
+            }}
             className="px-6 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors duration-200"
           >
             Send Another Message
@@ -122,7 +162,7 @@ const Contact = () => {
       "contactPoint": [
         {
           "@type": "ContactPoint",
-          "telephone": "+1-512-555-0123",
+          "telephone": "+1-512-884-0540",
           "contactType": "customer service",
           "email": "info@icon-entertainmentz.com",
           "areaServed": "US",
@@ -172,7 +212,8 @@ const Contact = () => {
       {/* Contact Info Cards */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {contactInfo.map((info, index) => {
               const Icon = info.icon
               return (
@@ -196,6 +237,7 @@ const Contact = () => {
                 </a>
               )
             })}
+          </div>
           </div>
 
           {/* Main Content Grid */}
@@ -310,19 +352,27 @@ const Contact = () => {
                     />
                   </div>
 
-                  {state.errors && state.errors.length > 0 && (
-                    <div className="flex items-center space-x-2 text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
-                      <AlertCircle className="w-5 h-5" />
-                      <span>Please check your form and try again.</span>
+                  {submitStatus && (
+                    <div className={`flex items-center space-x-2 ${
+                      submitStatus.type === 'success' 
+                        ? 'text-green-600 bg-green-50 border-green-200' 
+                        : 'text-red-600 bg-red-50 border-red-200'
+                    } border rounded-lg p-3`}>
+                      {submitStatus.type === 'success' ? (
+                        <CheckCircle className="w-5 h-5" />
+                      ) : (
+                        <AlertCircle className="w-5 h-5" />
+                      )}
+                      <span>{submitStatus.message}</span>
                     </div>
                   )}
 
                   <button
                     type="submit"
-                    disabled={state.submitting}
+                    disabled={isSubmitting}
                     className="w-full px-6 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {state.submitting ? (
+                    {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         <span>Sending...</span>
@@ -389,31 +439,6 @@ const Contact = () => {
                       </a>
                     )
                   })}
-                </div>
-              </div>
-
-              {/* Quick Stats */}
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Quick Facts
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600 text-sm">Response Time</span>
-                    <span className="text-orange-500 font-medium text-sm">&lt; 24 hours</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600 text-sm">Events Planned</span>
-                    <span className="text-orange-500 font-medium text-sm">50+ annually</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600 text-sm">Customer Rating</span>
-                    <span className="text-orange-500 font-medium text-sm">4.9/5 ⭐</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600 text-sm">Years Experience</span>
-                    <span className="text-orange-500 font-medium text-sm">5+ years</span>
-                  </div>
                 </div>
               </div>
             </div>

@@ -1,44 +1,96 @@
-import { Calendar, MapPin, Clock, Users, Star, Ticket, Phone, Mail, Share2, Heart, Music, ChevronRight } from 'lucide-react'
+import { Calendar, MapPin, Clock, Users, Star, Ticket, Phone, Mail, Share2, Heart, Music, ChevronRight, Instagram, Facebook, Youtube } from 'lucide-react'
 import SEOData from '../components/SEOData'
+import { trackCustomEvents } from '../utils/analytics'
 
 const Events = () => {
   // Featured upcoming event data
   const featuredEvent = {
-    title: "Bollywood Extravaganza 2025",
-    subtitle: "A Night of Music, Dance & Cultural Celebration",
-    date: "2025-12-15",
+    title: "ICONIC Countdown 2026",
+    subtitle: "Austin's Biggest Desi New Year Celebration",
+    date: "2025-12-31",
     time: "7:00 PM CST",
-    venue: "Austin Music Hall",
-    address: "208 Nueces St, Austin, TX 78701",
-    price: "$45 - $150",
-    capacity: "1,200",
-    status: "selling-fast",
-    description: "Join us for the most spectacular Bollywood entertainment experience of the year! ICON Entertainmentz presents an unforgettable evening featuring renowned artists, mesmerizing dance performances, and authentic Indian cultural celebrations.",
-    highlights: [
-      "Live performances by renowned Bollywood playback singers",
-      "Professional dance troupe with authentic choreography", 
-      "Traditional Indian cultural segments",
-      "Interactive audience participation",
-      "Premium sound and lighting production",
-      "Authentic Indian cuisine available"
-    ],
+    venue: "The Crossover",
+    address: "1717 Scottsdale Drive, Leander, TX 78641",
+    price: "Starting from $47.03",
+    status: "on-sale",
+    titleSponsor: "Spicy Matka, Leander",
+    specialGuest: "Faria Abdullah",
+    specialHost: "RJ Hemant",
+    eventbriteLink: "https://www.eventbrite.com/e/iconic-countdown-2026-tickets-1829421622319?aff=oddtdtcreator",
     ticketTiers: [
       {
-        name: "General Admission",
-        price: "$45",
-        features: ["General seating", "Event program", "Cultural performances"]
+        name: "General Admission - EARLY BIRD",
+        price: "$70.15",
+        details: "incl. $5.80 Fee / incl. $5.35 Sales Tax",
+        description: "Limited time deal."
       },
       {
-        name: "Premium",
-        price: "$85", 
-        features: ["Reserved seating", "Meet & greet opportunity", "Complimentary refreshments", "Exclusive merchandise"]
+        name: "Kid General Admission - EARLY BIRD",
+        price: "$47.03",
+        details: "incl. $4.45 Fee / incl. $3.58 Sales Tax",
+        description: "Tickets for age 5+ seating provided"
       },
       {
-        name: "VIP Experience",
-        price: "$150",
-        features: ["Front row seating", "Artist meet & greet", "Dinner included", "Exclusive merchandise", "Photo opportunities", "VIP parking"]
+        name: "Family Admission - EARLY BIRD",
+        price: "$197.20",
+        details: "incl. $13.17 Fee / incl. $15.03 Sales Tax",
+        description: "2 ADULTS + 2 KIDS"
+      },
+      {
+        name: "KIDS below 5",
+        price: "Free",
+        description: "Entry without seat"
+      },
+      {
+        name: "VIP SINGLE - EARLY BIRD",
+        price: "$139.45",
+        details: "incl. $9.82 Fee / incl. $10.63 Sales Tax",
+        description: "Premium seating and services"
+      },
+      {
+        name: "VIP Table of 10 - EARLY BIRD",
+        price: "$1,271.45",
+        details: "incl. $75.55 Fee / incl. $96.90 Sales Tax",
+        description: "Premium table with VIP services"
       }
-    ]
+    ],
+    description: "Ring in the New Year with lights, laughter, and unforgettable memories at ICONIC Countdown 2026, Austin's most electrifying Desi celebration! Join us for a glamorous, family-friendly night hosted by the one and only RJ Hemant, featuring Tollywood star Faria Abdullah — visiting Austin for the very first time!",
+    highlights: [
+      "Fashion Walk – Step into the spotlight with style and glam",
+      "Kids Zone with games and activities",
+      "Food Vendor with Desi and fusion flavors",
+      "Balloon Drop at Midnight",
+      "Face Painting & Balloon Twisting",
+      "Free Parking",
+      "LED Dance Floor",
+      "Live DJ All Night",
+      "Dance Performances",
+      "Midnight Cake Cutting Ceremony with Faria Abdullah"
+    ],
+    features: [
+      {
+        name: "Family-Friendly",
+        description: "Special activities and entertainment for all ages"
+      },
+      {
+        name: "Celebrity Performance",
+        description: "Live performance by Tollywood star Faria Abdullah"
+      },
+      {
+        name: "Venue",
+        description: "Spacious indoor venue with ample free parking and seating"
+      },
+      {
+        name: "Entertainment",
+        description: "Fashion walk, cocktail hour, and midnight countdown"
+      }
+    ],
+    contact: {
+      sponsorship: "info@icon-entertainmentz.com",
+      instagram: "https://www.instagram.com/icon_entertainmentz/",
+      facebook: "https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/#",
+      youtube: "https://www.youtube.com/@ICONEntertainmentz"
+    }
   }
 
   const formatDate = (dateString) => {
@@ -57,7 +109,7 @@ const Events = () => {
     "name": featuredEvent.title,
     "description": featuredEvent.description,
     "startDate": `${featuredEvent.date}T19:00:00-06:00`,
-    "endDate": `${featuredEvent.date}T23:00:00-06:00`,
+    "endDate": `${featuredEvent.date}T23:59:00-06:00`,
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {
@@ -66,7 +118,7 @@ const Events = () => {
       "address": {
         "@type": "PostalAddress",
         "streetAddress": featuredEvent.address,
-        "addressLocality": "Austin",
+        "addressLocality": "Leander",
         "addressRegion": "TX",
         "addressCountry": "US"
       }
@@ -74,13 +126,36 @@ const Events = () => {
     "organizer": {
       "@type": "Organization", 
       "name": "ICON Entertainmentz",
-      "url": "https://icon-entertainmentz.com"
+      "url": "https://icon-entertainmentz.com",
+      "telephone": "+1-512-884-0540",
+      "email": "info@icon-entertainmentz.com",
+      "sameAs": [
+        "https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/",
+        "https://www.instagram.com/icon_entertainmentz/",
+        "https://www.youtube.com/@ICONEntertainmentz",
+        "https://twitter.com/iconentertainmentz"
+      ]
     },
+    "performer": [
+      {
+        "@type": "Person",
+        "name": featuredEvent.specialGuest,
+        "description": "Tollywood Star"
+      },
+      {
+        "@type": "Person",
+        "name": featuredEvent.specialHost,
+        "description": "Special Host"
+      }
+    ],
     "offers": {
-      "@type": "Offer",
+      "@type": "AggregateOffer",
       "availability": "https://schema.org/InStock",
-      "price": "45",
       "priceCurrency": "USD",
+      "lowPrice": "47.03",
+      "highPrice": "1271.45",
+      "url": featuredEvent.eventbriteLink,
+      "validFrom": "2024-10-24T00:00:00-06:00",
       "category": "Event Tickets"
     }
   }
@@ -88,16 +163,27 @@ const Events = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEOData
-        title={`${featuredEvent.title} | ICON Entertainmentz | Austin, TX`}
-        description={`${featuredEvent.description} Join us on ${formatDate(featuredEvent.date)} at ${featuredEvent.venue}. Tickets from ${featuredEvent.price}.`}
-        keywords="Bollywood event Austin, Indian cultural event, live music Austin, dance performance, ICON Entertainmentz tickets, Austin entertainment"
+        title={`${featuredEvent.title} | Austin's Biggest Desi New Year Celebration | ICON Entertainmentz`}
+        description={`${featuredEvent.description} Join us on ${formatDate(featuredEvent.date)} at ${featuredEvent.venue}. ${featuredEvent.price}.`}
+        keywords="New Year event Austin, Desi celebration, NYE 2026, Faria Abdullah, RJ Hemant, ICON Entertainmentz, Leander events, family-friendly celebration"
         url="/events"
         structuredData={eventsStructuredData}
       />
       
       {/* Hero Section with Event Details */}
-      <section className="relative min-h-screen bg-gradient-to-br from-orange-50 to-white">
+            <section className="relative bg-gradient-to-br from-orange-100 via-orange-50 to-white">
+        <div className="absolute inset-0">
+          <img 
+            src="/images/nye-bg.jpg" 
+            alt="Event Banner" 
+            className="w-full h-full object-contain opacity-10"
+          />
+        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Title Sponsor */}
+          <div className="text-center mb-8">
+            <p className="text-orange-600 font-medium">Title Sponsor: {featuredEvent.titleSponsor}</p>
+          </div>
           {/* Event Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-100 text-orange-800 text-sm font-semibold mb-6">
@@ -125,25 +211,35 @@ const Events = () => {
               </div>
               <div className="flex items-center">
                 <MapPin className="w-5 h-5 mr-2 text-orange-500" />
-                <span>{featuredEvent.venue}</span>
+                <span>{featuredEvent.venue}, Leander</span>
               </div>
               <div className="flex items-center">
-                <Users className="w-5 h-5 mr-2 text-orange-500" />
-                <span>{featuredEvent.capacity} seats</span>
+                <Star className="w-5 h-5 mr-2 text-orange-500" />
+                <span>Family-Friendly Event</span>
               </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="inline-flex items-center px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-lg">
+              <a 
+                href={featuredEvent.eventbriteLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => trackCustomEvents.ticketClick(featuredEvent.title)}
+                className="inline-flex items-center px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-lg"
+              >
                 <Ticket className="w-5 h-5 mr-2" />
-                Get Tickets Now
+                Book Tickets Now
                 <ChevronRight className="w-5 h-5 ml-2" />
-              </button>
-              <button className="inline-flex items-center px-8 py-4 bg-white text-gray-900 border-2 border-gray-300 rounded-lg font-semibold hover:border-orange-500 hover:text-orange-500 transition-colors duration-200">
-                <Share2 className="w-5 h-5 mr-2" />
-                Share Event
-              </button>
+              </a>
+              <a 
+                href="tel:+15128840540"
+                onClick={() => trackCustomEvents.phoneCall()}
+                className="inline-flex items-center px-8 py-4 bg-white text-gray-900 border-2 border-gray-300 rounded-lg font-semibold hover:border-orange-500 hover:text-orange-500 transition-colors duration-200"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Group Discounts & Sponsorships
+              </a>
             </div>
           </div>
 
@@ -151,17 +247,17 @@ const Events = () => {
           <div className="max-w-4xl mx-auto mb-16">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="/Asset_ICON.png" 
+                src="/New year flyer version_1.jpg" 
                 alt={featuredEvent.title}
-                className="w-full h-96 object-contain bg-gradient-to-r from-orange-400 to-orange-600 p-8"
+                className="w-full h-96 object-cover bg-gradient-to-r from-orange-400 to-orange-600"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-white">
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-500 text-sm font-semibold mb-2">
-                  <Heart className="w-4 h-4 mr-1" />
-                  {featuredEvent.status === 'selling-fast' ? 'Selling Fast' : 'Available'}
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500 text-sm font-semibold mb-2">
+                  <Star className="w-4 h-4 mr-1" />
+                  Early Bird Tickets
                 </div>
-                <p className="text-lg font-semibold">Tickets from {featuredEvent.price}</p>
+                <p className="text-lg font-semibold">Starting from {featuredEvent.price}</p>
               </div>
             </div>
           </div>
@@ -198,33 +294,66 @@ const Events = () => {
                 </div>
               </div>
 
+              {/* Group Discounts & Sponsorship Banner */}
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 p-8 shadow-2xl">
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-40 h-40 bg-white opacity-10 rounded-full"></div>
+                <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-white opacity-10 rounded-full"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Users className="w-8 h-8 text-white" />
+                    <h3 className="text-2xl font-bold text-white">Planning a Group Visit?</h3>
+                  </div>
+                  <p className="text-orange-50 text-lg mb-6">
+                    Get exclusive group discounts or explore sponsorship opportunities! Perfect for corporate events, family celebrations, or community gatherings.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a 
+                      href="tel:+15128840540" 
+                      onClick={() => trackCustomEvents.phoneCall()}
+                      className="inline-flex items-center justify-center px-6 py-3 bg-white text-orange-600 rounded-lg font-semibold hover:bg-orange-50 transition-all duration-200 shadow-lg"
+                    >
+                      <Phone className="w-5 h-5 mr-2" />
+                      Call +1 (512) 884-0540
+                    </a>
+                    <a 
+                      href={`mailto:${featuredEvent.contact.sponsorship}`}
+                      onClick={() => trackCustomEvents.emailClick()}
+                      className="inline-flex items-center justify-center px-6 py-3 bg-orange-800 text-white rounded-lg font-semibold hover:bg-orange-900 transition-all duration-200"
+                    >
+                      <Mail className="w-5 h-5 mr-2" />
+                      Email Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               {/* Featured Artists */}
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Featured Artists</h3>
-                <div className="grid md:grid-cols-3 gap-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Special Guests</h3>
+                <div className="grid md:grid-cols-2 gap-6">
                   <div className="text-center">
                     <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                      <Music className="w-8 h-8 text-white" />
+                      <img 
+                        src="/faria2.png" 
+                        alt="Faria Abdullah"
+                        className="w-full h-full object-cover rounded-full"
+                      />
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Renowned Artists</h4>
-                    <p className="text-orange-600 text-sm font-medium mb-2">Playback Singers</p>
-                    <p className="text-gray-600 text-sm">Award-winning performers</p>
+                    <h4 className="font-semibold text-gray-900 mb-1">{featuredEvent.specialGuest}</h4>
+                    <p className="text-orange-600 text-sm font-medium mb-2">Tollywood Star</p>
+                    <p className="text-gray-600 text-sm">Live Performance & Midnight Celebration</p>
                   </div>
                   <div className="text-center">
                     <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                      <Music className="w-8 h-8 text-white" />
+                      <img 
+                        src="/hemanth.png" 
+                        alt="RJ Hemant"
+                        className="w-full h-full object-cover rounded-full"
+                      />
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Dance Troupe</h4>
-                    <p className="text-orange-600 text-sm font-medium mb-2">Choreographers</p>
-                    <p className="text-gray-600 text-sm">Professional dancers</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                      <Music className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Live Musicians</h4>
-                    <p className="text-orange-600 text-sm font-medium mb-2">Music Directors</p>
-                    <p className="text-gray-600 text-sm">Classical maestros</p>
+                    <h4 className="font-semibold text-gray-900 mb-1">{featuredEvent.specialHost}</h4>
+                    <p className="text-orange-600 text-sm font-medium mb-2">Special Host</p>
+                    <p className="text-gray-600 text-sm">Event Host & Entertainment</p>
                   </div>
                 </div>
               </div>
@@ -233,38 +362,66 @@ const Events = () => {
             {/* Sidebar */}
             <div className="space-y-8">
               
-              {/* Ticket Tiers */}
+              {/* Ticket Information */}
               <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Ticket Options</h3>
-                <div className="space-y-4">
-                  {featuredEvent.ticketTiers.map((tier, index) => (
-                    <div key={index} className={`p-4 rounded-lg border-2 ${index === 1 ? 'border-orange-500 bg-orange-50' : 'border-gray-200'} relative`}>
-                      {index === 1 && (
-                        <div className="absolute -top-3 left-4 px-3 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full">
-                          Most Popular
-                        </div>
-                      )}
-                      <div className="flex justify-between items-center mb-3">
-                        <h4 className="font-semibold text-gray-900">{tier.name}</h4>
-                        <span className="text-2xl font-bold text-orange-600">{tier.price}</span>
-                      </div>
-                      <ul className="space-y-2">
-                        {tier.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                            <Star className="w-4 h-4 text-orange-500 mr-2" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <button className={`w-full mt-4 py-2 px-4 rounded-lg font-semibold transition-colors duration-200 ${
-                        index === 1 
-                          ? 'bg-orange-500 text-white hover:bg-orange-600' 
-                          : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                      }`}>
-                        Select {tier.name}
-                      </button>
+                <h3 className="text-xl font-bold text-gray-900 mb-6">Ticket Information</h3>
+                <div className="space-y-6">
+                  {/* Early Bird Notice */}
+                  <div className="p-4 rounded-lg border-2 border-orange-500 bg-orange-50 relative">
+                    <div className="absolute -top-3 left-4 px-3 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full">
+                      Early Bird
                     </div>
-                  ))}
+                    <h4 className="font-semibold text-gray-900 mb-2">Tickets On Sale Now!</h4>
+                    <p className="text-gray-600 text-sm mb-4">Secure your spot at Austin's biggest Desi New Year celebration!</p>
+                    <a 
+                      href={featuredEvent.eventbriteLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackCustomEvents.ticketClick(`${featuredEvent.title} - Sidebar`)}
+                      className="inline-flex items-center justify-center w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200"
+                    >
+                      <Ticket className="w-5 h-5 mr-2" />
+                      Book Tickets on Eventbrite
+                    </a>
+                  </div>
+
+                  {/* Ticket Categories */}
+                  <div className="space-y-4">
+                    {featuredEvent.ticketTiers.map((tier, index) => (
+                      <div key={index} className="p-4 rounded-lg border border-gray-200 hover:border-orange-200 transition-colors duration-200">
+                        <div className="flex justify-between items-start mb-2">
+                          <div>
+                            <h4 className="font-semibold text-gray-900">{tier.name}</h4>
+                            {tier.description && (
+                              <p className="text-sm text-gray-600">{tier.description}</p>
+                            )}
+                          </div>
+                          <div className="text-right">
+                            <div className="text-xl font-bold text-orange-600">{tier.price}</div>
+                            {tier.details && (
+                              <p className="text-xs text-gray-500">{tier.details}</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Event Features */}
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">Event Features</h4>
+                    <ul className="space-y-2">
+                      {featuredEvent.features.map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                          <Star className="w-4 h-4 text-orange-500 mt-1 mr-2" />
+                          <div>
+                            <span className="font-medium text-gray-900">{feature.name}</span>
+                            <p className="text-sm text-gray-600">{feature.description}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
 
@@ -278,6 +435,7 @@ const Events = () => {
                       <p className="font-semibold text-gray-900">Date & Time</p>
                       <p className="text-gray-600">{formatDate(featuredEvent.date)}</p>
                       <p className="text-gray-600">{featuredEvent.time}</p>
+                      <p className="text-sm text-orange-600 mt-1">Family-Friendly Event</p>
                     </div>
                   </div>
                   
@@ -287,29 +445,42 @@ const Events = () => {
                       <p className="font-semibold text-gray-900">Venue</p>
                       <p className="text-gray-600">{featuredEvent.venue}</p>
                       <p className="text-gray-600">{featuredEvent.address}</p>
+                      <p className="text-sm text-gray-500 mt-1">Spacious indoor venue with ample free parking</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <Users className="w-5 h-5 text-orange-500 mt-1 mr-3" />
+                    <Star className="w-5 h-5 text-orange-500 mt-1 mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900">Capacity</p>
-                      <p className="text-gray-600">{featuredEvent.capacity} attendees</p>
+                      <p className="font-semibold text-gray-900">Entertainment</p>
+                      <p className="text-gray-600">Live DJ All Night</p>
+                      <p className="text-gray-600">Dance Performances</p>
+                      <p className="text-gray-600">Fashion Walk</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="font-semibold text-gray-900 mb-3">Contact for Inquiries</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">Contact & Follow Us</h4>
                   <div className="space-y-2">
-                    <a href="tel:+1-512-555-0123" className="flex items-center text-gray-600 hover:text-orange-600">
-                      <Phone className="w-4 h-4 mr-2" />
-                      (512) 555-0123
-                    </a>
-                    <a href="mailto:events@icon-entertainmentz.com" className="flex items-center text-gray-600 hover:text-orange-600">
+                    <a href={`mailto:${featuredEvent.contact.sponsorship}`} onClick={() => trackCustomEvents.emailClick()} className="flex items-center text-gray-600 hover:text-orange-600">
                       <Mail className="w-4 h-4 mr-2" />
-                      events@icon-entertainmentz.com
+                      {featuredEvent.contact.sponsorship}
                     </a>
+                    <div className="flex gap-4">
+                      <a href={featuredEvent.contact.instagram} target="_blank" rel="noopener noreferrer" onClick={() => trackCustomEvents.socialMedia('Instagram')} className="flex items-center text-gray-600 hover:text-orange-600">
+                        <Instagram className="w-4 h-4 mr-2" />
+                        Instagram
+                      </a>
+                      <a href={featuredEvent.contact.facebook} target="_blank" rel="noopener noreferrer" onClick={() => trackCustomEvents.socialMedia('Facebook')} className="flex items-center text-gray-600 hover:text-orange-600">
+                        <Facebook className="w-4 h-4 mr-2" />
+                        Facebook
+                      </a>
+                      <a href={featuredEvent.contact.youtube} target="_blank" rel="noopener noreferrer" onClick={() => trackCustomEvents.socialMedia('YouTube')} className="flex items-center text-gray-600 hover:text-orange-600">
+                        <Youtube className="w-4 h-4 mr-2" />
+                        YouTube
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -328,14 +499,24 @@ const Events = () => {
             Join us for an unforgettable evening of Indian culture and entertainment. Limited seats available.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="inline-flex items-center px-8 py-4 bg-white text-orange-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+            <a 
+              href={featuredEvent.eventbriteLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackCustomEvents.ticketClick(`${featuredEvent.title} - CTA`)}
+              className="inline-flex items-center px-8 py-4 bg-white text-orange-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+            >
               <Ticket className="w-5 h-5 mr-2" />
               Buy Tickets Now
-            </button>
-            <button className="inline-flex items-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors duration-200">
+            </a>
+            <a 
+              href="tel:+15128840540"
+              onClick={() => trackCustomEvents.phoneCall()}
+              className="inline-flex items-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors duration-200"
+            >
               <Phone className="w-5 h-5 mr-2" />
               Call for Group Bookings
-            </button>
+            </a>
           </div>
         </div>
       </section>

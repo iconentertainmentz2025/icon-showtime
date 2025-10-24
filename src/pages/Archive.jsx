@@ -11,109 +11,47 @@ const Archive = () => {
   const pastEvents = [
     {
       id: 1,
-      title: "Bollywood Bash 2024",
-      date: "2024-12-15",
-      venue: "Austin Music Hall",
-      location: "Austin, TX",
-      attendees: "1,150",
+      title: "Saradhaga Sunatha - Mama-Bro's",
+      date: "2025-07-11",
+      venue: "The Crossover",
+      location: "Leander, TX",
+      attendees: "800+",
       type: "concert",
-      year: "2024",
+      year: "2025",
       rating: 4.9,
-      images: ["/images/bollywood-bash-1.jpg", "/images/bollywood-bash-2.jpg"],
-      videos: ["/videos/bollywood-bash-highlights.mp4"],
-      description: "An incredible night featuring chart-topping Bollywood hits and spectacular dance performances.",
-      tags: ["bollywood", "music", "dance", "sold-out"],
-      highlights: ["5 International Artists", "3 Hours of Entertainment", "Traditional Food Stalls"],
-      featured: true
+      images: ["/saradhaga.jpg"],
+      videos: [],
+      description: "An unforgettable evening featuring live music, DJ night, photo booth, and talent showcase. Organized by Preksha Eventz & ICON Entertainmentz with free parking and unlimited fun.",
+      tags: ["concert", "dj", "family", "talent-show", "sold-out"],
+      highlights: ["Free Entry Ages 5 or Less", "Free Parking", "Live Music by Priyani", "DJ Night", "Photo Booth", "Talent Showcase", "Game Shows"],
+      featured: true,
+      sponsors: ["Preksha Eventz", "Mama-Bro's", "Dumont Creamery", "Desi Hangout"],
+      emcee: "Aparna Datla"
     },
     {
       id: 2,
-      title: "Diwali Celebration 2024",
-      date: "2024-11-01",
-      venue: "Zilker Park",
-      location: "Austin, TX",
-      attendees: "2,800",
-      type: "festival",
-      year: "2024",
-      rating: 4.8,
-      images: ["/images/diwali-2024-1.jpg", "/images/diwali-2024-2.jpg"],
-      videos: ["/videos/diwali-2024-recap.mp4"],
-      description: "The biggest Diwali celebration in Texas with lights, music, food, and community joy.",
-      tags: ["diwali", "festival", "family", "traditional", "outdoor"],
-      highlights: ["500+ Diyas Display", "20+ Food Vendors", "Cultural Performances"],
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Classical Music Evening",
-      date: "2024-09-22",
-      venue: "The Paramount Theatre",
-      location: "Austin, TX",
-      attendees: "450",
+      title: "Band Infusion Austin",
+      date: "2025-08-02",
+      venue: "Coco Bar & Lounge",
+      location: "Pflugerville, TX",
+      attendees: "300+",
       type: "concert",
-      year: "2024",
-      rating: 4.7,
-      images: ["/images/classical-evening.jpg"],
-      videos: [],
-      description: "An intimate evening with renowned classical musicians performing traditional ragas.",
-      tags: ["classical", "instrumental", "intimate", "traditional"],
-      highlights: ["Grammy-nominated Artist", "3-hour Performance", "VIP Meet & Greet"],
-      featured: false
-    },
-    {
-      id: 4,
-      title: "Holi Festival 2024",
-      date: "2024-03-25",
-      venue: "Auditorium Shores",
-      location: "Austin, TX",
-      attendees: "3,500",
-      type: "festival",
-      year: "2024",
-      rating: 4.9,
-      images: ["/images/holi-2024-1.jpg", "/images/holi-2024-2.jpg", "/images/holi-2024-3.jpg"],
-      videos: ["/videos/holi-2024-colors.mp4"],
-      description: "The most colorful celebration in Austin with traditional Holi festivities.",
-      tags: ["holi", "festival", "colors", "outdoor", "family"],
-      highlights: ["Organic Colors", "DJ & Live Music", "Traditional Snacks"],
-      featured: true
-    },
-    {
-      id: 5,
-      title: "Sufi Night 2023",
-      date: "2023-11-18",
-      venue: "Symphony Square",
-      location: "Austin, TX",
-      attendees: "600",
-      type: "concert",
-      year: "2023",
-      rating: 4.6,
-      images: ["/images/sufi-night-2023.jpg"],
-      videos: ["/videos/sufi-night-performance.mp4"],
-      description: "A mystical evening of Sufi music and poetry under the stars.",
-      tags: ["sufi", "spiritual", "music", "poetry", "outdoor"],
-      highlights: ["International Sufi Master", "Poetry Recitation", "Meditation Session"],
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Bollywood Dance Workshop",
-      date: "2023-08-12",
-      venue: "Long Center",
-      location: "Austin, TX",
-      attendees: "200",
-      type: "workshop",
-      year: "2023",
+      year: "2025",
       rating: 4.8,
-      images: ["/images/dance-workshop.jpg"],
+      images: ["/band-infusion.jpg"],
       videos: [],
-      description: "Interactive Bollywood dance workshop with professional choreographers.",
-      tags: ["dance", "workshop", "interactive", "learning"],
-      highlights: ["Professional Choreographers", "All Skill Levels", "Performance Opportunity"],
-      featured: false
+      description: "Limited time $20 tickets for a spectacular live music performance by Band Infusion. An electrifying night of music and entertainment.",
+      tags: ["concert", "live-music", "band", "limited-time"],
+      highlights: ["Live Music Performance", "Band Infusion", "$20 Limited Time Tickets", "Full Bar & Lounge", "Intimate Venue"],
+      featured: true,
+      sponsors: ["Universal Red Carpet", "Deccan Spice", "Mirch Masala", "Curry Pizza House", "Dumont Creamery"],
+      grandSponsors: ["Deccan Spice", "Mirch Masala"],
+      emcee: "Ramya Nada",
+      photographers: ["LP Prexels", "Precious Moments"]
     }
   ]
 
-  const years = ['all', '2024', '2023', '2022']
+  const years = ['all', '2025', '2024', '2023']
   const tags = ['all', 'bollywood', 'festival', 'classical', 'dance', 'outdoor', 'traditional']
 
   const filteredEvents = pastEvents.filter(event => {
@@ -369,36 +307,6 @@ const Archive = () => {
               <p className="text-gray-500">Try adjusting your search or filter criteria.</p>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-orange-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Our Journey in Numbers
-            </h2>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">50+</div>
-                <div className="text-orange-100">Events Hosted</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">25K+</div>
-                <div className="text-orange-100">Total Attendees</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">4.8</div>
-                <div className="text-orange-100">Average Rating</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">15+</div>
-                <div className="text-orange-100">Cities Reached</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>

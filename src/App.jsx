@@ -8,6 +8,7 @@ import AboutUs from './pages/AboutUs'
 import Events from './pages/Events'
 import Archive from './pages/Archive'
 import Contact from './pages/Contact'
+import Newsletter from './pages/Newsletter'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/events" element={<Events />} />
               <Route path="/archive" element={<Archive />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/newsletter" element={<Newsletter />} />
             </Routes>
           </Suspense>
         </Layout>

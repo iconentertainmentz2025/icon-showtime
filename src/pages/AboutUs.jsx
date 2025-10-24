@@ -1,16 +1,9 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Star, Users, Calendar, MapPin, Heart, Award, Music } from 'lucide-react'
+import { ArrowRight, Star, Heart, Music } from 'lucide-react'
 import SEOData from '../components/SEOData'
 
 const AboutUs = () => {
-  const stats = [
-    { icon: Calendar, label: 'Events Hosted', value: '50+' },
-    { icon: Users, label: 'Happy Attendees', value: '10K+' },
-    { icon: MapPin, label: 'Cities Covered', value: '15+' },
-    { icon: Award, label: 'Years Experience', value: '5+' },
-  ]
-
   const features = [
     {
       icon: Music,
@@ -45,7 +38,7 @@ const AboutUs = () => {
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-512-555-0123",
+      "telephone": "+1-512-884-0540",
       "contactType": "customer service",
       "email": "info@icon-entertainmentz.com"
     },
@@ -132,32 +125,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-orange-500" />
-                  </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
+
 
       {/* About Section */}
       <section className="section-padding bg-gray-50">

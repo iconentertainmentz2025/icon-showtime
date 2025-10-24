@@ -25,7 +25,7 @@ Replace `G-XXXXXXXXXX` in the following files with your actual Google Analytics 
 Replace placeholder contact details in:
 - `index.html` structured data
 - `src/pages/Contact.jsx` structured data
-- Phone: Currently set to `+1-512-555-0123`
+- Phone: Currently set to `+1-512-884-0540`
 - Email: Currently set to `info@icon-entertainmentz.com`
 
 ## ✅ Completed SEO Features
