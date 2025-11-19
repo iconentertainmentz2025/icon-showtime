@@ -9,6 +9,7 @@ import Events from './pages/Events'
 import Archive from './pages/Archive'
 import Contact from './pages/Contact'
 import Newsletter from './pages/Newsletter'
+import Socials from './pages/Socials'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/archive" element={<Archive />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/newsletter" element={<Newsletter />} />
+              <Route path="/socials" element={<Socials />} />
             </Routes>
           </Suspense>
         </Layout>
