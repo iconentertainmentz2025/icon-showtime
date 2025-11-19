@@ -12,7 +12,7 @@ const Socials = () => {
             icon: Instagram,
             color: 'from-pink-500 to-purple-600',
             description: 'Follow us for event photos, reels, and behind-the-scenes content.',
-            stats: '2.5k+ Followers'
+            stats: '📸 Exclusive Photos'
         },
         {
             name: 'Facebook',
@@ -21,7 +21,7 @@ const Socials = () => {
             icon: Facebook,
             color: 'from-blue-600 to-blue-700',
             description: 'Join our community for event announcements and discussions.',
-            stats: '1.2k+ Likes'
+            stats: '🌟 VIP Community'
         },
         {
             name: 'YouTube',
@@ -30,7 +30,7 @@ const Socials = () => {
             icon: Youtube,
             color: 'from-red-600 to-red-700',
             description: 'Watch high-quality highlights from our past concerts and shows.',
-            stats: '500+ Subscribers'
+            stats: '🎬 4K Highlights'
         },
         {
             name: 'Email',
@@ -39,7 +39,7 @@ const Socials = () => {
             icon: Mail,
             color: 'from-orange-500 to-orange-600',
             description: 'Get in touch for bookings, sponsorships, and inquiries.',
-            stats: 'Response < 24h'
+            stats: '⚡️ Fast Response'
         }
     ]
 
