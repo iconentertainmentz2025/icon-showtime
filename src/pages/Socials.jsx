@@ -65,13 +65,26 @@ const Socials = () => {
         }
     }
 
+    const socialsStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "ICON Entertainmentz",
+            "url": "https://icon-entertainmentz.com",
+            "sameAs": socialLinks.map(link => link.url),
+            "description": "Connect with ICON Entertainmentz on social media. Follow us for event updates, photos, and community discussions."
+        }
+    }
+
     return (
         <div className="min-h-screen bg-gray-50 pb-20">
             <SEOData
                 title="Connect with ICON Entertainmentz | Social Media & Community"
-                description="Follow ICON Entertainmentz on Instagram, Facebook, and YouTube. Join our growing community of Bollywood and Indian culture enthusiasts in the USA."
-                keywords="ICON Entertainmentz social media, follow ICON, Instagram, Facebook, YouTube, Indian entertainment community"
+                description="Follow ICON Entertainmentz on Instagram, Facebook, and YouTube. Join our growing community of Bollywood and Indian culture enthusiasts in the USA. Get exclusive updates and behind-the-scenes content."
+                keywords="ICON Entertainmentz social media, follow ICON, Instagram, Facebook, YouTube, Indian entertainment community, event photos, Bollywood updates Austin"
                 url="/socials"
+                structuredData={socialsStructuredData}
             />
 
             {/* Hero Section */}

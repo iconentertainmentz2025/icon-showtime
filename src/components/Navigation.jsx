@@ -39,7 +39,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-lg overflow-hidden">
               <Logo
-                variant="black"
+                variant="main"
                 className="w-full h-full object-contain"
                 width={40}
               />
@@ -63,8 +63,8 @@ const Navigation = () => {
                   key={item.path}
                   to={item.path}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${isActive
-                      ? 'text-white bg-orange-500'
-                      : 'text-gray-700 hover:text-orange-500'
+                    ? 'text-white bg-orange-500'
+                    : 'text-gray-700 hover:text-orange-500'
                     }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -104,8 +104,8 @@ const Navigation = () => {
                     to={item.path}
                     onClick={toggleMenu}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${isActive
-                        ? 'bg-orange-500 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
+                      ? 'bg-orange-500 text-white'
+                      : 'text-gray-700 hover:bg-gray-100'
                       }`}
                   >
                     <Icon className="w-5 h-5" />

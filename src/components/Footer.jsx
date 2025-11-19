@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Twitter } from 'lucide-react'
 import Newsletter from './Newsletter'
+import Logo from './Logo'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -43,10 +44,10 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden">
-                <img 
-                  src="/Asset_ICON_Black.png" 
-                  alt="ICON Entertainmentz Logo" 
+                <Logo
+                  variant="main"
                   className="w-full h-full object-contain"
+                  width={40}
                 />
               </div>
               <div>
@@ -55,7 +56,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              Premier entertainment events celebrating Indian culture across the USA, 
+              Premier entertainment events celebrating Indian culture across the USA,
               bringing communities together through unforgettable experiences.
             </p>
             <div className="flex items-center space-x-2 text-gray-600">

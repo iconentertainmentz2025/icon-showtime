@@ -51,7 +51,7 @@ const AboutUs = () => {
     ],
     "knowsAbout": [
       "Indian Entertainment",
-      "Bollywood Concerts", 
+      "Bollywood Concerts",
       "Cultural Festivals",
       "Event Management",
       "Indian Music Events",
@@ -73,13 +73,13 @@ const AboutUs = () => {
   return (
     <div className="pt-16">
       <SEOData
-        title="ICON Entertainmentz - Premier Indian Cultural Events | Austin, Texas"
-        description="Experience authentic Indian entertainment with ICON Entertainmentz. Bollywood concerts, cultural festivals, and exclusive events across the USA. Book your tickets for unforgettable experiences in Austin, Texas and beyond."
-        keywords="ICON Entertainmentz, Indian events Austin, Bollywood concerts, cultural festivals, Indian entertainment USA, Austin events, Texas cultural events, Indian music concerts, festival tickets, entertainment booking"
-        url="/"
+        title="About ICON Entertainmentz | Premier Indian Cultural Events in USA"
+        description="Discover ICON Entertainmentz, the leading organizer of Indian cultural events, Bollywood concerts, and festivals in Austin, Texas and across the USA. We bridge cultures through world-class entertainment."
+        keywords="ICON Entertainmentz, about us, Indian events organizer, Bollywood concerts USA, cultural festivals Austin, Indian entertainment company, event management Texas"
+        url="/about"
         structuredData={homePageStructuredData}
       />
-      
+
       {/* Hero Section */}
       <section className="hero-section section-padding text-center">
         <div className="container-custom">
@@ -97,14 +97,14 @@ const AboutUs = () => {
               className="flex justify-center mb-8"
             >
               <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm p-4">
-                <img 
-                  src="/Asset_ICON_White.png" 
-                  alt="ICON Entertainmentz Logo" 
+                <img
+                  src="/Asset_ICON_White.png"
+                  alt="ICON Entertainmentz Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
             </motion.div>
-            
+
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Welcome to <span className="text-orange-400 icon-text">ICON</span>
             </h1>
@@ -115,15 +115,15 @@ const AboutUs = () => {
               Bringing authentic Indian entertainment experiences to communities across America
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Link 
-                to="/events" 
+              <Link
+                to="/events"
                 onClick={() => trackCustomEvents.eventInquiry('About Us - Hero CTA')}
                 className="btn-primary inline-flex items-center"
               >
                 Explore Events <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 onClick={() => trackCustomEvents.contactForm('about_us_hero')}
                 className="btn-secondary"
               >
@@ -149,7 +149,7 @@ const AboutUs = () => {
               Who We Are
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Born in the heart of Austin, Texas, <span className="icon-text text-orange-500">ICON</span> Entertainmentz has become the premier destination 
+              Born in the heart of Austin, Texas, <span className="icon-text text-orange-500">ICON</span> Entertainmentz has become the premier destination
               for authentic Indian entertainment experiences across the United States.
             </p>
           </motion.div>
@@ -165,13 +165,13 @@ const AboutUs = () => {
                 Our Story
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Founded with a vision to bridge cultures and celebrate the rich heritage of India, 
-                <span className="icon-text text-orange-500">ICON</span> Entertainmentz started as a small initiative in Austin and has grown into a 
+                Founded with a vision to bridge cultures and celebrate the rich heritage of India,
+                <span className="icon-text text-orange-500">ICON</span> Entertainmentz started as a small initiative in Austin and has grown into a
                 nationally recognized entertainment company.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                We specialize in bringing world-class Indian artists, musicians, and performers to 
-                American stages, creating magical experiences that resonate with the Indian diaspora 
+                We specialize in bringing world-class Indian artists, musicians, and performers to
+                American stages, creating magical experiences that resonate with the Indian diaspora
                 while introducing American audiences to the beauty of Indian culture.
               </p>
             </motion.div>
@@ -184,7 +184,7 @@ const AboutUs = () => {
             >
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="text-orange-100 leading-relaxed mb-6">
-                To create unforgettable entertainment experiences that celebrate Indian culture, 
+                To create unforgettable entertainment experiences that celebrate Indian culture,
                 foster community connections, and build bridges between diverse communities across America.
               </p>
               <div className="flex items-center space-x-2">
@@ -257,16 +257,16 @@ const AboutUs = () => {
               Join thousands of others who have experienced the magic of <span className="icon-text text-orange-500">ICON</span> Entertainmentz events
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/events" 
+              <Link
+                to="/events"
                 onClick={() => trackCustomEvents.eventInquiry('About Us - Bottom CTA')}
                 className="inline-flex items-center justify-center px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-lg"
               >
                 View Upcoming Events
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 onClick={() => trackCustomEvents.contactForm('about_us_bottom')}
                 className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200"
               >

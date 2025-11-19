@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Instagram, Facebook, Youtube, Twitter, Calendar, Users, Star } from 'lucide-react'
 import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
@@ -46,9 +47,9 @@ const Contact = () => {
         setSubmitStatus({ type: 'error', message: data.message })
       }
     } catch (error) {
-      setSubmitStatus({ 
-        type: 'error', 
-        message: 'Failed to submit form. Please try again.' 
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to submit form. Please try again.'
       })
     } finally {
       setIsSubmitting(false)
@@ -196,59 +197,77 @@ const Contact = () => {
       <SEOData
         title="Contact ICON Entertainmentz | Book Indian Cultural Events | Austin, TX"
         description="Get in touch with ICON Entertainmentz for event bookings, partnerships, and inquiries. Premium Indian entertainment services in Austin, Texas and across the USA. Contact us today!"
-        keywords="contact ICON Entertainmentz, event booking, Indian entertainment booking, Austin event services, cultural event planning, entertainment inquiry, book events Austin"
+        keywords="contact ICON Entertainmentz, event booking, Indian entertainment booking, Austin event services, cultural event planning, entertainment inquiry, book events Austin, sponsorship opportunities"
         url="/contact"
         structuredData={contactStructuredData}
       />
-      
+
       {/* Hero Section */}
       <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-6">
-            <img src="/Asset_ICON_White.png" alt="ICON Entertainmentz" className="w-16 h-16 mx-auto" />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="flex justify-center"
+            >
+              <div className="w-20 h-20 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm p-3">
+                <img
+                  src="/Asset_ICON_White.png"
+                  alt="ICON Entertainmentz Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </motion.div>
             <h1 className="text-5xl md:text-6xl font-bold text-white">
-              Get In Touch
+              Get In <span className="text-orange-400 icon-text">Touch</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
               Ready to create something amazing together? Let's make your next event unforgettable
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16 bg-gray-50">
+      < section className="py-16 bg-gray-50" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {contactInfo.map((info, index) => {
-              const Icon = info.icon
-              return (
-                <a
-                  key={index}
-                  href={info.action}
-                  onClick={() => {
-                    if (info.title === 'Email Us') trackCustomEvents.emailClick()
-                    if (info.title === 'Call Us') trackCustomEvents.phoneCall()
-                  }}
-                  className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group"
-                >
-                  <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-600 transition-colors duration-300">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    {info.title}
-                  </h3>
-                  <p className="text-orange-500 font-medium mb-1">
-                    {info.details}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {info.subDetails}
-                  </p>
-                </a>
-              )
-            })}
-          </div>
+              {contactInfo.map((info, index) => {
+                const Icon = info.icon
+                return (
+                  <a
+                    key={index}
+                    href={info.action}
+                    onClick={() => {
+                      if (info.title === 'Email Us') trackCustomEvents.emailClick()
+                      if (info.title === 'Call Us') trackCustomEvents.phoneCall()
+                    }}
+                    className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group"
+                  >
+                    <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-600 transition-colors duration-300">
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {info.title}
+                    </h3>
+                    <p className="text-orange-500 font-medium mb-1">
+                      {info.details}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {info.subDetails}
+                    </p>
+                  </a>
+                )
+              })}
+            </div>
           </div>
 
           {/* Main Content Grid */}
@@ -259,7 +278,7 @@ const Contact = () => {
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Send Us a Message
                 </h2>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -277,7 +296,7 @@ const Contact = () => {
                         placeholder="Your full name"
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                         Email Address *
@@ -310,7 +329,7 @@ const Contact = () => {
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="eventType" className="block text-sm font-medium text-gray-700 mb-2">
                         Event Type
@@ -364,11 +383,10 @@ const Contact = () => {
                   </div>
 
                   {submitStatus && (
-                    <div className={`flex items-center space-x-2 ${
-                      submitStatus.type === 'success' 
-                        ? 'text-green-600 bg-green-50 border-green-200' 
-                        : 'text-red-600 bg-red-50 border-red-200'
-                    } border rounded-lg p-3`}>
+                    <div className={`flex items-center space-x-2 ${submitStatus.type === 'success'
+                      ? 'text-green-600 bg-green-50 border-green-200'
+                      : 'text-red-600 bg-red-50 border-red-200'
+                      } border rounded-lg p-3`}>
                       {submitStatus.type === 'success' ? (
                         <CheckCircle className="w-5 h-5" />
                       ) : (
@@ -458,10 +476,10 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      < section className="py-16 bg-white" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -505,8 +523,8 @@ const Contact = () => {
             ))}
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   )
 }
 

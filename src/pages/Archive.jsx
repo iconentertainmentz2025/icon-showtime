@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Calendar, MapPin, Users, Search, Filter, Image, Play, Star, ExternalLink } from 'lucide-react'
 import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
@@ -12,7 +13,7 @@ const Archive = () => {
   const pastEvents = [
     {
       id: 1,
-      title: "Saradhaga Sunatha - Mama-Bro's",
+      title: "Saradhaga Suma Tho",
       date: "2025-07-11",
       venue: "The Crossover",
       location: "Leander, TX",
@@ -20,7 +21,7 @@ const Archive = () => {
       type: "concert",
       year: "2025",
       rating: 4.9,
-      images: ["/saradhaga.jpg"],
+      images: ["/saradhaga-suma-tho.jpg"],
       videos: [],
       description: "An unforgettable evening featuring live music, DJ night, photo booth, and talent showcase. Organized by Preksha Eventz & ICON Entertainmentz with free parking and unlimited fun.",
       tags: ["concert", "dj", "family", "talent-show", "sold-out"],
@@ -39,7 +40,7 @@ const Archive = () => {
       type: "concert",
       year: "2025",
       rating: 4.8,
-      images: ["/band-infusion.jpg"],
+      images: ["/bandinfusion.jpg"],
       videos: [],
       description: "Limited time $20 tickets for a spectacular live music performance by Band Infusion. An electrifying night of music and entertainment.",
       tags: ["concert", "live-music", "band", "limited-time"],
@@ -57,21 +58,21 @@ const Archive = () => {
 
   const filteredEvents = pastEvents.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         event.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    
+      event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      event.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+
     const matchesYear = selectedYear === 'all' || event.year === selectedYear
     const matchesTag = selectedTag === 'all' || event.tags.includes(selectedTag)
-    
+
     return matchesSearch && matchesYear && matchesTag
   })
 
   const formatDate = (dateString) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     })
   }
 
@@ -116,28 +117,46 @@ const Archive = () => {
       <SEOData
         title="Event Archive | Past Indian Cultural Events | ICON Entertainmentz"
         description="Explore ICON Entertainmentz's archive of successful Indian cultural events, Bollywood concerts, and festivals. See photos, reviews, and highlights from our past entertainment experiences across the USA."
-        keywords="ICON Entertainmentz archive, past Indian events, Bollywood concerts history, cultural events gallery, event photos, entertainment archive, Austin events history"
+        keywords="ICON Entertainmentz archive, past Indian events, Bollywood concerts history, cultural events gallery, event photos, entertainment archive, Austin events history, Indian concert reviews"
         url="/archive"
         structuredData={archiveStructuredData}
       />
-      
+
       {/* Hero Section */}
       <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-6">
-            <img src="/Asset_ICON_White.png" alt="ICON Entertainmentz" className="w-16 h-16 mx-auto" />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="flex justify-center"
+            >
+              <div className="w-20 h-20 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm p-3">
+                <img
+                  src="/Asset_ICON_White.png"
+                  alt="ICON Entertainmentz Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </motion.div>
             <h1 className="text-5xl md:text-6xl font-bold text-white">
-              Event Archive
+              Event <span className="text-orange-400 icon-text">Archive</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
               Relive the magic of our past events and see the incredible moments we've created together
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-8 bg-gray-50 border-b">
+      < section className="py-8 bg-gray-50 border-b" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           {/* Search Bar */}
           <div className="relative max-w-2xl mx-auto">
@@ -194,18 +213,17 @@ const Archive = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Events Archive Grid */}
-      <section className="py-16 bg-white">
+      < section className="py-16 bg-white" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {filteredEvents.map((event, index) => (
               <div
                 key={event.id}
-                className={`bg-white rounded-lg shadow-lg overflow-hidden border-2 ${
-                  event.featured ? 'border-orange-500' : 'border-gray-200'
-                } hover:shadow-xl transition-shadow duration-300`}
+                className={`bg-white rounded-lg shadow-lg overflow-hidden border-2 ${event.featured ? 'border-orange-500' : 'border-gray-200'
+                  } hover:shadow-xl transition-shadow duration-300`}
               >
                 {/* Featured Badge */}
                 {event.featured && (
@@ -218,9 +236,17 @@ const Archive = () => {
                 )}
 
                 {/* Event Image Gallery */}
-                <div className="aspect-video bg-gray-200 rounded-lg mb-6 flex items-center justify-center relative group">
-                  <Image className="w-16 h-16 text-gray-400 opacity-50" />
-                  
+                <div className="aspect-[4/5] bg-gray-900 rounded-lg mb-6 flex items-center justify-center relative group overflow-hidden">
+                  {event.images.length > 0 ? (
+                    <img
+                      src={event.images[0]}
+                      alt={event.title}
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <Image className="w-16 h-16 text-gray-600 opacity-50" />
+                  )}
+
                   {/* Media indicators */}
                   <div className="absolute bottom-3 right-3 flex space-x-2">
                     {event.images.length > 0 && (
@@ -257,7 +283,7 @@ const Archive = () => {
                       <span className="text-sm font-medium text-gray-700">{event.rating}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-600 text-sm leading-relaxed">
                     {event.description}
                   </p>
@@ -268,12 +294,12 @@ const Archive = () => {
                       <Calendar className="w-4 h-4 text-orange-500" />
                       <span className="text-sm">{formatDate(event.date)}</span>
                     </div>
-                    
+
                     <div className="flex items-center space-x-2 text-gray-600">
                       <Users className="w-4 h-4 text-orange-500" />
                       <span className="text-sm">{event.attendees} attendees</span>
                     </div>
-                    
+
                     <div className="flex items-center space-x-2 text-gray-600 sm:col-span-2">
                       <MapPin className="w-4 h-4 text-orange-500" />
                       <span className="text-sm">{event.venue}, {event.location}</span>
@@ -328,8 +354,8 @@ const Archive = () => {
             </div>
           )}
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   )
 }
 

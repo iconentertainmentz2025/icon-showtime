@@ -11,9 +11,12 @@ import Contact from './pages/Contact'
 import Newsletter from './pages/Newsletter'
 import Socials from './pages/Socials'
 
+import RouteTracker from './components/RouteTracker'
+
 function App() {
   return (
     <Router>
+      <RouteTracker />
       <div className="min-h-screen bg-mesh-gradient">
         <Layout>
           <Suspense fallback={<LoadingSpinner />}>

@@ -22,7 +22,7 @@ const NewsletterPage = () => {
       <SEOData
         title="Subscribe to Our Newsletter | ICON Entertainmentz"
         description="Stay updated with the latest Indian cultural events, concerts, and exclusive offers from ICON Entertainmentz. Subscribe to our newsletter for event updates and special promotions."
-        keywords="ICON Entertainmentz newsletter, event updates, Indian events newsletter, cultural events subscription, entertainment updates, Austin events newsletter"
+        keywords="ICON Entertainmentz newsletter, event updates, Indian events newsletter, cultural events subscription, entertainment updates, Austin events newsletter, exclusive offers"
         url="/newsletter"
         structuredData={newsletterSEO}
       />
@@ -38,7 +38,7 @@ const NewsletterPage = () => {
               Never Miss an Event
             </h1>
             <p className="text-lg text-gray-600">
-              Subscribe to our newsletter and stay updated with the latest events, exclusive offers, 
+              Subscribe to our newsletter and stay updated with the latest events, exclusive offers,
               and cultural celebrations in your area.
             </p>
           </div>
@@ -48,7 +48,7 @@ const NewsletterPage = () => {
           </div>
 
           <div className="text-sm text-gray-500">
-            By subscribing, you agree to receive email communications from ICON Entertainmentz. 
+            By subscribing, you agree to receive email communications from ICON Entertainmentz.
             You can unsubscribe at any time. We respect your privacy.
           </div>
 
