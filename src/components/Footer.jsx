@@ -8,7 +8,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/icon_entertainmentz/', label: 'Instagram' },
-    { icon: Facebook, href: 'https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/#', label: 'Facebook' },
+    { icon: Facebook, href: 'https://www.facebook.com/iconentertainmentz', label: 'Facebook' },
     { icon: Youtube, href: 'https://www.youtube.com/@ICONEntertainmentz', label: 'YouTube' },
     { icon: Twitter, href: 'https://twitter.com/iconentertainmentz', label: 'Twitter' },
   ]

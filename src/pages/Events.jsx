@@ -90,7 +90,7 @@ const Events = () => {
     contact: {
       sponsorship: "info@icon-entertainmentz.com",
       instagram: "https://www.instagram.com/icon_entertainmentz/",
-      facebook: "https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/#",
+      facebook: "https://www.facebook.com/iconentertainmentz",
       youtube: "https://www.youtube.com/@ICONEntertainmentz"
     }
   }
@@ -133,7 +133,7 @@ const Events = () => {
       "telephone": "+1-512-884-0540",
       "email": "info@icon-entertainmentz.com",
       "sameAs": [
-        "https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/",
+        "https://www.facebook.com/iconentertainmentz",
         "https://www.instagram.com/icon_entertainmentz/",
         "https://www.youtube.com/@ICONEntertainmentz",
         "https://twitter.com/iconentertainmentz"

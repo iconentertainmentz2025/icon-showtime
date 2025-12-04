@@ -17,7 +17,7 @@ const Socials = () => {
         {
             name: 'Facebook',
             handle: 'ICON Entertainmentz',
-            url: 'https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/#',
+            url: 'https://www.facebook.com/iconentertainmentz',
             icon: Facebook,
             color: 'from-blue-600 to-blue-700',
             description: 'Join our community for event announcements and discussions.',

@@ -37,13 +37,16 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-lg overflow-hidden">
+            <motion.div
+              layoutId="shared-logo"
+              className="w-10 h-10 rounded-lg overflow-hidden"
+            >
               <Logo
                 variant="main"
                 className="w-full h-full object-contain"
                 width={40}
               />
-            </div>
+            </motion.div>
             <div>
               <h1 className="text-xl font-bold text-gray-900 icon-text">
                 ICON

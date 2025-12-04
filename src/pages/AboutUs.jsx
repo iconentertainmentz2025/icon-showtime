@@ -71,7 +71,7 @@ const AboutUs = () => {
   }
 
   return (
-    <div className="pt-16">
+    <>
       <SEOData
         title="About ICON Entertainmentz | Premier Indian Cultural Events in USA"
         description="Discover ICON Entertainmentz, the leading organizer of Indian cultural events, Bollywood concerts, and festivals in Austin, Texas and across the USA. We bridge cultures through world-class entertainment."
@@ -239,10 +239,10 @@ const AboutUs = () => {
             })}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CTA Section */}
-      <section className="section-padding bg-gray-900">
+      < section className="section-padding bg-gray-900" >
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -275,8 +275,8 @@ const AboutUs = () => {
             </div>
           </motion.div>
         </div>
-      </section>
-    </div>
+      </section >
+    </>
   )
 }
 

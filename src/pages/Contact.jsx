@@ -99,7 +99,7 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/icon_entertainmentz/', label: 'Instagram', color: 'hover:text-pink-400' },
-    { icon: Facebook, href: 'https://www.facebook.com/people/ICON-Entertainmentz/61581383123308/#', label: 'Facebook', color: 'hover:text-blue-400' },
+    { icon: Facebook, href: 'https://www.facebook.com/iconentertainmentz', label: 'Facebook', color: 'hover:text-blue-400' },
     { icon: Youtube, href: 'https://www.youtube.com/@ICONEntertainmentz', label: 'YouTube', color: 'hover:text-red-400' }
   ]
 
