@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { Suspense } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Layout from './components/Layout'
@@ -41,6 +41,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<AboutUs />} />
                   <Route path="/events" element={<Events />} />
+                  <Route path="/tickets" element={<Navigate to="/events" replace />} />
                   <Route path="/archive" element={<Archive />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/newsletter" element={<Newsletter />} />
