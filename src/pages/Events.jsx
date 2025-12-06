@@ -1,5 +1,6 @@
 import { Calendar, MapPin, Clock, Users, Star, Ticket, Phone, Mail, Share2, Heart, Music, ChevronRight, Instagram, Facebook, Youtube } from 'lucide-react'
 import { motion } from 'framer-motion'
+
 import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
 
@@ -265,14 +266,21 @@ const Events = () => {
 
           {/* Event Image */}
           <div className="max-w-4xl mx-auto mb-16">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-100 h-[500px] md:h-[600px]">
+              {/* Blurred Background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center blur-xl opacity-50 scale-110"
+                style={{ backgroundImage: "url('/New_year_flyer_version_2.JPG')" }}
+              ></div>
+
+              {/* Main Image */}
               <img
-                src="/New year flyer version_1.jpg"
-                alt={featuredEvent.title}
-                className="w-full h-auto object-contain bg-gray-100"
+                src="/New_year_flyer_version_2.JPG"
+                alt="Event Flyer"
+                className="relative z-10 w-full h-full object-contain"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-6 left-6 text-white pointer-events-none">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500 text-sm font-semibold mb-2">
                   <Star className="w-4 h-4 mr-1" />
                   Early Bird Tickets
