@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Twitter } from 'lucide-react'
 import Newsletter from './Newsletter'
 import Logo from './Logo'
+import { trackCustomEvents } from '../utils/analytics'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -113,6 +114,7 @@ const Footer = () => {
                     href={social.href}
                     className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-gray-600 hover:text-orange-500 hover:border-orange-500 transition-all duration-200"
                     aria-label={social.label}
+                    onClick={() => trackCustomEvents.socialMedia(social.label)}
                   >
                     <Icon className="w-5 h-5" />
                   </a>

@@ -17,6 +17,8 @@ import RouteTracker from './components/RouteTracker'
 import { useState, useEffect } from 'react'
 import LogoLoader from './components/LogoLoader'
 
+import TicketsRedirect from './components/TicketsRedirect'
+
 function App() {
   const [isLoading, setIsLoading] = useState(true)
 
@@ -41,7 +43,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<AboutUs />} />
                   <Route path="/events" element={<Events />} />
-                  <Route path="/tickets" element={<Navigate to="/events" replace />} />
+                  <Route path="/tickets" element={<TicketsRedirect />} />
                   <Route path="/archive" element={<Archive />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/newsletter" element={<Newsletter />} />
