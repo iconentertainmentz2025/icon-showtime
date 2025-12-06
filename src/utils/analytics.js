@@ -42,6 +42,7 @@ export const trackCustomEvents = {
   ticketClick: (eventName) => trackEvent('ticket_click', 'engagement', eventName),
   socialMedia: (platform) => trackEvent('social_media_click', 'engagement', platform),
   newsletterSignup: () => trackEvent('newsletter_signup', 'conversion', 'footer_signup'),
+  ticketPlatformSelect: (eventName, platform) => trackEvent('ticket_platform_select', 'conversion', `${eventName} - ${platform}`),
   phoneCall: () => trackEvent('phone_call', 'conversion', 'contact_page'),
   emailClick: () => trackEvent('email_click', 'conversion', 'contact_page'),
 }
