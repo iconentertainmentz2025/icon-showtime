@@ -155,41 +155,75 @@ const Contact = () => {
     )
   }
 
+  const faqData = [
+    {
+      q: "How far in advance should I book an event?",
+      a: "We recommend booking at least 2-3 months in advance for optimal availability and planning time, though we can accommodate shorter timelines when possible."
+    },
+    {
+      q: "Do you handle events outside of Austin?",
+      a: "Yes! While we're based in Austin, Texas, we organize events across the United States. Additional travel costs may apply for out-of-state events."
+    },
+    {
+      q: "What types of events do you specialize in?",
+      a: "We specialize in Indian cultural events, Bollywood concerts, classical music performances, festivals, private celebrations, and corporate entertainment."
+    },
+    {
+      q: "Can you help with venue selection?",
+      a: "Absolutely! We have partnerships with numerous venues and can help you select the perfect location based on your event size, budget, and requirements."
+    }
+  ]
+
   const contactStructuredData = {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact ICON Entertainmentz",
-    "description": "Get in touch with ICON Entertainmentz for event bookings, partnerships, and cultural event planning in Austin, Texas and across the USA",
-    "url": "https://icon-entertainmentz.com/contact",
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "ICON Entertainmentz",
-      "url": "https://icon-entertainmentz.com",
-      "logo": "https://icon-entertainmentz.com/Asset_ICON.png",
-      "description": "Premier Indian entertainment events company specializing in Bollywood concerts and cultural festivals",
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+1-512-884-0540",
-          "contactType": "customer service",
-          "email": "info@icon-entertainmentz.com",
-          "areaServed": "US",
-          "availableLanguage": ["English", "Hindi"]
-        },
-        {
-          "@type": "ContactPoint",
-          "email": "info@icon-entertainmentz.com",
-          "contactType": "event booking",
-          "areaServed": "US"
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "name": "Contact ICON Entertainmentz",
+        "description": "Get in touch with ICON Entertainmentz for event bookings, partnerships, and cultural event planning in Austin, Texas and across the USA",
+        "url": "https://icon-entertainmentz.com/contact",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "ICON Entertainmentz",
+          "url": "https://icon-entertainmentz.com",
+          "logo": "https://icon-entertainmentz.com/Asset_ICON.png",
+          "description": "Premier Indian entertainment events company specializing in Bollywood concerts and cultural festivals",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+1-512-884-0540",
+              "contactType": "customer service",
+              "email": "info@icon-entertainmentz.com",
+              "areaServed": "US",
+              "availableLanguage": ["English", "Hindi"]
+            },
+            {
+              "@type": "ContactPoint",
+              "email": "info@icon-entertainmentz.com",
+              "contactType": "event booking",
+              "areaServed": "US"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          }
         }
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Austin",
-        "addressRegion": "TX",
-        "addressCountry": "US"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqData.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        }))
       }
-    }
+    ]
   }
 
   return (
@@ -491,24 +525,7 @@ const Contact = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                q: "How far in advance should I book an event?",
-                a: "We recommend booking at least 2-3 months in advance for optimal availability and planning time, though we can accommodate shorter timelines when possible."
-              },
-              {
-                q: "Do you handle events outside of Austin?",
-                a: "Yes! While we're based in Austin, Texas, we organize events across the United States. Additional travel costs may apply for out-of-state events."
-              },
-              {
-                q: "What types of events do you specialize in?",
-                a: "We specialize in Indian cultural events, Bollywood concerts, classical music performances, festivals, private celebrations, and corporate entertainment."
-              },
-              {
-                q: "Can you help with venue selection?",
-                a: "Absolutely! We have partnerships with numerous venues and can help you select the perfect location based on your event size, budget, and requirements."
-              }
-            ].map((faq, index) => (
+            {faqData.map((faq, index) => (
               <div
                 key={index}
                 className="bg-gray-50 rounded-lg p-6"

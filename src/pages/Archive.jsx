@@ -78,38 +78,44 @@ const Archive = () => {
 
   const archiveStructuredData = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "ICON Entertainmentz Event Archive",
-    "description": "Browse our collection of past Indian cultural events, Bollywood concerts, and festivals across the USA",
-    "url": "https://icon-entertainmentz.com/archive",
-    "mainEntity": {
-      "@type": "ItemList",
-      "name": "Past Events Archive",
-      "description": "Historical collection of ICON Entertainmentz events showcasing our rich entertainment legacy",
-      "numberOfItems": pastEvents.length,
-      "itemListElement": pastEvents.map((event, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "item": {
-          "@type": "Event",
-          "name": event.title,
-          "startDate": event.date,
-          "location": {
-            "@type": "Place",
-            "name": event.venue,
-            "address": event.location
-          },
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
-        }
-      }))
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ICON Entertainmentz",
-      "url": "https://icon-entertainmentz.com",
-      "logo": "https://icon-entertainmentz.com/Asset_ICON.png"
-    }
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "ICON Entertainmentz Event Archive",
+        "description": "Browse our collection of past Indian cultural events, Bollywood concerts, and festivals across the USA",
+        "url": "https://icon-entertainmentz.com/archive",
+        "mainEntity": { "@id": "https://icon-entertainmentz.com/#archive-list" }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://icon-entertainmentz.com/#archive-list",
+        "name": "Past Events Archive",
+        "description": "Historical collection of ICON Entertainmentz events showcasing our rich entertainment legacy",
+        "numberOfItems": pastEvents.length,
+        "itemListElement": pastEvents.map((event, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "item": {
+            "@type": "Event",
+            "name": event.title,
+            "startDate": event.date,
+            "location": {
+              "@type": "Place",
+              "name": event.venue,
+              "address": event.location
+            },
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+          }
+        }))
+      },
+      {
+        "@type": "Organization",
+        "name": "ICON Entertainmentz",
+        "url": "https://icon-entertainmentz.com",
+        "logo": "https://icon-entertainmentz.com/Asset_ICON.png"
+      }
+    ]
   }
 
   return (

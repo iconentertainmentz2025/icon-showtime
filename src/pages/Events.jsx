@@ -23,6 +23,7 @@ const Events = () => {
     specialHost: "RJ Hemant",
     eventbriteLink: "https://iconiccountdown2026.eventbrite.com",
     eventPrixLink: "https://eventprix.com/event/ICONIC-Countdown-2026",
+    quickllyLink: "https://eventsbyquicklly.com/iconic-countdown-2026/395",
     eventId: "1829421622319",
     ticketTiers: [
       {
@@ -111,61 +112,95 @@ const Events = () => {
     return new Date(dateString + 'T12:00:00').toLocaleDateString('en-US', options)
   }
 
+  const faqData = [
+    {
+      question: "Where can I buy tickets?",
+      answer: `We recommend booking through our official partner Quicklly for the best value and instant confirmation. You can also use Eventbrite or EventPrix. Visit ${featuredEvent.quickllyLink} to book now.`
+    },
+    {
+      question: "Is food included in the ticket?",
+      answer: "Yes! There will be a dedicated food vendor serving delicious Desi and fusion flavors. VIP tables may include specific food/beverage services."
+    },
+    {
+      question: "Is parking free?",
+      answer: "Yes, The Crossover offers ample free parking for all guests."
+    },
+    {
+      question: "Are kids allowed?",
+      answer: "Absolutely! This is a family-friendly event with a dedicated Kids Zone featuring games, face painting, and balloon twisting."
+    }
+  ]
+
   const eventsStructuredData = {
     "@context": "https://schema.org",
-    "@type": "Event",
-    "name": featuredEvent.title,
-    "description": featuredEvent.description,
-    "startDate": `${featuredEvent.date}T19:00:00-06:00`,
-    "endDate": `${featuredEvent.date}T23:59:00-06:00`,
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": featuredEvent.venue,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": featuredEvent.address,
-        "addressLocality": "Leander",
-        "addressRegion": "TX",
-        "addressCountry": "US"
-      }
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": "ICON Entertainmentz",
-      "url": "https://icon-entertainmentz.com",
-      "telephone": "+1-512-884-0540",
-      "email": "info@icon-entertainmentz.com",
-      "sameAs": [
-        "https://www.facebook.com/iconentertainmentz",
-        "https://www.instagram.com/icon_entertainmentz/",
-        "https://www.youtube.com/@ICONEntertainmentz",
-        "https://twitter.com/iconentertainmentz"
-      ]
-    },
-    "performer": [
+    "@graph": [
       {
-        "@type": "Person",
-        "name": featuredEvent.specialGuest,
-        "description": "Tollywood Star"
+        "@type": "Event",
+        "name": featuredEvent.title,
+        "description": featuredEvent.description,
+        "startDate": `${featuredEvent.date}T19:00:00-06:00`,
+        "endDate": `${featuredEvent.date}T23:59:00-06:00`,
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": featuredEvent.venue,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": featuredEvent.address,
+            "addressLocality": "Leander",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          }
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "ICON Entertainmentz",
+          "url": "https://icon-entertainmentz.com",
+          "telephone": "+1-512-884-0540",
+          "email": "info@icon-entertainmentz.com",
+          "sameAs": [
+            "https://www.facebook.com/iconentertainmentz",
+            "https://www.instagram.com/icon_entertainmentz/",
+            "https://www.youtube.com/@ICONEntertainmentz",
+            "https://twitter.com/iconentertainmentz"
+          ]
+        },
+        "performer": [
+          {
+            "@type": "Person",
+            "name": featuredEvent.specialGuest,
+            "description": "Tollywood Star"
+          },
+          {
+            "@type": "Person",
+            "name": featuredEvent.specialHost,
+            "description": "Special Host"
+          }
+        ],
+        "offers": {
+          "@type": "AggregateOffer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "lowPrice": "47.03",
+          "highPrice": "1271.45",
+          "url": featuredEvent.quickllyLink,
+          "validFrom": "2024-10-24T00:00:00-06:00",
+          "category": "Event Tickets"
+        }
       },
       {
-        "@type": "Person",
-        "name": featuredEvent.specialHost,
-        "description": "Special Host"
+        "@type": "FAQPage",
+        "mainEntity": faqData.map(item => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
       }
-    ],
-    "offers": {
-      "@type": "AggregateOffer",
-      "availability": "https://schema.org/InStock",
-      "priceCurrency": "USD",
-      "lowPrice": "47.03",
-      "highPrice": "1271.45",
-      "url": featuredEvent.eventbriteLink,
-      "validFrom": "2024-10-24T00:00:00-06:00",
-      "category": "Event Tickets"
-    }
+    ]
   }
 
   const handleTicketClick = (location) => {
@@ -175,7 +210,9 @@ const Events = () => {
 
   const handleSourceSelect = (source) => {
     trackCustomEvents.ticketPlatformSelect(featuredEvent.title, source)
-    const url = source === 'EventPrix' ? featuredEvent.eventPrixLink : featuredEvent.eventbriteLink
+    let url = featuredEvent.eventbriteLink
+    if (source === 'EventPrix') url = featuredEvent.eventPrixLink
+    if (source === 'Quicklly') url = featuredEvent.quickllyLink
     window.open(url, '_blank')
     setShowTicketModal(false)
   }
@@ -531,6 +568,28 @@ const Events = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
+          <div className="grid gap-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-orange-200 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center">
+                  <span className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-sm mr-3 font-bold">
+                    Q
+                  </span>
+                  {faq.question}
+                </h3>
+                <p className="text-gray-600 ml-11">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="py-16 bg-gray-900">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -585,36 +644,53 @@ const Events = () => {
             {/* Modal Body */}
             <div className="p-8 space-y-4">
 
+              {/* Quicklly Option - High Priority */}
+              <button
+                onClick={() => handleSourceSelect('Quicklly')}
+                className="w-full group relative flex items-center justify-between p-4 rounded-xl border-2 border-orange-500 bg-orange-50/50 hover:bg-orange-100 transition-all duration-300 shadow-sm"
+              >
+                <div className="absolute -top-3 left-4 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold rounded-full shadow-sm">
+                  OFFICIAL PARTNER
+                </div>
+                <div className="flex flex-col items-start mt-1">
+                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-700 transition-colors">Quicklly</span>
+                  <span className="text-sm text-gray-600 font-medium">Best Value & Instant Confirmation</span>
+                </div>
+                <div className="bg-white p-2 rounded-full border border-orange-200 group-hover:border-orange-500 transition-colors">
+                  <Star className="w-5 h-5 text-orange-500 fill-orange-500" />
+                </div>
+              </button>
+
               {/* EventPrix Option */}
               <button
                 onClick={() => handleSourceSelect('EventPrix')}
-                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-orange-100 hover:border-orange-500 hover:bg-orange-50 transition-all duration-300"
+                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
               >
                 <div className="flex flex-col items-start">
                   <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">EventPrix</span>
                   <span className="text-sm text-gray-500">Low service fees</span>
                 </div>
-                <div className="bg-orange-100 p-2 rounded-full group-hover:bg-orange-500 transition-colors">
-                  <Ticket className="w-5 h-5 text-orange-600 group-hover:text-white transition-colors" />
+                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
+                  <Ticket className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
                 </div>
               </button>
 
               {/* Eventbrite Option */}
               <button
                 onClick={() => handleSourceSelect('Eventbrite')}
-                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-500 hover:bg-orange-50 transition-all duration-300"
+                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
               >
                 <div className="flex flex-col items-start">
                   <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">Eventbrite</span>
                   <span className="text-sm text-gray-500">Standard platform</span>
                 </div>
-                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-500 transition-colors">
-                  <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors" />
+                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
+                  <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
                 </div>
               </button>
 
               <p className="text-center text-xs text-gray-400 mt-4">
-                Both platforms offer the same tickets and secure checkout.
+                All platforms offer secure booking and instant ticket delivery.
               </p>
             </div>
           </motion.div>

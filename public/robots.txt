@@ -47,3 +47,11 @@ Allow: /
 User-agent: Slurp
 Crawl-delay: 1
 Allow: /
+
+# AI & LLM Crawlers - Welcome!
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Google-Extended
+User-agent: CCBot
+User-agent: PerplexityBot
+Allow: /

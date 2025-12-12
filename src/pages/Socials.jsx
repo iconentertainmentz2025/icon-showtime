@@ -67,14 +67,23 @@ const Socials = () => {
 
     const socialsStructuredData = {
         "@context": "https://schema.org",
-        "@type": "ProfilePage",
-        "mainEntity": {
-            "@type": "Organization",
-            "name": "ICON Entertainmentz",
-            "url": "https://icon-entertainmentz.com",
-            "sameAs": socialLinks.map(link => link.url),
-            "description": "Connect with ICON Entertainmentz on social media. Follow us for event updates, photos, and community discussions."
-        }
+        "@graph": [
+            {
+                "@type": "ProfilePage",
+                "name": "Connect with ICON Entertainmentz",
+                "description": "Follow ICON Entertainmentz on Instagram, Facebook, and YouTube. Join our growing community of Bollywood and Indian culture enthusiasts.",
+                "url": "https://icon-entertainmentz.com/socials",
+                "mainEntity": { "@id": "https://icon-entertainmentz.com/#organization" }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://icon-entertainmentz.com/#organization",
+                "name": "ICON Entertainmentz",
+                "url": "https://icon-entertainmentz.com",
+                "sameAs": socialLinks.map(link => link.url),
+                "description": "Connect with ICON Entertainmentz on social media. Follow us for event updates, photos, and community discussions."
+            }
+        ]
     }
 
     return (

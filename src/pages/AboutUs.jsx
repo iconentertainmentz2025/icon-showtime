@@ -25,49 +25,65 @@ const AboutUs = () => {
 
   const homePageStructuredData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ICON Entertainmentz",
-    "url": "https://icon-entertainmentz.com",
-    "logo": "https://icon-entertainmentz.com/Asset_ICON.png",
-    "description": "Premier Indian entertainment events company specializing in Bollywood concerts, cultural festivals, and exclusive events across the USA",
-    "foundingDate": "2019",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Austin",
-      "addressRegion": "TX",
-      "addressCountry": "US"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-512-884-0540",
-      "contactType": "customer service",
-      "email": "info@icon-entertainmentz.com"
-    },
-    "areaServed": [
+    "@graph": [
       {
-        "@type": "Country",
-        "name": "United States"
+        "@type": "AboutPage",
+        "name": "About ICON Entertainmentz",
+        "description": "Discover ICON Entertainmentz, the leading organizer of Indian cultural events, Bollywood concerts, and festivals in Austin, Texas and across the USA.",
+        "url": "https://icon-entertainmentz.com/about",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://icon-entertainmentz.com/Asset_ICON_White.png"
+        },
+        "mainEntity": { "@id": "https://icon-entertainmentz.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://icon-entertainmentz.com/#organization",
+        "name": "ICON Entertainmentz",
+        "url": "https://icon-entertainmentz.com",
+        "logo": "https://icon-entertainmentz.com/Asset_ICON.png",
+        "description": "Premier Indian entertainment events company specializing in Bollywood concerts, cultural festivals, and exclusive events across the USA",
+        "foundingDate": "2019",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Austin",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-512-884-0540",
+          "contactType": "customer service",
+          "email": "info@icon-entertainmentz.com"
+        },
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "United States"
+          }
+        ],
+        "knowsAbout": [
+          "Indian Entertainment",
+          "Bollywood Concerts",
+          "Cultural Festivals",
+          "Event Management",
+          "Indian Music Events",
+          "Cultural Events"
+        ],
+        "sameAs": [
+          "https://www.facebook.com/iconentertainmentz",
+          "https://www.instagram.com/icon_entertainmentz/",
+          "https://www.youtube.com/iconentertainmentz",
+          "https://twitter.com/iconentertainmentz"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "description": "Indian cultural events and entertainment services",
+          "category": "Entertainment Services"
+        }
       }
-    ],
-    "knowsAbout": [
-      "Indian Entertainment",
-      "Bollywood Concerts",
-      "Cultural Festivals",
-      "Event Management",
-      "Indian Music Events",
-      "Cultural Events"
-    ],
-    "sameAs": [
-      "https://www.facebook.com/iconentertainmentz",
-      "https://www.instagram.com/icon_entertainmentz/",
-      "https://www.youtube.com/iconentertainmentz",
-      "https://twitter.com/iconentertainmentz"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "description": "Indian cultural events and entertainment services",
-      "category": "Entertainment Services"
-    }
+    ]
   }
 
   return (
