@@ -64,6 +64,7 @@ const Events = () => {
     ],
     description: "Ring in the New Year with lights, laughter, and unforgettable memories at ICONIC Countdown 2026, Austin's most electrifying Desi celebration! Join us for a glamorous, family-friendly night hosted by the one and only RJ Hemant, featuring Tollywood star Faria Abdullah — visiting Austin for the very first time!",
     highlights: [
+      "VIP Meet & Greet with Faria & RJ Hemant - Dec 30th at Spicy Matka",
       "Fashion Walk – Step into the spotlight with style and glam",
       "Kids Zone with games and activities",
       "Food Vendor with Desi and fusion flavors",
@@ -119,7 +120,7 @@ const Events = () => {
     },
     {
       question: "Is food included in the ticket?",
-      answer: "Yes! There will be a dedicated food vendor serving delicious Desi and fusion flavors. VIP tables may include specific food/beverage services."
+      answer: "Food is not included in the ticket price. There will be a dedicated food vendor on site serving delicious Desi and fusion flavors available for purchase."
     },
     {
       question: "Is parking free?",
@@ -340,7 +341,7 @@ const Events = () => {
       </section>
 
       {/* Event Details Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="details" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
 
