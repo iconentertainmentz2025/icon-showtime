@@ -645,20 +645,17 @@ const Events = () => {
             {/* Modal Body */}
             <div className="p-8 space-y-4">
 
-              {/* Quicklly Option - High Priority */}
+              {/* Eventbrite Option */}
               <button
-                onClick={() => handleSourceSelect('Quicklly')}
-                className="w-full group relative flex items-center justify-between p-4 rounded-xl border-2 border-orange-500 bg-orange-50/50 hover:bg-orange-100 transition-all duration-300 shadow-sm"
+                onClick={() => handleSourceSelect('Eventbrite')}
+                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
               >
-                <div className="absolute -top-3 left-4 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold rounded-full shadow-sm">
-                  OFFICIAL PARTNER
+                <div className="flex flex-col items-start">
+                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">Eventbrite</span>
+                  <span className="text-sm text-gray-500">Standard platform</span>
                 </div>
-                <div className="flex flex-col items-start mt-1">
-                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-700 transition-colors">Quicklly</span>
-                  <span className="text-sm text-gray-600 font-medium">Best Value & Instant Confirmation</span>
-                </div>
-                <div className="bg-white p-2 rounded-full border border-orange-200 group-hover:border-orange-500 transition-colors">
-                  <Star className="w-5 h-5 text-orange-500 fill-orange-500" />
+                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
+                  <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
                 </div>
               </button>
 
@@ -676,14 +673,14 @@ const Events = () => {
                 </div>
               </button>
 
-              {/* Eventbrite Option */}
+              {/* Quicklly Option */}
               <button
-                onClick={() => handleSourceSelect('Eventbrite')}
+                onClick={() => handleSourceSelect('Quicklly')}
                 className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
               >
                 <div className="flex flex-col items-start">
-                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">Eventbrite</span>
-                  <span className="text-sm text-gray-500">Standard platform</span>
+                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">Quicklly</span>
+                  <span className="text-sm text-gray-500">Official Partner</span>
                 </div>
                 <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
                   <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
