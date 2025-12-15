@@ -16,7 +16,7 @@ const Events = () => {
     time: "7:00 PM CST",
     venue: "The Crossover",
     address: "1717 Scottsdale Drive, Leander, TX 78641",
-    price: "Starting from $47.03",
+    price: "Starting from $44",
     status: "on-sale",
     titleSponsor: "Spicy Matka, Leander",
     specialGuest: "Faria Abdullah",
@@ -27,22 +27,14 @@ const Events = () => {
     eventId: "1829421622319",
     ticketTiers: [
       {
-        name: "General Admission - EARLY BIRD",
-        price: "$70.15",
-        details: "incl. $5.80 Fee / incl. $5.35 Sales Tax",
+        name: "General Admission",
+        price: "$69",
         description: "Limited time deal."
       },
       {
-        name: "Kid General Admission - EARLY BIRD",
-        price: "$47.03",
-        details: "incl. $4.45 Fee / incl. $3.58 Sales Tax",
+        name: "Kid General Admission",
+        price: "$44",
         description: "Tickets for age 5+ seating provided"
-      },
-      {
-        name: "Family Admission - EARLY BIRD",
-        price: "$197.20",
-        details: "incl. $13.17 Fee / incl. $15.03 Sales Tax",
-        description: "2 ADULTS + 2 KIDS"
       },
       {
         name: "KIDS below 5",
@@ -50,28 +42,36 @@ const Events = () => {
         description: "Entry without seat"
       },
       {
-        name: "VIP SINGLE - EARLY BIRD",
-        price: "$139.45",
-        details: "incl. $9.82 Fee / incl. $10.63 Sales Tax",
+        name: "Family Admission",
+        price: "$179",
+        description: "2 ADULTS + 2 KIDS"
+      },
+      {
+        name: "VIP Single Seat",
+        price: "$129",
         description: "Premium seating and services"
       },
       {
-        name: "VIP Table of 10 - EARLY BIRD",
-        price: "$1,271.45",
-        details: "incl. $75.55 Fee / incl. $96.90 Sales Tax",
+        name: "VIP Kid Single",
+        price: "$89",
+        description: "Premium seating for kids"
+      },
+      {
+        name: "VIP Table of 10",
+        price: "$1,199",
         description: "Premium table with VIP services"
       }
     ],
     description: "Ring in the New Year with lights, laughter, and unforgettable memories at ICONIC Countdown 2026, Austin's most electrifying Desi celebration! Join us for a glamorous, family-friendly night hosted by the one and only RJ Hemant, featuring Tollywood star Faria Abdullah — visiting Austin for the very first time!",
     highlights: [
       "VIP Meet & Greet with Faria & RJ Hemant - Dec 30th at Spicy Matka",
+      "🎧 DJ SUMAN 🎤 - Official DJ of the Show",
       "Fashion Walk – Step into the spotlight with style and glam",
       "Kids Zone with games and activities",
       "Food Vendor with Desi and fusion flavors",
       "Balloon Drop at Midnight",
       "Face Painting & Balloon Twisting",
       "Free Parking",
-      "LED Dance Floor",
       "Live DJ All Night",
       "Dance Performances",
       "12AM Cake Cutting Ceremony with Faria Abdullah"
@@ -183,8 +183,8 @@ const Events = () => {
           "@type": "AggregateOffer",
           "availability": "https://schema.org/InStock",
           "priceCurrency": "USD",
-          "lowPrice": "47.03",
-          "highPrice": "1271.45",
+          "lowPrice": "44.00",
+          "highPrice": "1199.00",
           "url": featuredEvent.quickllyLink,
           "validFrom": "2024-10-24T00:00:00-06:00",
           "category": "Event Tickets"
@@ -387,7 +387,7 @@ const Events = () => {
                     <h3 className="text-2xl font-bold text-white">Planning a Group Visit?</h3>
                   </div>
                   <p className="text-orange-50 text-lg mb-6">
-                    Get exclusive group discounts or explore sponsorship opportunities! Perfect for corporate events, family celebrations, or community gatherings.
+                    Get exclusive group discounts or explore sponsorship opportunities! Call us for Group Discounts & No-Tax Booking Options.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a
@@ -440,6 +440,21 @@ const Events = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Official DJ */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Official DJ</h3>
+                <div className="flex justify-center">
+                  <div className="text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg">
+                      <Music className="w-12 h-12 text-white" />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 mb-1">🎧 DJ SUMAN 🎤</h4>
+                    <p className="text-orange-600 text-sm font-medium mb-2">Official DJ of the Show</p>
+                    <p className="text-gray-600 text-sm">Live Mixing & High Energy Beats</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Sidebar */}
@@ -449,14 +464,9 @@ const Events = () => {
               <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Ticket Information</h3>
                 <div className="space-y-6">
-                  {/* Early Bird Notice */}
-                  <div className="p-4 rounded-lg border-2 border-orange-500 bg-orange-50 relative">
-                    <div className="absolute -top-3 left-4 px-3 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full">
-                      Early Bird
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Tickets On Sale Now!</h4>
-                    <p className="text-gray-600 text-sm mb-4">Secure your spot at Austin's biggest Desi New Year celebration!</p>
-
+                  {/* Ticket Purchase CTA */}
+                  <div className="mb-6">
+                    <p className="text-gray-600 mb-4">Secure your spot at Austin's biggest Desi New Year celebration!</p>
                     <button
                       onClick={() => handleTicketClick('Sidebar')}
                       className="inline-flex items-center justify-center w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200"
@@ -464,7 +474,6 @@ const Events = () => {
                       <Ticket className="w-5 h-5 mr-2" />
                       Buy Tickets
                     </button>
-
                   </div>
 
                   {/* Ticket Categories */}
@@ -487,6 +496,9 @@ const Events = () => {
                         </div>
                       </div>
                     ))}
+                    <p className="text-xs text-gray-500 italic mt-2 text-center">
+                      * Platform fees & taxes vary by provider.
+                    </p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3">Event Features</h4>
@@ -644,6 +656,39 @@ const Events = () => {
 
             {/* Modal Body */}
             <div className="p-8 space-y-4">
+
+              {/* Ticket Prices Summary */}
+              <div className="mb-2 p-4 bg-orange-50 rounded-xl border border-orange-100">
+                <h4 className="font-semibold text-gray-900 mb-3 text-xs uppercase tracking-wider border-b border-orange-200 pb-2">Ticket Prices (Fees/Tax vary by platform)</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                  {featuredEvent.ticketTiers.map((tier, idx) => (
+                    <div key={idx} className="flex justify-between items-center">
+                      <span className="text-gray-600 truncate mr-2">{tier.name}</span>
+                      <span className="font-bold text-orange-600 whitespace-nowrap">{tier.price}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Group Discount Banner */}
+              <div className="mb-6 bg-gray-900 text-white p-4 rounded-xl flex items-center justify-between shadow-lg">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <Users className="w-4 h-4 text-orange-500" />
+                    <p className="font-bold text-orange-400">Group Discounts Available!</p>
+                  </div>
+                  <p className="text-xs text-gray-300">Save on taxes & fees. Call for direct booking.</p>
+                </div>
+                <a
+                  href="tel:+15128840540"
+                  onClick={() => trackCustomEvents.phoneCall()}
+                  className="bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-50 transition-colors"
+                >
+                  Call Now
+                </a>
+              </div>
+
+              <div className="h-px bg-gray-100 my-4"></div>
 
               {/* Eventbrite Option */}
               <button
