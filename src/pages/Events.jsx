@@ -478,6 +478,11 @@ const Events = () => {
 
                   {/* Ticket Categories */}
                   <div className="space-y-4">
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-2 flex items-center justify-center text-center">
+                      <p className="text-green-800 font-semibold text-sm">
+                        🍽️ Add Delicious Food Box for just <span className="font-bold text-green-700">+$15</span>
+                      </p>
+                    </div>
                     {featuredEvent.ticketTiers.map((tier, index) => (
                       <div key={index} className="p-4 rounded-lg border border-gray-200 hover:border-orange-200 transition-colors duration-200">
                         <div className="flex justify-between items-start mb-2">
@@ -659,7 +664,12 @@ const Events = () => {
 
               {/* Ticket Prices Summary */}
               <div className="mb-2 p-4 bg-orange-50 rounded-xl border border-orange-100">
-                <h4 className="font-semibold text-gray-900 mb-3 text-xs uppercase tracking-wider border-b border-orange-200 pb-2">Ticket Prices (Fees/Tax vary by platform)</h4>
+                <h4 className="font-semibold text-gray-900 mb-2 text-xs uppercase tracking-wider border-b border-orange-200 pb-2">Ticket Prices (Fees/Tax vary by platform)</h4>
+                <div className="bg-green-50 border border-green-200 rounded-lg p-2 mb-3 text-center">
+                  <p className="text-green-800 font-semibold text-xs">
+                    🍽️ Want Food? Add Food Box for <span className="font-bold text-green-700">+$15</span> to any ticket
+                  </p>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
                   {featuredEvent.ticketTiers.map((tier, idx) => (
                     <div key={idx} className="flex justify-between items-center">
