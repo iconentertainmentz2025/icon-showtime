@@ -27,7 +27,10 @@ export const trackPageView = (url, title) => {
 
     // Meta Pixel
     if (window.fbq) {
+      console.log('FBQ: Tracking PageView')
       window.fbq('track', 'PageView')
+    } else {
+      console.warn('FBQ: window.fbq not found during PageView tracking')
     }
   }
 }
@@ -46,11 +49,14 @@ export const trackEvent = (action, category, label, value) => {
 
     // Meta Pixel
     if (window.fbq) {
+      console.log('FBQ: Tracking Custom Event', action)
       window.fbq('trackCustom', action, {
         category: category,
         label: label,
         value: value,
       })
+    } else {
+      console.warn('FBQ: window.fbq not found during event tracking')
     }
   }
 }
@@ -58,11 +64,59 @@ export const trackEvent = (action, category, label, value) => {
 // Track custom events specific to ICON Entertainmentz
 export const trackCustomEvents = {
   eventInquiry: (eventName) => trackEvent('event_inquiry', 'engagement', eventName),
-  contactForm: (formType) => trackEvent('contact_form_submit', 'conversion', formType),
-  ticketClick: (eventName) => trackEvent('ticket_click', 'engagement', eventName),
+  contactForm: (formType) => {
+    trackEvent('contact_form_submit', 'conversion', formType)
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event Contact')
+      window.fbq('track', 'Contact')
+    }
+  },
+  ticketClick: (eventName) => {
+    trackEvent('ticket_click', 'engagement', eventName)
+    // When ticket modal opens or ticket button is clicked, track as ViewContent
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event ViewContent')
+      window.fbq('track', 'ViewContent', {
+        content_name: eventName,
+        content_category: 'Event Ticket'
+      })
+    }
+  },
   socialMedia: (platform) => trackEvent('social_media_click', 'engagement', platform),
-  newsletterSignup: () => trackEvent('newsletter_signup', 'conversion', 'footer_signup'),
-  ticketPlatformSelect: (eventName, platform) => trackEvent('ticket_platform_select', 'conversion', `${eventName} - ${platform}`),
-  phoneCall: () => trackEvent('phone_call', 'conversion', 'contact_page'),
-  emailClick: () => trackEvent('email_click', 'conversion', 'contact_page'),
+  newsletterSignup: () => {
+    trackEvent('newsletter_signup', 'conversion', 'footer_signup')
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event Subscribe')
+      window.fbq('track', 'Subscribe')
+    }
+  },
+  ticketPlatformSelect: (eventName, platform) => {
+    trackEvent('ticket_platform_select', 'conversion', `${eventName} - ${platform}`)
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event InitiateCheckout')
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: eventName,
+        payment_method: platform,
+        num_items: 1
+      })
+    }
+  },
+  phoneCall: () => {
+    trackEvent('phone_call', 'conversion', 'contact_page')
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event Contact')
+      window.fbq('track', 'Contact', {
+        contact_method: 'phone'
+      })
+    }
+  },
+  emailClick: () => {
+    trackEvent('email_click', 'conversion', 'contact_page')
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event Contact')
+      window.fbq('track', 'Contact', {
+        contact_method: 'email'
+      })
+    }
+  },
 }
