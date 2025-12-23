@@ -16,22 +16,42 @@ export const gtagScript = `
 
 // Track page views
 export const trackPageView = (url, title) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', GA_MEASUREMENT_ID, {
-      page_title: title,
-      page_location: url,
-    })
+  if (typeof window !== 'undefined') {
+    // Google Analytics
+    if (window.gtag) {
+      window.gtag('config', GA_MEASUREMENT_ID, {
+        page_title: title,
+        page_location: url,
+      })
+    }
+
+    // Meta Pixel
+    if (window.fbq) {
+      window.fbq('track', 'PageView')
+    }
   }
 }
 
 // Track events
 export const trackEvent = (action, category, label, value) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-    })
+  if (typeof window !== 'undefined') {
+    // Google Analytics
+    if (window.gtag) {
+      window.gtag('event', action, {
+        event_category: category,
+        event_label: label,
+        value: value,
+      })
+    }
+
+    // Meta Pixel
+    if (window.fbq) {
+      window.fbq('trackCustom', action, {
+        category: category,
+        label: label,
+        value: value,
+      })
+    }
   }
 }
 
