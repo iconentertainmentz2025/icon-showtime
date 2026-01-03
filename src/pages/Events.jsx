@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Calendar, MapPin, Clock, Users, Star, Ticket, Phone, Mail, Share2, Heart, Music, ChevronRight, Instagram, Facebook, Youtube, X, ExternalLink } from 'lucide-react'
+import { Calendar, MapPin, Clock, Users, Star, Ticket, Phone, Mail, Share2, Heart, Music, ChevronRight, Instagram, Facebook, Youtube, ExternalLink, Info, AlertTriangle, Shield } from 'lucide-react'
 import { motion } from 'framer-motion'
-
 import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
 
@@ -10,92 +9,98 @@ const Events = () => {
 
   // Featured upcoming event data
   const featuredEvent = {
-    title: "ICONIC Countdown 2026",
-    subtitle: "Austin's Biggest Desi New Year Celebration",
-    date: "2025-12-31",
-    time: "7:00 PM CST",
-    venue: "The Crossover",
-    address: "1717 Scottsdale Drive, Leander, TX 78641",
-    price: "Starting from $44",
-    status: "on-sale",
-    titleSponsor: "Spicy Matka, Leander",
-    specialGuest: "Faria Abdullah",
-    specialHost: "RJ Hemant",
-    eventbriteLink: "https://iconiccountdown2026.eventbrite.com",
-    eventPrixLink: "https://eventprix.com/event/ICONIC-Countdown-2026",
-    quickllyLink: "https://eventsbyquicklly.com/iconic-countdown-2026/395",
-    eventId: "1829421622319",
+    title: "Sankranti Mahostav 2026",
+    subtitle: "BIGGEST SANKRANTI MAHOTSAV 2026",
+    date: "2026-01-17",
+    time: "10:00 AM – 6:00 PM CST",
+    venue: "Rio Ranch Fields",
+    address: "Rio Ranch Fields, Liberty Hill, TX 78642",
+    price: "Free Entry",
+    status: "registration-open",
+    organizer: "Sapphire_5xii events and productions",
+    partner: "ICON Entertainmentz",
+    megaSponsor: "@theprimedeveloper_official",
+    promotionalPartner: "Austin Dreamz Events",
+    registrationLink: "https://eventprix.com/event/Sankranti-Mahostav-20262",
+    eventId: "sankranti-2026",
     ticketTiers: [
       {
-        name: "General Admission",
-        price: "$69",
-        description: "Limited time deal."
-      },
-      {
-        name: "Kid General Admission",
-        price: "$44",
-        description: "Tickets for age 5+ seating provided"
-      },
-      {
-        name: "KIDS below 5",
+        name: "General Entry",
         price: "Free",
-        description: "Entry without seat"
+        description: "Open to all"
       },
       {
-        name: "Family Admission",
-        price: "$179",
-        description: "2 ADULTS + 2 KIDS"
+        name: "Dance (Solo)",
+        price: "$25",
+        description: "Time limit 4 min"
       },
       {
-        name: "VIP Single Seat",
-        price: "$129",
-        description: "Premium seating and services"
+        name: "Dance (Group)",
+        price: "$100",
+        description: "4+ performers. Time limit 5 min"
       },
       {
-        name: "VIP Kid Single",
-        price: "$89",
-        description: "Premium seating for kids"
+        name: "Fashion Show (Adults)",
+        price: "$30",
+        description: "Must form own team. Time limit 5-7 min"
       },
       {
-        name: "VIP Table of 10",
-        price: "$1,199",
-        description: "Premium table with VIP services"
+        name: "Kids Fancy Dress",
+        price: "$15",
+        description: "No practice needed"
+      },
+      {
+        name: "Talent Show (Kids)",
+        price: "$20",
+        description: "Dance, music, drama, fashion, etc."
+      },
+      {
+        name: "Kite Flying",
+        price: "$10",
+        description: "Participate in the Kite Festival"
+      },
+      {
+        name: "Rangoli (Group)",
+        price: "$25",
+        description: "Max 3 participants. Reg closes Jan 9"
+      },
+      {
+        name: "Rangoli (Solo)",
+        price: "$10",
+        description: "Registration closes Jan 9"
       }
     ],
-    description: "Ring in the New Year with lights, laughter, and unforgettable memories at ICONIC Countdown 2026, Austin's most electrifying Desi celebration! Join us for a glamorous, family-friendly night hosted by the one and only RJ Hemant, featuring Tollywood star Faria Abdullah — visiting Austin for the very first time!",
+    description: "Get ready, Austin! Celebrate the joy, colors, and traditions of Sankranti with family & friends at the grandest Sankranti festival of the year. Experience a vibrant day filled with tradition, culture, and togetherness!",
     highlights: [
-      "VIP Meet & Greet with Faria & RJ Hemant - Dec 30th at Spicy Matka",
-      "🎧 DJ SUMAN 🎤 - Official DJ of the Show",
-      "Fashion Walk – Step into the spotlight with style and glam",
-      "Kids Zone with games and activities",
-      "Food Vendor with Desi and fusion flavors",
-      "Balloon Drop at Midnight",
-      "Face Painting & Balloon Twisting",
-      "Free Parking",
-      "Live DJ All Night",
-      "Dance Performances",
-      "12AM Cake Cutting Ceremony with Faria Abdullah"
+      "🎨 Rangoli Competition",
+      "🌾 Traditional Sankranti Vibes",
+      "🪁 Kite Festival",
+      "🛍️ Shopping & Community Fun",
+      "🎶 Entertainment for All Ages",
+      "📸 Haridasu Photo-booth",
+      "🎟️ Free Entry",
+      "🅿️ Free Parking"
     ],
     features: [
       {
-        name: "Family-Friendly",
-        description: "Special activities and entertainment for all ages"
+        name: "Competitions",
+        description: "Dance, Rangoli, Fashion Show, and Talent Show"
       },
       {
-        name: "Celebrity Performance",
-        description: "Live performance by Tollywood star Faria Abdullah"
+        name: "Festival Vibes",
+        description: "Kite flying and traditional celebrations"
       },
       {
-        name: "Venue",
-        description: "Spacious indoor venue with ample free parking and seating"
+        name: "Family Fun",
+        description: "Shopping, entertainment, and photo booth"
       },
       {
-        name: "Entertainment",
-        description: "Fashion walk, cocktail hour, and midnight countdown"
+        name: "Convenience",
+        description: "Free Entry & Free Parking"
       }
     ],
     contact: {
-      sponsorship: "info@icon-entertainmentz.com",
+      email: "info@icon-entertainmentz.com",
       instagram: "https://www.instagram.com/icon_entertainmentz/",
       facebook: "https://www.facebook.com/iconentertainmentz",
       youtube: "https://www.youtube.com/@ICONEntertainmentz"
@@ -115,20 +120,20 @@ const Events = () => {
 
   const faqData = [
     {
-      question: "Where can I buy tickets?",
-      answer: `We recommend booking through our official partner Quicklly for the best value and instant confirmation. You can also use Eventbrite or EventPrix. Visit ${featuredEvent.quickllyLink} to book now.`
+      question: "Is there an entry fee?",
+      answer: "No, General Entry is completely FREE for everyone!"
     },
     {
-      question: "Is food included in the ticket?",
-      answer: "Food is not included in the ticket price. There will be a dedicated food vendor on site serving delicious Desi and fusion flavors available for purchase."
+      question: "Is parking available?",
+      answer: "Yes, there is ample FREE PARKING available at the venue."
     },
     {
-      question: "Is parking free?",
-      answer: "Yes, The Crossover offers ample free parking for all guests."
+      question: "How do I register for competitions?",
+      answer: `You can register for Dance, Fashion Show, Rangoli, and other competitions via our official registration link: ${featuredEvent.registrationLink}`
     },
     {
-      question: "Are kids allowed?",
-      answer: "Absolutely! This is a family-friendly event with a dedicated Kids Zone featuring games, face painting, and balloon twisting."
+      question: "When do Rangoli registrations close?",
+      answer: "Registration for the Rangoli Competition (Solo & Group) closes on January 9th. Please register early!"
     }
   ]
 
@@ -139,8 +144,8 @@ const Events = () => {
         "@type": "Event",
         "name": featuredEvent.title,
         "description": featuredEvent.description,
-        "startDate": `${featuredEvent.date}T19:00:00-06:00`,
-        "endDate": `${featuredEvent.date}T23:59:00-06:00`,
+        "startDate": `${featuredEvent.date}T10:00:00-06:00`,
+        "endDate": `${featuredEvent.date}T18:00:00-06:00`,
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -148,110 +153,168 @@ const Events = () => {
           "name": featuredEvent.venue,
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": featuredEvent.address,
-            "addressLocality": "Leander",
+            "streetAddress": "Rio Ranch Fields",
+            "addressLocality": "Liberty Hill",
             "addressRegion": "TX",
+            "postalCode": "78642",
             "addressCountry": "US"
           }
         },
         "organizer": {
           "@type": "Organization",
-          "name": "ICON Entertainmentz",
-          "url": "https://icon-entertainmentz.com",
-          "telephone": "+1-512-884-0540",
-          "email": "info@icon-entertainmentz.com",
-          "sameAs": [
-            "https://www.facebook.com/iconentertainmentz",
-            "https://www.instagram.com/icon_entertainmentz/",
-            "https://www.youtube.com/@ICONEntertainmentz",
-            "https://twitter.com/iconentertainmentz"
-          ]
+          "name": featuredEvent.organizer,
+          "url": "https://icon-entertainmentz.com"
         },
-        "performer": [
-          {
-            "@type": "Person",
-            "name": featuredEvent.specialGuest,
-            "description": "Tollywood Star"
-          },
-          {
-            "@type": "Person",
-            "name": featuredEvent.specialHost,
-            "description": "Special Host"
-          }
+        "image": [
+          "https://icon-entertainmentz.com/Sankranthi%20Event.jpg"
         ],
         "offers": {
-          "@type": "AggregateOffer",
-          "availability": "https://schema.org/InStock",
+          "@type": "Offer",
+          "price": "0",
           "priceCurrency": "USD",
-          "lowPrice": "44.00",
-          "highPrice": "1199.00",
-          "url": featuredEvent.quickllyLink,
-          "validFrom": "2024-10-24T00:00:00-06:00",
-          "category": "Event Tickets"
+          "url": featuredEvent.registrationLink,
+          "availability": "https://schema.org/InStock"
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": faqData.map(item => ({
-          "@type": "Question",
-          "name": item.question,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": item.answer
-          }
-        }))
       }
     ]
   }
 
-  const handleTicketClick = (location) => {
-    trackCustomEvents.ticketClick(`${featuredEvent.title} - ${location} - Open Modal`)
-    setShowTicketModal(true)
-  }
-
-  const handleSourceSelect = (source) => {
-    trackCustomEvents.ticketPlatformSelect(featuredEvent.title, source)
-    let url = featuredEvent.eventbriteLink
-    if (source === 'EventPrix') url = featuredEvent.eventPrixLink
-    if (source === 'Quicklly') url = featuredEvent.quickllyLink
-    window.open(url, '_blank')
-    setShowTicketModal(false)
+  const handleRegisterClick = (location) => {
+    // Track as InitiateCheckout since user is proceeding to registration platform
+    trackCustomEvents.ticketPlatformSelect(featuredEvent.title, 'EventPrix')
+    window.open(featuredEvent.registrationLink, '_blank')
   }
 
   return (
     <div className="min-h-screen bg-white">
       <SEOData
-        title={`${featuredEvent.title} | Upcoming Indian Events & Concerts | ICON Entertainmentz`}
-        description={`Join us for ${featuredEvent.title} - ${featuredEvent.subtitle}. Featuring ${featuredEvent.specialGuest} and hosted by ${featuredEvent.specialHost}. Date: ${formatDate(featuredEvent.date)} at ${featuredEvent.venue}. Book tickets now!`}
-        keywords="upcoming Indian events, Bollywood concerts Austin, Desi New Year 2026, Faria Abdullah event, RJ Hemant host, ICON Entertainmentz tickets, Leander cultural events"
+        title={`${featuredEvent.title} | ${featuredEvent.subtitle} | ICON Entertainmentz`}
+        description={`Join us for ${featuredEvent.title} on ${formatDate(featuredEvent.date)}. ${featuredEvent.description} Free Entry & Parking!`}
+        keywords="Sankranti Mahostav 2026, Austin Sankranti event, Indian festival Austin, Rangoli competition, Kite festival Texas, Liberty Hill events"
         url="/events"
         structuredData={eventsStructuredData}
       />
 
-      {/* Hero Section with Event Details */}
-      <section className="relative bg-gradient-to-br from-orange-100 via-orange-50 to-white">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-b from-sky-300 via-sky-100 to-white overflow-hidden">
+        {/* Floating Kites Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            animate={{
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+              rotate: [10, 15, 10]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute top-10 left-10 w-16 h-16 bg-red-500/20 rotate-45 backdrop-blur-sm rounded-lg"
+          ></motion.div>
+          <motion.div
+            animate={{
+              y: [0, -30, 0],
+              x: [0, -15, 0],
+              rotate: [-10, -5, -10]
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+            className="absolute top-20 right-20 w-12 h-12 bg-yellow-500/20 rotate-12 backdrop-blur-sm rounded-lg"
+          ></motion.div>
+          <motion.div
+            animate={{
+              y: [0, -25, 0],
+              rotate: [45, 50, 45]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+            className="absolute bottom-40 left-1/4 w-8 h-8 bg-green-500/20 rotate-45 backdrop-blur-sm rounded-sm"
+          ></motion.div>
+          {/* New Kites */}
+          <motion.div
+            animate={{
+              y: [0, -40, 0],
+              x: [0, 20, 0],
+              rotate: [30, 40, 30]
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            }}
+            className="absolute top-1/3 left-10 w-10 h-10 bg-purple-500/20 rotate-45 backdrop-blur-sm rounded-lg"
+          ></motion.div>
+          <motion.div
+            animate={{
+              y: [0, 30, 0],
+              x: [0, -10, 0],
+              rotate: [15, 5, 15]
+            }}
+            transition={{
+              duration: 9,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1.5
+            }}
+            className="absolute bottom-20 right-10 w-14 h-14 bg-orange-500/20 rotate-12 backdrop-blur-sm rounded-lg"
+          ></motion.div>
+          <motion.div
+            animate={{
+              y: [0, -15, 0],
+              scale: [1, 1.1, 1],
+              rotate: [60, 65, 60]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3
+            }}
+            className="absolute top-1/4 right-1/3 w-6 h-6 bg-pink-500/20 rotate-45 backdrop-blur-sm rounded-sm"
+          ></motion.div>
+          <motion.div
+            animate={{
+              y: [0, 20, 0],
+              x: [0, 15, 0],
+              rotate: [-20, -10, -20]
+            }}
+            transition={{
+              duration: 7.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2.5
+            }}
+            className="absolute top-20 left-1/2 w-9 h-9 bg-blue-500/20 rotate-12 backdrop-blur-sm rounded-lg"
+          ></motion.div>
+        </div>
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Title Sponsor */}
           <div className="text-center mb-8">
-            <p className="text-orange-600 font-medium">Title Sponsor: {featuredEvent.titleSponsor}</p>
-          </div>
-          {/* Event Header */}
-          <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-orange-100 text-orange-800 text-sm font-semibold mb-6"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-md text-sky-900 text-sm font-semibold mb-6 border border-sky-100 shadow-sm"
             >
               <Star className="w-4 h-4 mr-2" />
-              Featured Event
+              Upcoming Event
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl lg:text-7xl font-bold text-gray-900 mb-4"
+              className="text-4xl md:text-6xl font-extrabold text-sky-950 mb-4 tracking-tight drop-shadow-sm"
             >
               {featuredEvent.title}
             </motion.h1>
@@ -260,7 +323,7 @@ const Events = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl lg:text-2xl text-gray-600 mb-8"
+              className="text-xl md:text-2xl text-sky-800 font-medium mb-8 uppercase tracking-widest"
             >
               {featuredEvent.subtitle}
             </motion.p>
@@ -270,21 +333,22 @@ const Events = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap justify-center items-center gap-6 text-gray-700 mb-12"
+              className="flex flex-wrap justify-center items-center gap-6 text-gray-800 mb-12"
             >
-              <div className="flex items-center bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full">
-                <Calendar className="w-5 h-5 mr-2 text-orange-500" />
-                <span className="font-medium">{formatDate(featuredEvent.date)}</span>
+              <div className="flex items-center bg-white/90 backdrop-blur-sm shadow-sm border border-sky-100 px-5 py-2.5 rounded-full">
+                <Calendar className="w-5 h-5 mr-2.5 text-orange-500" />
+                <span className="font-semibold">{formatDate(featuredEvent.date)}</span>
               </div>
-              <div className="flex items-center bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full">
-                <Clock className="w-5 h-5 mr-2 text-orange-500" />
-                <span className="font-medium">{featuredEvent.time}</span>
+              <div className="flex items-center bg-white/90 backdrop-blur-sm shadow-sm border border-sky-100 px-5 py-2.5 rounded-full">
+                <Clock className="w-5 h-5 mr-2.5 text-orange-500" />
+                <span className="font-semibold">{featuredEvent.time}</span>
               </div>
-              <div className="flex items-center bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full">
-                <MapPin className="w-5 h-5 mr-2 text-orange-500" />
-                <span className="font-medium">{featuredEvent.venue}</span>
+              <div className="flex items-center bg-white/90 backdrop-blur-sm shadow-sm border border-sky-100 px-5 py-2.5 rounded-full">
+                <MapPin className="w-5 h-5 mr-2.5 text-orange-500" />
+                <span className="font-semibold">{featuredEvent.venue}</span>
               </div>
             </motion.div>
+
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -295,18 +359,18 @@ const Events = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleTicketClick('hero_primary')}
-                className="px-8 py-4 bg-orange-500 text-white text-lg font-bold rounded-full shadow-lg hover:shadow-xl hover:bg-orange-600 transition-all duration-300 flex items-center justify-center group"
+                onClick={() => handleRegisterClick('hero_primary')}
+                className="px-8 py-4 bg-orange-500 text-white text-lg font-bold rounded-full shadow-xl hover:bg-orange-600 transition-all duration-300 flex items-center justify-center group border-2 border-orange-500"
               >
                 <Ticket className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                Book Tickets Now
+                Register Now
                 <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}
-                className="px-8 py-4 bg-white text-gray-900 text-lg font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200"
+                className="px-8 py-4 bg-white/80 backdrop-blur-sm text-sky-900 text-lg font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-white"
               >
                 View Details
               </motion.button>
@@ -315,26 +379,12 @@ const Events = () => {
 
           {/* Event Image */}
           <div className="max-w-4xl mx-auto mb-16">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-100 h-[500px] md:h-[600px]">
-              {/* Blurred Background */}
-              <div
-                className="absolute inset-0 bg-cover bg-center blur-xl opacity-50 scale-110"
-                style={{ backgroundImage: "url('/New_year_flyer_version_2.JPG')" }}
-              ></div>
-
-              {/* Main Image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-100 border-4 border-white">
               <img
-                src="/New_year_flyer_version_2.JPG"
-                alt="Event Flyer"
-                className="relative z-10 w-full h-full object-contain"
+                src="/Sankranthi Event.jpg"
+                alt="Sankranti Mahostav 2026 Flyer"
+                className="w-full h-auto object-contain"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
-              <div className="absolute bottom-6 left-6 text-white pointer-events-none">
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500 text-sm font-semibold mb-2">
-                  <Star className="w-4 h-4 mr-1" />
-                  Early Bird Tickets
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -349,26 +399,28 @@ const Events = () => {
             <div className="lg:col-span-2 space-y-12">
 
               {/* About the Event */}
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">About the Event</h2>
-                <div className="prose prose-lg text-gray-700 space-y-4">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">About the Festival</h2>
+                <div className="prose prose-lg text-gray-700 space-y-4 leading-relaxed">
                   <p>{featuredEvent.description}</p>
-                  <p>Experience the magic of Bollywood like never before at Austin's premier cultural event. This extraordinary evening will feature internationally acclaimed playback singers, professional dancers, live musicians, and stunning visual productions.</p>
+                  <p>
+                    Don’t miss this unforgettable celebration of tradition, culture, and togetherness!
+                  </p>
                 </div>
               </div>
 
               {/* Event Highlights */}
-              <div className="mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Event Highlights</h2>
-                <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-8">Festival Highlights</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
                   {featuredEvent.highlights.map((highlight, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center p-4 bg-orange-50 rounded-lg border border-orange-100"
+                      transition={{ delay: index * 0.05 }}
+                      className="flex items-center p-4 bg-white rounded-xl shadow-sm border-l-4 border-orange-500 hover:shadow-md transition-shadow"
                     >
                       <Star className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
                       <span className="text-gray-800 font-medium">{highlight}</span>
@@ -377,217 +429,111 @@ const Events = () => {
                 </div>
               </div>
 
-              {/* Group Discounts & Sponsorship Banner */}
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 p-8 shadow-2xl">
-                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-40 h-40 bg-white opacity-10 rounded-full"></div>
-                <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-white opacity-10 rounded-full"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Users className="w-8 h-8 text-white" />
-                    <h3 className="text-2xl font-bold text-white">Planning a Group Visit?</h3>
+              {/* Organizers & Sponsors */}
+              <div className="bg-orange-50 rounded-2xl p-8 border border-orange-100">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Partners</h3>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div>
+                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Organized By</h4>
+                    <p className="font-medium text-gray-900">{featuredEvent.organizer}</p>
                   </div>
-                  <p className="text-orange-50 text-lg mb-6">
-                    Get exclusive group discounts or explore sponsorship opportunities! Call us for Group Discounts & No-Tax Booking Options.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a
-                      href="tel:+15128840540"
-                      onClick={() => trackCustomEvents.phoneCall()}
-                      className="inline-flex items-center justify-center px-6 py-3 bg-white text-orange-600 rounded-lg font-semibold hover:bg-orange-50 transition-all duration-200 shadow-lg"
-                    >
-                      <Phone className="w-5 h-5 mr-2" />
-                      Call +1 (512) 884-0540
-                    </a>
-                    <a
-                      href={`mailto:${featuredEvent.contact.sponsorship}`}
-                      onClick={() => trackCustomEvents.emailClick()}
-                      className="inline-flex items-center justify-center px-6 py-3 bg-orange-800 text-white rounded-lg font-semibold hover:bg-orange-900 transition-all duration-200"
-                    >
-                      <Mail className="w-5 h-5 mr-2" />
-                      Email Us
-                    </a>
+                  <div>
+                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Associated Partner</h4>
+                    <p className="font-medium text-gray-900">{featuredEvent.partner}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Mega Sponsor</h4>
+                    <p className="font-medium text-gray-900">{featuredEvent.megaSponsor}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Promotional Partner</h4>
+                    <p className="font-medium text-gray-900">{featuredEvent.promotionalPartner}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Featured Artists */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Special Guests</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                      <img
-                        src="/faria2.png"
-                        alt="Faria Abdullah"
-                        className="w-full h-full object-cover rounded-full"
-                      />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-1">{featuredEvent.specialGuest}</h4>
-                    <p className="text-orange-600 text-sm font-medium mb-2">Tollywood Star</p>
-                    <p className="text-gray-600 text-sm">Live Performance & 12AM Cake Cutting</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                      <img
-                        src="/hemanth.png"
-                        alt="RJ Hemant"
-                        className="w-full h-full object-cover rounded-full"
-                      />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-1">{featuredEvent.specialHost}</h4>
-                    <p className="text-orange-600 text-sm font-medium mb-2">Special Host</p>
-                    <p className="text-gray-600 text-sm">Event Host & Entertainment</p>
-                  </div>
+              {/* Disclaimer */}
+              <div className="bg-gray-100 rounded-xl p-6 flex gap-4 items-start">
+                <AlertTriangle className="w-6 h-6 text-gray-500 flex-shrink-0 mt-1" />
+                <div className="text-sm text-gray-600">
+                  <p className="font-bold text-gray-800 mb-1">Event Disclaimer</p>
+                  <p>By registering for or attending Sankranti Mahotsav, participants ACCEPT that participation is at their own risk. The organizers, sponsors, volunteers, and affiliates disclaim all liability for any injury, loss, or damage arising before, during, or after the event. Attendees are solely responsible for their safety, conduct, and personal property. Participation constitutes acceptance of these terms.</p>
                 </div>
               </div>
 
-              {/* Official DJ */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Official DJ</h3>
-                <div className="flex justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg">
-                      <Music className="w-12 h-12 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-1">🎧 DJ SUMAN 🎤</h4>
-                    <p className="text-orange-600 text-sm font-medium mb-2">Official DJ of the Show</p>
-                    <p className="text-gray-600 text-sm">Live Mixing & High Energy Beats</p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-8">
 
-              {/* Ticket Information */}
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Ticket Information</h3>
+              {/* Registration Information */}
+              <div className="bg-white rounded-xl p-6 shadow-xl border border-gray-200 sticky top-24">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-bold text-gray-900">Registration</h3>
+                  <span className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Open</span>
+                </div>
+
                 <div className="space-y-6">
-                  {/* Ticket Purchase CTA */}
+                  {/* Register CTA */}
                   <div className="mb-6">
-                    <p className="text-gray-600 mb-4">Secure your spot at Austin's biggest Desi New Year celebration!</p>
                     <button
-                      onClick={() => handleTicketClick('Sidebar')}
-                      className="inline-flex items-center justify-center w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200"
+                      onClick={() => handleRegisterClick('Sidebar')}
+                      className="w-full flex items-center justify-center px-4 py-3 bg-orange-600 text-white rounded-lg font-bold hover:bg-orange-700 transition-colors duration-200 shadow-md"
                     >
-                      <Ticket className="w-5 h-5 mr-2" />
-                      Buy Tickets
+                      Register Now
+                      <ExternalLink className="w-4 h-4 ml-2" />
                     </button>
+                    <p className="text-center text-xs text-gray-500 mt-2">Redirects to EventPrix</p>
                   </div>
 
-                  {/* Ticket Categories */}
-                  <div className="space-y-4">
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-2 flex items-center justify-center text-center">
-                      <p className="text-green-800 font-semibold text-sm">
-                        🍽️ Add Delicious Food Box for just <span className="font-bold text-green-700">+$15</span>
-                      </p>
-                    </div>
+                  {/* Pricing Tiers */}
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-gray-900 text-sm uppercase tracking-wider border-b border-gray-100 pb-2">Entry & Competitions</h4>
                     {featuredEvent.ticketTiers.map((tier, index) => (
-                      <div key={index} className="p-4 rounded-lg border border-gray-200 hover:border-orange-200 transition-colors duration-200">
-                        <div className="flex justify-between items-start mb-2">
-                          <div>
-                            <h4 className="font-semibold text-gray-900">{tier.name}</h4>
-                            {tier.description && (
-                              <p className="text-sm text-gray-600">{tier.description}</p>
-                            )}
-                          </div>
-                          <div className="text-right">
-                            <div className="text-xl font-bold text-orange-600">{tier.price}</div>
-                            {tier.details && (
-                              <p className="text-xs text-gray-500">{tier.details}</p>
-                            )}
-                          </div>
+                      <div key={index} className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0 hover:bg-gray-50 px-2 -mx-2 rounded transition-colors">
+                        <div className="flex-1 pr-2">
+                          <span className="font-medium text-gray-800 block text-sm">{tier.name}</span>
+                          {tier.description && <span className="text-xs text-gray-500 block">{tier.description}</span>}
                         </div>
+                        <span className="font-bold text-orange-600 text-sm whitespace-nowrap">{tier.price}</span>
                       </div>
                     ))}
-                    <p className="text-xs text-gray-500 italic mt-2 text-center">
-                      * Platform fees & taxes vary by provider.
+                  </div>
+
+                  <div className="bg-blue-50 p-4 rounded-lg flex items-start gap-3">
+                    <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-xs text-blue-800">
+                      <strong>Note:</strong> Rangoli Competition registration closes on <strong>January 9th</strong>. Register early!
                     </p>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3">Event Features</h4>
-                    <ul className="space-y-2">
-                      {featuredEvent.features.map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Star className="w-4 h-4 text-orange-500 mt-1 mr-2" />
-                          <div>
-                            <span className="font-medium text-gray-900">{feature.name}</span>
-                            <p className="text-sm text-gray-600">{feature.description}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
               </div>
 
-              {/* Event Info */}
+              {/* Features Summary */}
               <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Event Information</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <Calendar className="w-5 h-5 text-orange-500 mt-1 mr-3" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Date & Time</p>
-                      <p className="text-gray-600">{formatDate(featuredEvent.date)}</p>
-                      <p className="text-gray-600">{featuredEvent.time}</p>
-                      <p className="text-sm text-orange-600 mt-1">Family-Friendly Event</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-orange-500 mt-1 mr-3" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Venue</p>
-                      <p className="text-gray-600">{featuredEvent.venue}</p>
-                      <p className="text-gray-600">{featuredEvent.address}</p>
-                      <p className="text-sm text-gray-500 mt-1">Spacious indoor venue with ample free parking</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <Star className="w-5 h-5 text-orange-500 mt-1 mr-3" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Entertainment</p>
-                      <p className="text-gray-600">Live DJ All Night</p>
-                      <p className="text-gray-600">Dance Performances</p>
-                      <p className="text-gray-600">Fashion Walk</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="font-semibold text-gray-900 mb-3">Contact & Follow Us</h4>
-                  <div className="space-y-2">
-                    <a href={`mailto:${featuredEvent.contact.sponsorship}`} onClick={() => trackCustomEvents.emailClick()} className="flex items-center text-gray-600 hover:text-orange-600">
-                      <Mail className="w-4 h-4 mr-2" />
-                      {featuredEvent.contact.sponsorship}
-                    </a>
-                    <div className="flex gap-4">
-                      <a href={featuredEvent.contact.instagram} target="_blank" rel="noopener noreferrer" onClick={() => trackCustomEvents.socialMedia('Instagram')} className="flex items-center text-gray-600 hover:text-orange-600">
-                        <Instagram className="w-4 h-4 mr-2" />
-                        Instagram
-                      </a>
-                      <a href={featuredEvent.contact.facebook} target="_blank" rel="noopener noreferrer" onClick={() => trackCustomEvents.socialMedia('Facebook')} className="flex items-center text-gray-600 hover:text-orange-600">
-                        <Facebook className="w-4 h-4 mr-2" />
-                        Facebook
-                      </a>
-                      <a href={featuredEvent.contact.youtube} target="_blank" rel="noopener noreferrer" onClick={() => trackCustomEvents.socialMedia('YouTube')} className="flex items-center text-gray-600 hover:text-orange-600">
-                        <Youtube className="w-4 h-4 mr-2" />
-                        YouTube
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                <h4 className="font-bold text-gray-900 mb-4">Why Attend?</h4>
+                <ul className="space-y-4">
+                  {featuredEvent.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <div className="bg-orange-100 p-1.5 rounded-full mr-3 mt-0.5">
+                        <Star className="w-3 h-3 text-orange-600" />
+                      </div>
+                      <div>
+                        <span className="font-semibold text-gray-900 text-sm block">{feature.name}</span>
+                        <span className="text-xs text-gray-600">{feature.description}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
           <div className="grid gap-6">
@@ -609,146 +555,25 @@ const Events = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gray-900">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-gray-900 text-center px-4">
+        <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-            Don't Miss This Spectacular Event!
+            Join the Grand Celebration!
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Join us for an unforgettable evening of Indian culture and entertainment. Limited seats available.
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Experience the biggest Sankranti Mahotsav in Texas. Free entry, free parking, and endless fun awaits!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => handleTicketClick('CTA')}
-              className="inline-flex items-center px-8 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-lg"
+              onClick={() => handleRegisterClick('CTA')}
+              className="inline-flex items-center px-8 py-4 bg-orange-500 text-white rounded-lg font-bold hover:bg-orange-600 transition-colors duration-200 shadow-lg"
             >
               <Ticket className="w-5 h-5 mr-2" />
-              Buy Tickets Now
+              Register Now
             </button>
-            <a
-              href="tel:+15128840540"
-              onClick={() => trackCustomEvents.phoneCall()}
-              className="inline-flex items-center px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Call for Group Bookings
-            </a>
           </div>
         </div>
       </section>
-      {/* Ticket Selection Modal */}
-      {showTicketModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-          onClick={() => setShowTicketModal(false)}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative"
-          >
-            {/* Modal Header */}
-            <div className="bg-orange-500 p-6 text-white relative">
-              <button
-                onClick={() => setShowTicketModal(false)}
-                className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-              <h3 className="text-2xl font-bold mb-2">Select Ticket Platform</h3>
-              <p className="text-orange-100">Choose your preferred platform to book tickets</p>
-            </div>
-
-            {/* Modal Body */}
-            <div className="p-8 space-y-4">
-
-              {/* Ticket Prices Summary */}
-              <div className="mb-2 p-4 bg-orange-50 rounded-xl border border-orange-100">
-                <h4 className="font-semibold text-gray-900 mb-2 text-xs uppercase tracking-wider border-b border-orange-200 pb-2">Ticket Prices (Fees/Tax vary by platform)</h4>
-                <div className="bg-green-50 border border-green-200 rounded-lg p-2 mb-3 text-center">
-                  <p className="text-green-800 font-semibold text-xs">
-                    🍽️ Want Food? Add Food Box for <span className="font-bold text-green-700">+$15</span> to any ticket
-                  </p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-                  {featuredEvent.ticketTiers.map((tier, idx) => (
-                    <div key={idx} className="flex justify-between items-center">
-                      <span className="text-gray-600 truncate mr-2">{tier.name}</span>
-                      <span className="font-bold text-orange-600 whitespace-nowrap">{tier.price}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Group Discount Banner */}
-              <div className="mb-6 bg-gray-900 text-white p-4 rounded-xl flex items-center justify-between shadow-lg">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <Users className="w-4 h-4 text-orange-500" />
-                    <p className="font-bold text-orange-400">Group Discounts Available!</p>
-                  </div>
-                  <p className="text-xs text-gray-300">Save on taxes & fees. Call for direct booking.</p>
-                </div>
-                <a
-                  href="tel:+15128840540"
-                  onClick={() => trackCustomEvents.phoneCall()}
-                  className="bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-50 transition-colors"
-                >
-                  Call Now
-                </a>
-              </div>
-
-              <div className="h-px bg-gray-100 my-4"></div>
-
-              {/* Eventbrite Option */}
-              <button
-                onClick={() => handleSourceSelect('Eventbrite')}
-                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
-              >
-                <div className="flex flex-col items-start">
-                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">Eventbrite</span>
-                  <span className="text-sm text-gray-500">Standard platform</span>
-                </div>
-                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
-                  <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
-                </div>
-              </button>
-
-              {/* EventPrix Option */}
-              <button
-                onClick={() => handleSourceSelect('EventPrix')}
-                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
-              >
-                <div className="flex flex-col items-start">
-                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">EventPrix</span>
-                  <span className="text-sm text-gray-500">Low service fees</span>
-                </div>
-                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
-                  <Ticket className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
-                </div>
-              </button>
-
-              {/* Quicklly Option */}
-              <button
-                onClick={() => handleSourceSelect('Quicklly')}
-                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
-              >
-                <div className="flex flex-col items-start">
-                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">Quicklly</span>
-                  <span className="text-sm text-gray-500">Official Partner</span>
-                </div>
-                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
-                  <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
-                </div>
-              </button>
-
-              <p className="text-center text-xs text-gray-400 mt-4">
-                All platforms offer secure booking and instant ticket delivery.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      )}
     </div>
   )
 }

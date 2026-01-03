@@ -50,6 +50,26 @@ const Archive = () => {
       grandSponsors: ["Deccan Spice", "Mirch Masala"],
       emcee: "Ramya Nada",
       photographers: ["LP Prexels", "Precious Moments"]
+    },
+    {
+      id: 3,
+      title: "ICONIC Countdown 2026",
+      date: "2025-12-31",
+      venue: "The Crossover",
+      location: "Leander, TX",
+      attendees: "1000+",
+      type: "new-year",
+      year: "2025",
+      rating: 5.0,
+      images: ["/New_year_flyer_version_2.JPG"],
+      videos: [],
+      description: "Austin's Biggest Desi New Year Celebration! A glamorous, family-friendly night hosted by RJ Hemant, featuring Tollywood star Faria Abdullah and DJ SUMAN.",
+      tags: ["new-year", "celebration", "family", "dance", "dinner", "special-guest"],
+      highlights: ["Special Guest Faria Abdullah", "Host RJ Hemant", "DJ SUMAN", "Fashion Walk", "Kids Zone", "Balloon Drop", "Cake Cutting", "Dance Performances"],
+      featured: true,
+      sponsors: ["Spicy Matka"],
+      emcee: "RJ Hemant",
+      specialGuest: "Faria Abdullah"
     }
   ]
 
