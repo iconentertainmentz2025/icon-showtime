@@ -5,7 +5,7 @@ import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
 
 const Events = () => {
-  const [showTicketModal, setShowTicketModal] = useState(false)
+
 
   // Featured upcoming event data
   const featuredEvent = {
@@ -21,8 +21,7 @@ const Events = () => {
     partner: "ICON Entertainmentz",
     megaSponsor: "@theprimedeveloper_official",
     promotionalPartner: "Austin Dreamz Events",
-    registrationLink: "https://eventprix.com/event/Sankranti-Mahostav-20262",
-    eventbriteLink: "https://austin-sankranthi-2026.eventbrite.com",
+    registrationLink: "https://austin-sankranthi-2026.eventbrite.com",
     eventId: "sankranti-2026",
     ticketTiers: [
       {
@@ -169,39 +168,20 @@ const Events = () => {
         "image": [
           "https://icon-entertainmentz.com/Sankranthi%20Event.jpg"
         ],
-        "offers": [
-          {
-            "@type": "Offer",
-            "name": "EventPrix - Low Fees",
-            "price": "0",
-            "priceCurrency": "USD",
-            "url": featuredEvent.registrationLink,
-            "availability": "https://schema.org/InStock"
-          },
-          {
-            "@type": "Offer",
-            "name": "Eventbrite",
-            "price": "0",
-            "priceCurrency": "USD",
-            "url": featuredEvent.eventbriteLink,
-            "availability": "https://schema.org/InStock"
-          }
-        ]
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": featuredEvent.registrationLink,
+          "availability": "https://schema.org/InStock"
+        }
       }
     ]
   }
 
   const handleRegisterClick = (location) => {
-    trackCustomEvents.ticketClick(`${featuredEvent.title} - ${location} - Open Modal`)
-    setShowTicketModal(true)
-  }
-
-  const handleSourceSelect = (source) => {
-    trackCustomEvents.ticketPlatformSelect(featuredEvent.title, source)
-    let url = featuredEvent.registrationLink
-    if (source === 'Eventbrite') url = featuredEvent.eventbriteLink
-    window.open(url, '_blank')
-    setShowTicketModal(false)
+    trackCustomEvents.ticketPlatformSelect(featuredEvent.title, 'Eventbrite')
+    window.open(featuredEvent.registrationLink, '_blank')
   }
 
   return (
@@ -502,7 +482,7 @@ const Events = () => {
                       Register Now
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </button>
-                    <p className="text-center text-xs text-gray-500 mt-2">Multiple payment options available</p>
+                    <p className="text-center text-xs text-gray-500 mt-2">Redirects to Eventbrite</p>
                   </div>
 
                   {/* Pricing Tiers */}
@@ -594,66 +574,7 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Ticket Selection Modal */}
-      {showTicketModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-          onClick={() => setShowTicketModal(false)}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl relative"
-          >
-            {/* Modal Header */}
-            <div className="bg-sky-500 p-6 text-white relative">
-              <button
-                onClick={() => setShowTicketModal(false)}
-                className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
-              >
-                <div className="w-6 h-6">✕</div>
-              </button>
-              <h3 className="text-2xl font-bold mb-2">Select Registration Platform</h3>
-              <p className="text-sky-100">Choose your preferred platform to register</p>
-            </div>
 
-            {/* Modal Body */}
-            <div className="p-8 space-y-4">
-              {/* EventPrix Option */}
-              <button
-                onClick={() => handleSourceSelect('EventPrix')}
-                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
-              >
-                <div className="flex flex-col items-start">
-                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">EventPrix</span>
-                  <span className="text-sm text-gray-500">Low service fees</span>
-                </div>
-                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
-                  <Ticket className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
-                </div>
-              </button>
-
-              {/* Eventbrite Option */}
-              <button
-                onClick={() => handleSourceSelect('Eventbrite')}
-                className="w-full group flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:bg-orange-50 transition-all duration-300"
-              >
-                <div className="flex flex-col items-start">
-                  <span className="font-bold text-gray-900 text-lg group-hover:text-orange-600 transition-colors">Eventbrite</span>
-                  <span className="text-sm text-gray-500">Standard platform</span>
-                </div>
-                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-orange-200 transition-colors">
-                  <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-orange-600 transition-colors" />
-                </div>
-              </button>
-
-              <p className="text-center text-xs text-gray-400 mt-4">
-                Both platforms offer secure registration.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      )}
     </div>
   )
 }
