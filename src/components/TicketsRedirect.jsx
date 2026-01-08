@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
-import { trackEvent } from '../utils/analytics'
+import { trackCustomEvents } from '../utils/analytics'
 
 const TicketsRedirect = () => {
     useEffect(() => {
