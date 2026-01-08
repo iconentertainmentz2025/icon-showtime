@@ -34,7 +34,8 @@ const Contact = () => {
 
       if (response.ok) {
         setSubmitStatus({ type: 'success', message: data.message })
-        trackCustomEvents.contactForm(formData.eventType || 'general')
+        trackCustomEvents.contact('Contact Form Submit')
+        trackCustomEvents.lead(formData.eventType || 'general')
         setFormData({
           name: '',
           email: '',
@@ -281,8 +282,8 @@ const Contact = () => {
                     key={index}
                     href={info.action}
                     onClick={() => {
-                      if (info.title === 'Email Us') trackCustomEvents.emailClick()
-                      if (info.title === 'Call Us') trackCustomEvents.phoneCall()
+                      if (info.title === 'Email Us') trackCustomEvents.contact('Email')
+                      if (info.title === 'Call Us') trackCustomEvents.contact('Phone')
                     }}
                     className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group"
                   >
@@ -497,7 +498,7 @@ const Contact = () => {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => trackCustomEvents.socialMedia(social.label)}
+                        onClick={() => trackCustomEvents.contact(`Social: ${social.label}`)}
                         className="border border-gray-200 rounded-lg p-3 flex items-center space-x-2 text-gray-700 hover:border-orange-500 hover:text-orange-500 transition-all duration-300"
                       >
                         <Icon className="w-5 h-5" />

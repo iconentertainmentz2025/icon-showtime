@@ -5,7 +5,7 @@ import { trackEvent } from '../utils/analytics'
 const TicketsRedirect = () => {
     useEffect(() => {
         // Track the visit to /tickets
-        trackEvent('tickets_url_visit', 'navigation', 'direct_access')
+        trackCustomEvents.initiateCheckout('Direct Ticket Link')
     }, [])
 
     return <Navigate to="/events" replace />

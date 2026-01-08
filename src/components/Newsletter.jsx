@@ -26,7 +26,7 @@ const Newsletter = () => {
         setStatus('success');
         setMessage(data.message);
         setEmail('');
-        trackCustomEvents.newsletterSignup();
+        trackCustomEvents.completeRegistration('Newsletter');
       } else {
         setStatus('error');
         setMessage(data.message);
@@ -79,9 +79,8 @@ const Newsletter = () => {
 
       {/* Success/Error Messages */}
       {message && (
-        <div className={`mt-3 text-sm flex items-center gap-1 ${
-          status === 'success' ? 'text-green-600' : 'text-red-600'
-        }`}>
+        <div className={`mt-3 text-sm flex items-center gap-1 ${status === 'success' ? 'text-green-600' : 'text-red-600'
+          }`}>
           {status === 'success' ? (
             <CheckCircle2 className="w-4 h-4" />
           ) : (

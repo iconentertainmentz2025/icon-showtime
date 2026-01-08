@@ -63,60 +63,99 @@ export const trackEvent = (action, category, label, value) => {
 
 // Track custom events specific to ICON Entertainmentz
 export const trackCustomEvents = {
-  eventInquiry: (eventName) => trackEvent('event_inquiry', 'engagement', eventName),
-  contactForm: (formType) => {
-    trackEvent('contact_form_submit', 'conversion', formType)
-    if (typeof window !== 'undefined' && window.fbq) {
-      console.log('FBQ: Tracking Standard Event Contact')
-      window.fbq('track', 'Contact')
-    }
-  },
-  ticketClick: (eventName) => {
-    trackEvent('ticket_click', 'engagement', eventName)
-    // When ticket modal opens or ticket button is clicked, track as ViewContent
+  // Standard Event: ViewContent
+  viewContent: (contentName, contentCategory = 'General') => {
+    trackEvent('view_content', contentCategory, contentName)
     if (typeof window !== 'undefined' && window.fbq) {
       console.log('FBQ: Tracking Standard Event ViewContent')
       window.fbq('track', 'ViewContent', {
-        content_name: eventName,
-        content_category: 'Event Ticket'
+        content_name: contentName,
+        content_category: contentCategory
       })
     }
   },
-  socialMedia: (platform) => trackEvent('social_media_click', 'engagement', platform),
-  newsletterSignup: () => {
-    trackEvent('newsletter_signup', 'conversion', 'footer_signup')
+
+  // Standard Event: Contact
+  contact: (method) => {
+    trackEvent('contact', 'engagement', method)
     if (typeof window !== 'undefined' && window.fbq) {
-      console.log('FBQ: Tracking Standard Event Subscribe')
-      window.fbq('track', 'Subscribe')
+      console.log('FBQ: Tracking Standard Event Contact')
+      window.fbq('track', 'Contact', {
+        content_name: method
+      })
     }
   },
-  ticketPlatformSelect: (eventName, platform) => {
-    trackEvent('ticket_platform_select', 'conversion', `${eventName} - ${platform}`)
+
+  // Standard Event: Lead
+  lead: (formType) => {
+    trackEvent('generate_lead', 'conversion', formType)
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event Lead')
+      window.fbq('track', 'Lead', {
+        content_name: formType
+      })
+    }
+  },
+
+  // Standard Event: CompleteRegistration
+  completeRegistration: (contentName) => {
+    trackEvent('sign_up', 'conversion', contentName)
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('FBQ: Tracking Standard Event CompleteRegistration')
+      window.fbq('track', 'CompleteRegistration', {
+        content_name: contentName
+      })
+    }
+  },
+
+  // Standard Event: InitiateCheckout
+  initiateCheckout: (contentName, value = 0.00, currency = 'USD') => {
+    trackEvent('begin_checkout', 'ecommerce', contentName)
     if (typeof window !== 'undefined' && window.fbq) {
       console.log('FBQ: Tracking Standard Event InitiateCheckout')
       window.fbq('track', 'InitiateCheckout', {
-        content_name: eventName,
-        payment_method: platform,
-        num_items: 1
+        content_name: contentName,
+        value: value,
+        currency: currency
       })
     }
   },
-  phoneCall: () => {
-    trackEvent('phone_call', 'conversion', 'contact_page')
+
+  // Standard Event: Schedule
+  schedule: (contentName) => {
+    trackEvent('schedule', 'conversion', contentName)
     if (typeof window !== 'undefined' && window.fbq) {
-      console.log('FBQ: Tracking Standard Event Contact')
-      window.fbq('track', 'Contact', {
-        contact_method: 'phone'
+      console.log('FBQ: Tracking Standard Event Schedule')
+      window.fbq('track', 'Schedule', {
+        content_name: contentName
       })
     }
   },
-  emailClick: () => {
-    trackEvent('email_click', 'conversion', 'contact_page')
+
+  // Standard Event: Search
+  search: (searchTerm) => {
+    trackEvent('search', 'engagement', searchTerm)
     if (typeof window !== 'undefined' && window.fbq) {
-      console.log('FBQ: Tracking Standard Event Contact')
-      window.fbq('track', 'Contact', {
-        contact_method: 'email'
+      console.log('FBQ: Tracking Standard Event Search')
+      window.fbq('track', 'Search', {
+        search_string: searchTerm
       })
     }
   },
+
+  // Legacy mappings for backward compatibility (optional, but good for existing code)
+  ticketClick: (eventName) => {
+    // Mapping ticket clicks to ViewContent as per previous logic, or maybe InitiateCheckout?
+    // User requirement said: "InitiateCheckout: When user starts booking/checkout process"
+    // A ticket click is starting that process.
+    trackCustomEvents.initiateCheckout(eventName)
+  },
+  socialMedia: (platform) => {
+    // Social media clicks can be considered 'Contact' if it's a way to reach them, 
+    // or just a custom event. Sticking to generic or Contact.
+    trackCustomEvents.contact(`Social: ${platform}`)
+  },
+  phoneCall: () => trackCustomEvents.contact('Phone'),
+  emailClick: () => trackCustomEvents.contact('Email'),
+  newsletterSignup: () => trackCustomEvents.completeRegistration('Newsletter'),
 }

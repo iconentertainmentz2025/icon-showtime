@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Calendar, MapPin, Clock, Users, Star, Ticket, Phone, Mail, Share2, Heart, Music, ChevronRight, Instagram, Facebook, Youtube, ExternalLink, Info, AlertTriangle, Shield } from 'lucide-react'
 import { motion } from 'framer-motion'
 import SEOData from '../components/SEOData'
@@ -179,8 +179,12 @@ const Events = () => {
     ]
   }
 
+  useEffect(() => {
+    trackCustomEvents.viewContent(featuredEvent.title, 'Event')
+  }, [])
+
   const handleRegisterClick = (location) => {
-    trackCustomEvents.ticketPlatformSelect(featuredEvent.title, 'Eventbrite')
+    trackCustomEvents.initiateCheckout(featuredEvent.title)
     window.open(featuredEvent.registrationLink, '_blank')
   }
 

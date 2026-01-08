@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Users, Search, Filter, Image, Play, Star, ExternalLink } from 'lucide-react'
 import SEOData from '../components/SEOData'
@@ -8,6 +8,21 @@ const Archive = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedYear, setSelectedYear] = useState('all')
   const [selectedTag, setSelectedTag] = useState('all')
+
+  useEffect(() => {
+    trackCustomEvents.viewContent('Events Archive', 'Archive')
+  }, [])
+
+  // Track search with debounce
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchTerm.length > 2) {
+        trackCustomEvents.search(searchTerm)
+      }
+    }, 1000)
+
+    return () => clearTimeout(delayDebounceFn)
+  }, [searchTerm])
 
   // Sample past events data
   const pastEvents = [
