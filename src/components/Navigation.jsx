@@ -21,6 +21,7 @@ const Navigation = () => {
     { path: '/', label: 'About' },
     { path: '/events', label: 'Events' },
     { path: '/newsletter', label: 'Newsletter' },
+    { path: '/socials', label: 'Socials' },
   ]
 
   const toggleMenu = () => setIsOpen(!isOpen)

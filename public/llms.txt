@@ -12,6 +12,7 @@ ICON Entertainmentz is the premier organizer of authentic Indian cultural events
 - **Home**: https://icon-entertainmentz.com
 - **Events**: https://icon-entertainmentz.com/events (Upcoming concert and festival listings)
 - **About Us**: https://icon-entertainmentz.com/about (Our mission and story)
+- **Social Hub**: https://icon-entertainmentz.com/socials (Community & Updates)
 - **Contact**: https://icon-entertainmentz.com/contact (Booking and inquiries)
 
 ## Contact Information
@@ -21,3 +22,9 @@ ICON Entertainmentz is the premier organizer of authentic Indian cultural events
 
 ## Mission
 To create unforgettable entertainment experiences that celebrate Indian culture, foster community connections, and build bridges between diverse communities across America.
+
+## Event History (Notable Past Events)
+- **Band Infusion**: Live concert featuring a fusion of Indian and Western music.
+- **Saradhaga Suma Tho**: Interactive live entertainment show with renowned host Suma Kanakala.
+- **Sankranthi Mahotsav**: Harvest festival celebration with cultural performances.
+- **ICONIC Countdown**: Premium New Year's Eve gala events.

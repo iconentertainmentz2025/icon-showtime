@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
-import { Instagram, Facebook, Youtube, Mail, ExternalLink, Share2 } from 'lucide-react'
+import { Instagram, Facebook, Youtube, Mail, ExternalLink } from 'lucide-react'
 import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
-import BrandText from '../components/BrandText'
 
 const Socials = () => {
     const socialLinks = [
@@ -55,13 +54,14 @@ const Socials = () => {
     }
 
     const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
+        hidden: { y: 30, opacity: 0 },
         visible: {
             y: 0,
             opacity: 1,
             transition: {
                 type: "spring",
-                stiffness: 100
+                stiffness: 80,
+                damping: 20
             }
         }
     }
@@ -88,110 +88,98 @@ const Socials = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 pb-20">
+        <div className="min-h-screen bg-black pb-20 pt-28 relative overflow-hidden">
             <SEOData
                 title="Connect with ICON Entertainmentz | Social Media & Community"
-                description="Follow ICON Entertainmentz on Instagram, Facebook, and YouTube. Join our growing community of Bollywood and Indian culture enthusiasts in the USA. Get exclusive updates and behind-the-scenes content."
-                keywords="ICON Entertainmentz social media, follow ICON, Instagram, Facebook, YouTube, Indian entertainment community, event photos, Bollywood updates Austin"
+                description="Follow ICON Entertainmentz on Instagram, Facebook, and YouTube. Join our growing community of Bollywood and Indian culture enthusiasts in the USA."
+                keywords="ICON Entertainmentz social media, follow ICON, Instagram, Facebook, YouTube, Indian entertainment community"
                 url="/socials"
                 structuredData={socialsStructuredData}
             />
 
+            {/* Cinematic Background Effects */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-brand-orange/10 rounded-full blur-[120px] animate-pulse-slow" />
+                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[100px]" />
+                <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-blue-900/10 rounded-full blur-[80px]" />
+            </div>
+
             {/* Hero Section */}
-            <section className="relative py-20 bg-gray-900 overflow-hidden">
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
-                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900"></div>
-                </div>
+            <div className="container-custom relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-center mb-20"
+                >
+                    <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-brand-orange text-xs font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-sm">
+                        Connect With Us
+                    </span>
+                    <h1 className="text-6xl md:text-8xl font-heading font-bold text-white mb-6 tracking-tight leading-tight">
+                        Join the <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-b from-brand-orange to-red-600 filter drop-shadow-[0_0_20px_rgba(255,140,66,0.5)] font-brand tracking-wider">Revolution</span>
+                    </h1>
+                    <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+                        Be part of the movement. Experience the culture. <br className="hidden md:block" />
+                        Follow us for exclusive access to the ICON lifestyle.
+                    </p>
+                </motion.div>
 
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="space-y-6"
-                    >
-                        <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg transform rotate-3">
-                            <Share2 className="w-10 h-10 text-white" />
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-                            Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">Community</span>
-                        </h1>
-                        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            Stay connected with the pulse of Indian entertainment. Follow us for exclusive updates, event highlights, and more.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Social Cards Grid */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
+                {/* Social Grid */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
                 >
-                    {socialLinks.map((social, index) => {
+                    {socialLinks.map((social) => {
                         const Icon = social.icon
                         return (
                             <motion.a
-                                key={index}
+                                key={social.name}
                                 variants={itemVariants}
                                 href={social.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => trackCustomEvents.socialMedia(social.name)}
-                                className="group relative bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                                className="group relative overflow-hidden rounded-3xl bg-white/[0.03] border border-white/10 hover:border-brand-orange/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
                             >
-                                <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${social.color}`}></div>
-                                <div className="p-8 flex items-start space-x-6">
-                                    <div className={`flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br ${social.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                        <Icon className="w-8 h-8 text-white" />
-                                    </div>
+                                {/* Gradient Background on Hover */}
+                                <div className={`absolute inset-0 bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
 
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <h3 className="text-2xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-pink-500 transition-colors duration-300">
+                                <div className="relative p-10 flex items-start justify-between h-full">
+                                    <div className="flex-1 flex flex-col h-full justify-between">
+                                        <div>
+                                            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:border-white/20 transition-all duration-500 relative overflow-hidden">
+                                                <div className={`absolute inset-0 bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                                                <Icon className="w-7 h-7 text-gray-300 group-hover:text-white transition-colors duration-300 relative z-10" />
+                                            </div>
+
+                                            <h3 className="text-3xl font-heading font-bold text-white mb-2 tracking-wide group-hover:text-white transition-colors duration-300 relative z-10 flex items-center gap-2">
                                                 {social.name}
                                             </h3>
-                                            <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors duration-300" />
+                                            <p className="text-gray-500 text-sm mb-6 font-mono tracking-wider">{social.handle}</p>
                                         </div>
 
-                                        <p className="text-sm font-medium text-gray-500 mb-3 flex items-center">
-                                            <BrandText text={social.handle} />
-                                            <span className="mx-2">•</span>
-                                            <span className="text-orange-500">{social.stats}</span>
-                                        </p>
+                                        <div>
+                                            <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
+                                                {social.description}
+                                            </p>
 
-                                        <p className="text-gray-600 leading-relaxed">
-                                            {social.description}
-                                        </p>
+                                            <div className="inline-flex items-center space-x-2 text-xs font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-white transition-colors duration-300">
+                                                <span>{social.stats}</span>
+                                                <ExternalLink className="w-3 h-3" />
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-[100px] -mr-8 -mt-8 transition-transform duration-500 group-hover:scale-150 group-hover:bg-white/10" />
                                 </div>
                             </motion.a>
                         )
                     })}
                 </motion.div>
-            </section>
-
-            {/* Newsletter Teaser */}
-            <section className="max-w-4xl mx-auto px-4 py-20 text-center">
-                <div className="bg-white rounded-2xl shadow-lg p-10 border border-gray-100">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                        Don't Miss a Beat
-                    </h2>
-                    <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Prefer email updates? Subscribe to our newsletter to get early access to tickets and exclusive event announcements.
-                    </p>
-                    <a
-                        href="/newsletter"
-                        className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 md:py-4 md:text-lg md:px-10 transition-all duration-300 hover:shadow-lg"
-                    >
-                        Subscribe to Newsletter
-                    </a>
-                </div>
-            </section>
+            </div>
         </div>
     )
 }

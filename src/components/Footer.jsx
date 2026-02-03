@@ -20,6 +20,7 @@ const Footer = () => {
     { label: 'Event Archive', href: '/archive' },
     { label: 'Contact Us', href: '/contact' },
     { label: 'Newsletter', href: '/newsletter' },
+    { label: 'Social Hub', href: '/socials' },
   ]
 
   return (
