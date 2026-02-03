@@ -1,584 +1,106 @@
-import { useState, useEffect } from 'react'
-import { Calendar, MapPin, Clock, Users, Star, Ticket, Phone, Mail, Share2, Heart, Music, ChevronRight, Instagram, Facebook, Youtube, ExternalLink, Info, AlertTriangle, Shield } from 'lucide-react'
+import { useRef } from 'react'
 import { motion } from 'framer-motion'
+import { ChefHat, Calendar, Mail, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
 
 const Events = () => {
 
-
-  // Featured upcoming event data
-  const featuredEvent = {
-    title: "Sankranti Mahostav 2026",
-    subtitle: "BIGGEST SANKRANTI MAHOTSAV 2026",
-    date: "2026-01-17",
-    time: "10:00 AM – 6:00 PM CST",
-    venue: "Rio Ranch Fields",
-    address: "Rio Ranch Fields, Liberty Hill, TX 78642",
-    price: "Free Entry",
-    status: "registration-open",
-    organizer: "Sapphire_5xii events and productions",
-    partner: "ICON Entertainmentz",
-    megaSponsor: "@theprimedeveloper_official",
-    promotionalPartner: "Austin Dreamz Events",
-    registrationLink: "https://austin-sankranthi-2026.eventbrite.com",
-    eventId: "sankranti-2026",
-    ticketTiers: [
-      {
-        name: "General Entry",
-        price: "Free",
-        description: "Open to all"
-      },
-      {
-        name: "Dance (Solo)",
-        price: "$25",
-        description: "Time limit 4 min"
-      },
-      {
-        name: "Dance (Group)",
-        price: "$100",
-        description: "4+ performers. Time limit 5 min"
-      },
-      {
-        name: "Fashion Show (Adults)",
-        price: "$30",
-        description: "Must form own team. Time limit 5-7 min"
-      },
-      {
-        name: "Kids Fancy Dress",
-        price: "$15",
-        description: "No practice needed"
-      },
-      {
-        name: "Talent Show (Kids)",
-        price: "$20",
-        description: "Dance, music, drama, fashion, etc."
-      },
-      {
-        name: "Kite Flying",
-        price: "$10",
-        description: "Participate in the Kite Festival"
-      },
-      {
-        name: "Rangoli (Group)",
-        price: "$25",
-        description: "Max 3 participants. Reg closes Jan 9"
-      },
-      {
-        name: "Rangoli (Solo)",
-        price: "$10",
-        description: "Registration closes Jan 9"
-      }
-    ],
-    description: "Get ready, Austin! Celebrate the joy, colors, and traditions of Sankranti with family & friends at the grandest Sankranti festival of the year. Experience a vibrant day filled with tradition, culture, and togetherness!",
-    highlights: [
-      "🎨 Rangoli Competition",
-      "🌾 Traditional Sankranti Vibes",
-      "🪁 Kite Festival",
-      "🛍️ Shopping & Community Fun",
-      "🎶 Entertainment for All Ages",
-      "📸 Haridasu Photo-booth",
-      "🎟️ Free Entry",
-      "🅿️ Free Parking"
-    ],
-    features: [
-      {
-        name: "Competitions",
-        description: "Dance, Rangoli, Fashion Show, and Talent Show"
-      },
-      {
-        name: "Festival Vibes",
-        description: "Kite flying and traditional celebrations"
-      },
-      {
-        name: "Family Fun",
-        description: "Shopping, entertainment, and photo booth"
-      },
-      {
-        name: "Convenience",
-        description: "Free Entry & Free Parking"
-      }
-    ],
-    contact: {
-      email: "info@icon-entertainmentz.com",
-      instagram: "https://www.instagram.com/icon_entertainmentz/",
-      facebook: "https://www.facebook.com/iconentertainmentz",
-      youtube: "https://www.youtube.com/@ICONEntertainmentz"
-    }
-  }
-
-  const formatDate = (dateString) => {
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      timeZone: 'America/Chicago'
-    }
-    return new Date(dateString + 'T12:00:00').toLocaleDateString('en-US', options)
-  }
-
-  const faqData = [
-    {
-      question: "Is there an entry fee?",
-      answer: "No, General Entry is completely FREE for everyone!"
-    },
-    {
-      question: "Is parking available?",
-      answer: "Yes, there is ample FREE PARKING available at the venue."
-    },
-    {
-      question: "How do I register for competitions?",
-      answer: `You can register for Dance, Fashion Show, Rangoli, and other competitions via our official registration link: ${featuredEvent.registrationLink}`
-    },
-    {
-      question: "When do Rangoli registrations close?",
-      answer: "Registration for the Rangoli Competition (Solo & Group) closes on January 9th. Please register early!"
-    }
-  ]
-
-  const eventsStructuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Event",
-        "name": featuredEvent.title,
-        "description": featuredEvent.description,
-        "startDate": `${featuredEvent.date}T10:00:00-06:00`,
-        "endDate": `${featuredEvent.date}T18:00:00-06:00`,
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": featuredEvent.venue,
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Rio Ranch Fields",
-            "addressLocality": "Liberty Hill",
-            "addressRegion": "TX",
-            "postalCode": "78642",
-            "addressCountry": "US"
-          }
-        },
-        "organizer": {
-          "@type": "Organization",
-          "name": featuredEvent.organizer,
-          "url": "https://icon-entertainmentz.com"
-        },
-        "image": [
-          "https://icon-entertainmentz.com/Sankranthi%20Event.jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "url": featuredEvent.registrationLink,
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    ]
-  }
-
-  useEffect(() => {
-    trackCustomEvents.viewContent(featuredEvent.title, 'Event')
-  }, [])
-
-  const handleRegisterClick = (location) => {
-    trackCustomEvents.initiateCheckout(featuredEvent.title)
-    window.open(featuredEvent.registrationLink, '_blank')
-  }
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black pt-20 flex flex-col items-center justify-center relative overflow-hidden">
       <SEOData
-        title={`${featuredEvent.title} | ${featuredEvent.subtitle} | ICON Entertainmentz`}
-        description={`Join us for ${featuredEvent.title} on ${formatDate(featuredEvent.date)}. ${featuredEvent.description} Free Entry & Parking!`}
-        keywords="Sankranti Mahostav 2026, Austin Sankranti event, Indian festival Austin, Rangoli competition, Kite festival Texas, Liberty Hill events"
+        title="Events Coming Soon | ICON Entertainmentz"
+        description="We are currently planning our next big authentic Indian entertainment experience. Stay tuned for upcoming concerts and festivals."
         url="/events"
-        structuredData={eventsStructuredData}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "EventSeries",
+          "name": "ICON Entertainmentz Events Season 2026",
+          "description": "A series of authentic Indian cultural events, Bollywood concerts, and festivals across the USA.",
+          "organizer": {
+            "@type": "Organization",
+            "name": "ICON Entertainmentz",
+            "url": "https://icon-entertainmentz.com"
+          },
+          "location": {
+            "@type": "Place",
+            "name": "Various Venues",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          },
+          "image": "https://icon-entertainmentz.com/Asset_ICON.png",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled"
+        }}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-sky-300 via-sky-100 to-white overflow-hidden">
-        {/* Floating Kites Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-              rotate: [10, 15, 10]
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-10 left-10 w-16 h-16 bg-red-500/20 rotate-45 backdrop-blur-sm rounded-lg"
-          ></motion.div>
-          <motion.div
-            animate={{
-              y: [0, -30, 0],
-              x: [0, -15, 0],
-              rotate: [-10, -5, -10]
-            }}
-            transition={{
-              duration: 7,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1
-            }}
-            className="absolute top-20 right-20 w-12 h-12 bg-yellow-500/20 rotate-12 backdrop-blur-sm rounded-lg"
-          ></motion.div>
-          <motion.div
-            animate={{
-              y: [0, -25, 0],
-              rotate: [45, 50, 45]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2
-            }}
-            className="absolute bottom-40 left-1/4 w-8 h-8 bg-green-500/20 rotate-45 backdrop-blur-sm rounded-sm"
-          ></motion.div>
-          {/* New Kites */}
-          <motion.div
-            animate={{
-              y: [0, -40, 0],
-              x: [0, 20, 0],
-              rotate: [30, 40, 30]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5
-            }}
-            className="absolute top-1/3 left-10 w-10 h-10 bg-purple-500/20 rotate-45 backdrop-blur-sm rounded-lg"
-          ></motion.div>
-          <motion.div
-            animate={{
-              y: [0, 30, 0],
-              x: [0, -10, 0],
-              rotate: [15, 5, 15]
-            }}
-            transition={{
-              duration: 9,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1.5
-            }}
-            className="absolute bottom-20 right-10 w-14 h-14 bg-orange-500/20 rotate-12 backdrop-blur-sm rounded-lg"
-          ></motion.div>
-          <motion.div
-            animate={{
-              y: [0, -15, 0],
-              scale: [1, 1.1, 1],
-              rotate: [60, 65, 60]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 3
-            }}
-            className="absolute top-1/4 right-1/3 w-6 h-6 bg-pink-500/20 rotate-45 backdrop-blur-sm rounded-sm"
-          ></motion.div>
-          <motion.div
-            animate={{
-              y: [0, 20, 0],
-              x: [0, 15, 0],
-              rotate: [-20, -10, -20]
-            }}
-            transition={{
-              duration: 7.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2.5
-            }}
-            className="absolute top-20 left-1/2 w-9 h-9 bg-blue-500/20 rotate-12 backdrop-blur-sm rounded-lg"
-          ></motion.div>
-        </div>
+      {/* Background Effects */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-orange/10 rounded-full blur-[100px] animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] animate-pulse-slow delay-1000" />
+      </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-md text-sky-900 text-sm font-semibold mb-6 border border-sky-100 shadow-sm"
-            >
-              <Star className="w-4 h-4 mr-2" />
-              Upcoming Event
-            </motion.div>
+      <div className="container-custom relative z-10 text-center px-4">
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-6xl font-extrabold text-sky-950 mb-4 tracking-tight drop-shadow-sm"
-            >
-              {featuredEvent.title}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl md:text-2xl text-sky-800 font-medium mb-8 uppercase tracking-widest"
-            >
-              {featuredEvent.subtitle}
-            </motion.p>
-
-            {/* Quick Info Bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap justify-center items-center gap-6 text-gray-800 mb-12"
-            >
-              <div className="flex items-center bg-white/90 backdrop-blur-sm shadow-sm border border-sky-100 px-5 py-2.5 rounded-full">
-                <Calendar className="w-5 h-5 mr-2.5 text-orange-500" />
-                <span className="font-semibold">{formatDate(featuredEvent.date)}</span>
-              </div>
-              <div className="flex items-center bg-white/90 backdrop-blur-sm shadow-sm border border-sky-100 px-5 py-2.5 rounded-full">
-                <Clock className="w-5 h-5 mr-2.5 text-orange-500" />
-                <span className="font-semibold">{featuredEvent.time}</span>
-              </div>
-              <div className="flex items-center bg-white/90 backdrop-blur-sm shadow-sm border border-sky-100 px-5 py-2.5 rounded-full">
-                <MapPin className="w-5 h-5 mr-2.5 text-orange-500" />
-                <span className="font-semibold">{featuredEvent.venue}</span>
-              </div>
-            </motion.div>
-
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleRegisterClick('hero_primary')}
-                className="px-8 py-4 bg-orange-500 text-white text-lg font-bold rounded-full shadow-xl hover:bg-orange-600 transition-all duration-300 flex items-center justify-center group border-2 border-orange-500"
-              >
-                <Ticket className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                Register Now
-                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}
-                className="px-8 py-4 bg-white/80 backdrop-blur-sm text-sky-900 text-lg font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-white"
-              >
-                View Details
-              </motion.button>
-            </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8 inline-block"
+        >
+          <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-brand-orange to-red-600 rounded-full flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(255,140,66,0.5)]">
+            <ChefHat className="w-12 h-12 md:w-16 md:h-16 text-white" strokeWidth={1.5} />
           </div>
+        </motion.div>
 
-          {/* Event Image */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-100 border-4 border-white">
-              <img
-                src="/Sankranthi Event.jpg"
-                alt="Sankranti Mahostav 2026 Flyer"
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="text-4xl md:text-7xl font-heading font-bold text-white mb-6 uppercase tracking-tight"
+        >
+          Something is <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-yellow-500 font-brand tracking-wide">Cooking</span>
+        </motion.h1>
 
-      {/* Event Details Section */}
-      <section id="details" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
+        >
+          We are currently crafting our next spectacular Indian entertainment experience.
+          <br className="hidden md:block" />
+          Stay tuned for an announcement that will dazzle you.
+        </motion.p>
 
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+          <a
+            href="/#recent-events"
+            className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold tracking-wide hover:bg-white/10 transition-all duration-300 flex items-center"
+          >
+            <Calendar className="w-5 h-5 mr-3 text-brand-orange" />
+            View Past Events
+          </a>
+          <Link
+            to="/newsletter"
+            className="px-8 py-4 bg-brand-orange text-white rounded-full font-bold tracking-wide hover:bg-orange-600 shadow-[0_0_20px_rgba(255,140,66,0.3)] hover:shadow-[0_0_30px_rgba(255,140,66,0.5)] transition-all duration-300 flex items-center"
+          >
+            Get Notified First
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
+        </motion.div>
 
-              {/* About the Event */}
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">About the Festival</h2>
-                <div className="prose prose-lg text-gray-700 space-y-4 leading-relaxed">
-                  <p>{featuredEvent.description}</p>
-                  <p>
-                    Don’t miss this unforgettable celebration of tradition, culture, and togetherness!
-                  </p>
-                </div>
-              </div>
-
-              {/* Event Highlights */}
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Festival Highlights</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {featuredEvent.highlights.map((highlight, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.05 }}
-                      className="flex items-center p-4 bg-white rounded-xl shadow-sm border-l-4 border-orange-500 hover:shadow-md transition-shadow"
-                    >
-                      <Star className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-800 font-medium">{highlight}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Organizers & Sponsors */}
-              <div className="bg-orange-50 rounded-2xl p-8 border border-orange-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Partners</h3>
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Organized By</h4>
-                    <p className="font-medium text-gray-900">{featuredEvent.organizer}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Associated Partner</h4>
-                    <p className="font-medium text-gray-900">{featuredEvent.partner}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Mega Sponsor</h4>
-                    <p className="font-medium text-gray-900">{featuredEvent.megaSponsor}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-orange-600 mb-2 text-sm uppercase tracking-wide">Promotional Partner</h4>
-                    <p className="font-medium text-gray-900">{featuredEvent.promotionalPartner}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Disclaimer */}
-              <div className="bg-gray-100 rounded-xl p-6 flex gap-4 items-start">
-                <AlertTriangle className="w-6 h-6 text-gray-500 flex-shrink-0 mt-1" />
-                <div className="text-sm text-gray-600">
-                  <p className="font-bold text-gray-800 mb-1">Event Disclaimer</p>
-                  <p>By registering for or attending Sankranti Mahotsav, participants ACCEPT that participation is at their own risk. The organizers, sponsors, volunteers, and affiliates disclaim all liability for any injury, loss, or damage arising before, during, or after the event. Attendees are solely responsible for their safety, conduct, and personal property. Participation constitutes acceptance of these terms.</p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-
-              {/* Registration Information */}
-              <div className="bg-white rounded-xl p-6 shadow-xl border border-gray-200 sticky top-24">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-gray-900">Registration</h3>
-                  <span className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Open</span>
-                </div>
-
-                <div className="space-y-6">
-                  {/* Register CTA */}
-                  <div className="mb-6">
-                    <button
-                      onClick={() => handleRegisterClick('Sidebar')}
-                      className="w-full flex items-center justify-center px-4 py-3 bg-orange-600 text-white rounded-lg font-bold hover:bg-orange-700 transition-colors duration-200 shadow-md"
-                    >
-                      Register Now
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </button>
-                    <p className="text-center text-xs text-gray-500 mt-2">Redirects to Eventbrite</p>
-                  </div>
-
-                  {/* Pricing Tiers */}
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-gray-900 text-sm uppercase tracking-wider border-b border-gray-100 pb-2">Entry & Competitions</h4>
-                    {featuredEvent.ticketTiers.map((tier, index) => (
-                      <div key={index} className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0 hover:bg-gray-50 px-2 -mx-2 rounded transition-colors">
-                        <div className="flex-1 pr-2">
-                          <span className="font-medium text-gray-800 block text-sm">{tier.name}</span>
-                          {tier.description && <span className="text-xs text-gray-500 block">{tier.description}</span>}
-                        </div>
-                        <span className="font-bold text-orange-600 text-sm whitespace-nowrap">{tier.price}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="bg-blue-50 p-4 rounded-lg flex items-start gap-3">
-                    <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-xs text-blue-800">
-                      <strong>Note:</strong> Rangoli Competition registration closes on <strong>January 9th</strong>. Register early!
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Features Summary */}
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <h4 className="font-bold text-gray-900 mb-4">Why Attend?</h4>
-                <ul className="space-y-4">
-                  {featuredEvent.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="bg-orange-100 p-1.5 rounded-full mr-3 mt-0.5">
-                        <Star className="w-3 h-3 text-orange-600" />
-                      </div>
-                      <div>
-                        <span className="font-semibold text-gray-900 text-sm block">{feature.name}</span>
-                        <span className="text-xs text-gray-600">{feature.description}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
-          <div className="grid gap-6">
-            {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-orange-200 transition-colors">
-                <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center">
-                  <span className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-sm mr-3 font-bold">
-                    Q
-                  </span>
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600 ml-11">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 bg-gray-900 text-center px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-            Join the Grand Celebration!
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Experience the biggest Sankranti Mahotsav in Texas. Free entry, free parking, and endless fun awaits!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => handleRegisterClick('CTA')}
-              className="inline-flex items-center px-8 py-4 bg-orange-500 text-white rounded-lg font-bold hover:bg-orange-600 transition-colors duration-200 shadow-lg"
-            >
-              <Ticket className="w-5 h-5 mr-2" />
-              Register Now
-            </button>
-          </div>
-        </div>
-      </section>
-
-
+      </div>
     </div>
   )
 }

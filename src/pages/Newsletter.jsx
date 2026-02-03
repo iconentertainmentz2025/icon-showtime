@@ -13,7 +13,7 @@ const NewsletterPage = () => {
     "publisher": {
       "@type": "Organization",
       "name": "ICON Entertainmentz",
-      "logo": "https://icon-entertainmentz.com/Asset_ICON.png"
+      "logo": "https://icon-entertainmentz.com/images/ICON_Logos/Asset_ICON.png"
     }
   };
 
@@ -29,31 +29,31 @@ const NewsletterPage = () => {
 
       <div className="container-custom">
         <div className="max-w-2xl mx-auto text-center space-y-8">
-          <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto">
-            <Mail className="w-8 h-8 text-orange-500" />
+          <div className="w-16 h-16 bg-brand-orange/10 rounded-full flex items-center justify-center mx-auto border border-brand-orange/20">
+            <Mail className="w-8 h-8 text-brand-orange" />
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h1 className="text-3xl md:text-4xl font-bold text-white font-heading">
               Never Miss an Event
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-text-muted">
               Subscribe to our newsletter and stay updated with the latest events, exclusive offers,
               and cultural celebrations in your area.
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/10">
             <Newsletter />
           </div>
 
-          <div className="text-sm text-gray-500">
-            By subscribing, you agree to receive email communications from ICON Entertainmentz.
+          <div className="text-sm text-text-muted">
+            By subscribing, you agree to receive email communications from <span className="font-brand">ICON</span> Entertainmentz.
             You can unsubscribe at any time. We respect your privacy.
           </div>
 
-          <div className="pt-8 border-t border-gray-200 mt-12">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <div className="pt-8 border-t border-white/10 mt-12">
+            <h2 className="text-xl font-semibold text-white mb-4">
               What You'll Get
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
@@ -72,8 +72,8 @@ const NewsletterPage = () => {
                 }
               ].map((benefit, index) => (
                 <div key={index} className="text-center">
-                  <h3 className="font-semibold text-gray-900 mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <h3 className="font-semibold text-white mb-2">{benefit.title}</h3>
+                  <p className="text-text-muted">{benefit.description}</p>
                 </div>
               ))}
             </div>

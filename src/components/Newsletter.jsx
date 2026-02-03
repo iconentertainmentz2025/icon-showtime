@@ -79,7 +79,7 @@ const Newsletter = () => {
 
       {/* Success/Error Messages */}
       {message && (
-        <div className={`mt-3 text-sm flex items-center gap-1 ${status === 'success' ? 'text-green-600' : 'text-red-600'
+        <div className={`mt-3 text-sm flex items-center gap-1 ${status === 'success' ? 'text-green-400' : 'text-red-400'
           }`}>
           {status === 'success' ? (
             <CheckCircle2 className="w-4 h-4" />

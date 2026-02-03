@@ -1,20 +1,20 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { Suspense } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Layout from './components/Layout'
 import LoadingSpinner from './components/ui/LoadingSpinner'
 
 // Lazy load pages for better performance
-import AboutUs from './pages/AboutUs'
-import Events from './pages/Events'
-import Archive from './pages/Archive'
-import Contact from './pages/Contact'
-import Newsletter from './pages/Newsletter'
-import Socials from './pages/Socials'
+const Home = lazy(() => import('./pages/Home'))
+const AboutUs = lazy(() => import('./pages/AboutUs'))
+const Events = lazy(() => import('./pages/Events'))
+
+const Contact = lazy(() => import('./pages/Contact'))
+const Newsletter = lazy(() => import('./pages/Newsletter'))
+const Socials = lazy(() => import('./pages/Socials'))
 
 import RouteTracker from './components/RouteTracker'
-
-import { useState, useEffect } from 'react'
+import ScrollToTop from './components/ScrollToTop'
 import LogoLoader from './components/LogoLoader'
 
 import TicketsRedirect from './components/TicketsRedirect'
@@ -32,8 +32,9 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <RouteTracker />
-      <div className="min-h-screen bg-mesh-gradient">
+      <div className="min-h-screen bg-background-main">
         <AnimatePresence mode="wait">
           {isLoading ? (
             <LogoLoader key="loader" />
@@ -41,10 +42,11 @@ function App() {
             <Layout>
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
-                  <Route path="/" element={<AboutUs />} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<AboutUs />} />
                   <Route path="/events" element={<Events />} />
                   <Route path="/tickets" element={<TicketsRedirect />} />
-                  <Route path="/archive" element={<Archive />} />
+
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/newsletter" element={<Newsletter />} />
                   <Route path="/socials" element={<Socials />} />

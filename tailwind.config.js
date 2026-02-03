@@ -13,97 +13,39 @@ export default {
         'icon': ['Conquera', 'Arial Black', 'sans-serif'],
       },
       colors: {
-        primary: {
-          50: '#fef7ee',
-          100: '#fdecd3',
-          200: '#fbd5a5',
-          300: '#f8b86d',
-          400: '#f49333',
-          500: '#e67e22',
-          600: '#d35400',
-          700: '#b7472a',
-          800: '#924125',
-          900: '#783821',
+        background: {
+          main: '#0a0e1a', // Near black
+          lighter: '#1a1f2e', // Deep charcoal
+          card: 'rgba(26, 31, 46, 0.6)', // Glassmorphism base
         },
-        secondary: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#d63031',
-          600: '#dc2626',
-          700: '#b91c1c',
-          800: '#991b1b',
-          900: '#7f1d1d',
+        brand: {
+          orange: '#FF8C42', // ICON Signature Orange
+          gold: '#D4AF37', // Cultural accent (Gold/Bronze)
         },
-        accent: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#00b894',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
-        },
-        teal: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#00b894',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
-        },
-        phoenix: {
-          50: '#fff8f1',
-          100: '#feecdc',
-          200: '#fcd9bd',
-          300: '#fdba8c',
-          400: '#f49333',
-          500: '#e67e22',
-          600: '#d35400',
-          700: '#b7472a',
-          800: '#924125',
-          900: '#783821',
-        },
-        coral: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#e17055',
-          600: '#dc2626',
-          700: '#b91c1c',
-          800: '#991b1b',
-          900: '#7f1d1d',
-        },
+        text: {
+          primary: '#FFFFFF', // Pure White
+          secondary: '#F5F5F5', // Off-White
+          muted: '#9CA3AF', // Soft gray
+        }
+      },
+      backgroundImage: {
+        'cinematic-gradient': 'linear-gradient(180deg, rgba(10,14,26,0.8) 0%, #0a0e1a 100%)',
+        'mesh-gradient': 'radial-gradient(circle at 50% 50%, #1a1f2e 0%, #0a0e1a 100%)',
       },
       animation: {
-        'float': 'float 3s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'spin-slow': 'spin 20s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'marquee': 'marquee 25s linear infinite',
       },
       keyframes: {
         float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
+          '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
         },
-        glow: {
-          '0%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.4)' },
-          '100%': { boxShadow: '0 0 40px rgba(249, 115, 22, 0.8)' },
-        },
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        }
       },
     },
   },

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Instagram, Facebook, Youtube, Mail, ExternalLink, Share2 } from 'lucide-react'
 import SEOData from '../components/SEOData'
 import { trackCustomEvents } from '../utils/analytics'
+import BrandText from '../components/BrandText'
 
 const Socials = () => {
     const socialLinks = [
@@ -158,7 +159,7 @@ const Socials = () => {
                                         </div>
 
                                         <p className="text-sm font-medium text-gray-500 mb-3 flex items-center">
-                                            {social.handle}
+                                            <BrandText text={social.handle} />
                                             <span className="mx-2">•</span>
                                             <span className="text-orange-500">{social.stats}</span>
                                         </p>

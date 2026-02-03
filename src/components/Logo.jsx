@@ -2,9 +2,9 @@ import React from 'react';
 
 export const Logo = ({ variant = 'main', className = '', width = 200 }) => {
   const logoMap = {
-    main: '/Asset_ICON.png',
-    black: '/Asset_ICON_Black.png',
-    white: '/Asset_ICON_White.png'
+    main: '/images/ICON_Logos/Asset_ICON.png',
+    black: '/images/ICON_Logos/Asset_ICON_Black.png',
+    white: '/images/ICON_Logos/Asset_ICON_White.png'
   };
 
   const imagePath = logoMap[variant] || logoMap.main;
