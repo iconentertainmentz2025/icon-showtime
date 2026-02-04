@@ -46,10 +46,10 @@ const Hero = () => {
                             Turning Vision
                         </span>
                         <div className="flex flex-col items-start leading-none w-full">
-                            <span className="block text-4xl md:text-6xl font-brand font-bold text-white tracking-wider mb-2">
+                            <span className="block text-4xl md:text-5xl font-brand font-bold text-white tracking-wider mb-2">
                                 INTO
                             </span>
-                            <span className="block text-[7vw] md:text-9xl font-brand font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange via-white to-brand-orange bg-[length:200%_auto] animate-shine leading-none whitespace-nowrap">
+                            <span className="block text-[7vw] md:text-7xl lg:text-8xl font-brand font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange via-white to-brand-orange bg-[length:200%_auto] animate-shine leading-none whitespace-nowrap">
                                 CELEBRATION
                             </span>
                         </div>

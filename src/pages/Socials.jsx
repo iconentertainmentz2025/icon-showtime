@@ -115,9 +115,9 @@ const Socials = () => {
                     <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-brand-orange text-xs font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-sm">
                         Connect With Us
                     </span>
-                    <h1 className="text-4xl md:text-8xl font-heading font-bold text-white mb-6 tracking-tight leading-tight">
+                    <h1 className="text-4xl md:text-7xl font-heading font-bold text-white mb-6 tracking-tight leading-tight">
                         Join the <br />
-                        <span className="text-[7vw] md:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-brand-orange to-red-600 filter drop-shadow-[0_0_20px_rgba(255,140,66,0.5)] font-brand md:tracking-wider whitespace-nowrap block">Revolution</span>
+                        <span className="text-[7vw] md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-brand-orange to-red-600 filter drop-shadow-[0_0_20px_rgba(255,140,66,0.5)] font-brand md:tracking-wider whitespace-nowrap block">Revolution</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
                         Be part of the movement. Experience the culture. <br className="hidden md:block" />
