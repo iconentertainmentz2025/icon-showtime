@@ -31,7 +31,7 @@ const Services = () => {
     const isInView = useInView(ref, { once: true, margin: "-10%" })
 
     return (
-        <section ref={ref} className="py-24 bg-background-main relative">
+        <section ref={ref} className="py-16 md:py-24 bg-background-main relative">
             <div className="container-custom">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ const Services = () => {
                     transition={{ duration: 0.6 }}
                     className="mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
+                    <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
                         What We <span className="text-brand-orange">Create</span>
                     </h2>
                     <div className="h-1 w-24 bg-brand-orange" />

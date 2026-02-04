@@ -28,7 +28,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrolled || isOpen ? 'bg-background-lighter/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+      className={`fixed w-full top-0 z-[100] transition-all duration-500 ${scrolled || isOpen ? 'bg-background-lighter/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
         }`}
     >
       <div className="container-custom">

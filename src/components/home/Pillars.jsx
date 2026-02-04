@@ -28,7 +28,7 @@ const Pillars = () => {
     const isInView = useInView(ref, { once: true, margin: "-10%" })
 
     return (
-        <section ref={ref} className="py-24 bg-background-main relative">
+        <section ref={ref} className="py-16 md:py-24 bg-background-main relative">
             <div className="container-custom">
                 <div className="text-left mb-16">
                     <motion.h2

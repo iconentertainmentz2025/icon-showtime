@@ -113,7 +113,7 @@ const RecentEvents = () => {
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: -20, opacity: 0 }}
                             transition={{ duration: 0.4, ease: "easeOut" }}
-                            className="text-4xl md:text-7xl font-heading font-bold text-white leading-tight"
+                            className="text-2xl md:text-4xl font-heading font-bold text-white leading-tight"
                         >
                             {eventsData[activeIndex].title}
                         </motion.h2>
@@ -127,9 +127,9 @@ const RecentEvents = () => {
                 {/* Previous Button */}
                 <button
                     onClick={prevSlide}
-                    className="absolute left-4 md:left-10 z-50 w-16 h-16 rounded-full bg-brand-orange hover:bg-orange-400 flex items-center justify-center transition-transform hover:scale-110 shadow-[0_0_20px_rgba(255,140,66,0.6)]"
+                    className="absolute left-[30%] -translate-x-1/2 bottom-0 md:bottom-auto md:left-10 md:top-1/2 md:-translate-y-1/2 z-50 w-12 h-12 md:w-16 md:h-16 rounded-full bg-brand-orange hover:bg-orange-400 flex items-center justify-center transition-transform hover:scale-110 shadow-[0_0_20px_rgba(255,140,66,0.6)]"
                 >
-                    <ChevronLeft className="w-8 h-8 text-white" strokeWidth={3} />
+                    <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-white" strokeWidth={3} />
                 </button>
 
                 {/* Cards */}
@@ -145,7 +145,7 @@ const RecentEvents = () => {
                         return (
                             <motion.div
                                 key={event.id}
-                                className="absolute w-[280px] md:w-[350px] aspect-[2/3] rounded-3xl overflow-hidden shadow-2xl origin-center bg-gray-900 border border-white/10"
+                                className="absolute w-[80vw] max-w-[280px] md:max-w-[350px] aspect-[2/3] rounded-3xl overflow-hidden shadow-2xl origin-center bg-gray-900 border border-white/10"
                                 initial={false}
                                 animate={{
                                     x: style.x,
@@ -199,9 +199,9 @@ const RecentEvents = () => {
                 {/* Next Button */}
                 <button
                     onClick={nextSlide}
-                    className="absolute right-4 md:right-10 z-50 w-16 h-16 rounded-full bg-brand-orange hover:bg-orange-400 flex items-center justify-center transition-transform hover:scale-110 shadow-[0_0_20px_rgba(255,140,66,0.6)]"
+                    className="absolute right-[30%] translate-x-1/2 bottom-0 md:bottom-auto md:right-10 md:top-1/2 md:-translate-y-1/2 z-50 w-12 h-12 md:w-16 md:h-16 rounded-full bg-brand-orange hover:bg-orange-400 flex items-center justify-center transition-transform hover:scale-110 shadow-[0_0_20px_rgba(255,140,66,0.6)]"
                 >
-                    <ChevronRight className="w-8 h-8 text-white" strokeWidth={3} />
+                    <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-white" strokeWidth={3} />
                 </button>
 
             </div>

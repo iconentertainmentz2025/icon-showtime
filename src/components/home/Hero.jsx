@@ -14,7 +14,7 @@ const Hero = () => {
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div className="absolute inset-0 bg-black z-10 opacity-70" /> {/* Dark overlay */}
                 <iframe
-                    className="absolute top-1/2 left-1/2 w-[177.77%] h-[177.77%] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 opacity-40 pointer-events-none"
+                    className="absolute top-1/2 left-1/2 w-[300%] h-[300%] md:w-[177.77%] md:h-[177.77%] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 opacity-40 pointer-events-none"
                     src="https://www.youtube.com/embed/s0CbR5rX8ig?autoplay=1&mute=1&controls=0&loop=1&playlist=s0CbR5rX8ig&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1"
                     title="Hero Background Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -40,21 +40,26 @@ const Hero = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col gap-2 items-start"
+                        className="flex flex-col gap-2 items-start w-full"
                     >
-                        <span className="block text-2xl md:text-5xl font-heading font-light text-white tracking-widest uppercase mb-2">
+                        <span className="block text-xl md:text-5xl font-heading font-light text-white tracking-widest uppercase mb-2">
                             Turning Vision
                         </span>
-                        <span className="block text-5xl md:text-8xl font-brand font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange via-white to-brand-orange bg-[length:200%_auto] animate-shine leading-none">
-                            INTO CELEBRATION
-                        </span>
+                        <div className="flex flex-col items-start leading-none w-full">
+                            <span className="block text-4xl md:text-6xl font-brand font-bold text-white tracking-wider mb-2">
+                                INTO
+                            </span>
+                            <span className="block text-[7vw] md:text-9xl font-brand font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange via-white to-brand-orange bg-[length:200%_auto] animate-shine leading-none whitespace-nowrap">
+                                CELEBRATION
+                            </span>
+                        </div>
                     </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2, duration: 1 }}
-                        className="text-lg md:text-2xl text-text-muted max-w-2xl font-light tracking-wide uppercase"
+                        className="text-base md:text-2xl text-text-muted max-w-2xl font-light tracking-wide uppercase"
                     >
                         On screens and stages across the USA
                     </motion.p>

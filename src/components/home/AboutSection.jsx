@@ -11,7 +11,7 @@ const AboutSection = () => {
     ]
 
     return (
-        <section ref={containerRef} className="py-32 bg-background-lighter relative overflow-hidden">
+        <section ref={containerRef} className="py-16 md:py-32 bg-background-lighter relative overflow-hidden">
             {/* Background Texture */}
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none" />
 
@@ -26,7 +26,7 @@ const AboutSection = () => {
                                     initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
                                     animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
                                     transition={{ duration: 0.8, delay: index * 0.15, ease: [0.2, 0.65, 0.3, 0.9] }}
-                                    className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white tracking-tight leading-[0.9]"
+                                    className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white tracking-tight leading-[0.9]"
                                 >
                                     {word}
                                 </motion.span>
