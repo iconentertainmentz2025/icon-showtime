@@ -122,7 +122,7 @@ const RecentEvents = () => {
             </div>
 
             {/* 3D Carousel Stage */}
-            <div className="relative h-[500px] w-full flex items-center justify-center perspective-[1200px] mt-10">
+            <div className="relative h-[500px] w-full flex items-center justify-center perspective-1200 mt-10">
 
                 {/* Previous Button */}
                 <button

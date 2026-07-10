@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@netlify/neon": "^0.1.0",
-    "@react-three/drei": "^9.88.17",
     "@react-three/fiber": "^8.15.11",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.16",

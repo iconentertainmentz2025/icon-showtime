@@ -50,7 +50,7 @@ const upcomingEvents = [
       { icon: UtensilsCrossed, label: "On-site bar & food all night" },
       { icon: Users, label: "All ages — family friendly" }
     ],
-    image: "/images/Event_5_Orange_Street/AUSTIN_POSTER_1.png",
+    image: "/images/Event_5_Orange_Street/AUSTIN_POSTER_1.jpg",
     ticketUrl: "https://orangestreetaustin.eventbrite.com",
     partner: "Sapphire Events & Production",
     bookings: [

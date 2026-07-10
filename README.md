@@ -145,8 +145,9 @@ icon-showtime/
 │   │   ├── Logo.jsx        # Company logo component
 │   │   ├── EventImage.jsx  # Event image handler
 │   │   ├── SEOData.jsx     # SEO meta tags component
+│   │   ├── PosterTilt.jsx  # Pointer-tracked 3D poster tilt
 │   │   ├── 3d/
-│   │   │   └── Hero3DScene.jsx  # Three.js 3D animations
+│   │   │   └── EventBackdrop3D.jsx  # Three.js particle backdrop (/events)
 │   │   └── ui/
 │   │       └── LoadingSpinner.jsx
 │   ├── pages/              # Route pages
