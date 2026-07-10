@@ -19,7 +19,9 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          // three.js is deliberately not listed here: naming it as a manual
+          // chunk makes Vite modulepreload it from index.html on every route.
+          // Left unlisted, it splits into the dynamic import that needs it.
           motion: ['framer-motion']
         }
       }

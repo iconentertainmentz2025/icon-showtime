@@ -146,3 +146,6 @@ vite.config.ts.timestamp-*
 
 # Local Netlify folder
 .netlify
+
+# Claude Code local config and worktrees
+.claude/
