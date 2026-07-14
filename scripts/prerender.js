@@ -131,12 +131,15 @@ async function run() {
 
       const html = '<!DOCTYPE html>' + await page.evaluate(() => document.documentElement.outerHTML)
 
-      const outDir = route === '/' ? DIST : join(DIST, route)
-      await mkdir(outDir, { recursive: true })
-      await writeFile(join(outDir, 'index.html'), html, 'utf8')
+      // Write flat files (events.html), not directory indexes (events/index.html).
+      // Netlify serves a flat .html at its no-slash URL (/events) with no redirect,
+      // which matches the canonical; a directory index would 301 /events -> /events/.
+      const outFile = route === '/' ? join(DIST, 'index.html') : join(DIST, route.slice(1) + '.html')
+      await mkdir(dirname(outFile), { recursive: true })
+      await writeFile(outFile, html, 'utf8')
       await page.close()
       ok++
-      console.log(`[prerender] ${route} -> ${route === '/' ? 'index.html' : route.slice(1) + '/index.html'}`)
+      console.log(`[prerender] ${route} -> ${route === '/' ? 'index.html' : route.slice(1) + '.html'}`)
     } catch (e) {
       console.warn(`[prerender] ${route} failed, leaving SPA fallback:`, e.message)
     }
