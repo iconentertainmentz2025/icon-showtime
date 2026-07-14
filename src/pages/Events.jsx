@@ -52,6 +52,7 @@ const upcomingEvents = [
     ],
     image: "/images/Event_5_Orange_Street/AUSTIN_POSTER_1.jpg",
     ticketUrl: "https://orangestreetaustin.eventbrite.com",
+    ticketsOnSaleDate: "2026-07-10",
     partner: "Sapphire Events & Production",
     bookings: [
       { display: "+1 (512) 884-0540", href: "tel:+15128840540" },
@@ -298,7 +299,8 @@ const Events = () => {
           "@type": "Offer",
           "url": nextEvent.ticketUrl,
           "availability": "https://schema.org/InStock",
-          "priceCurrency": "USD"
+          "priceCurrency": "USD",
+          "validFrom": nextEvent.ticketsOnSaleDate
         },
         "performer": {
           "@type": "MusicGroup",
