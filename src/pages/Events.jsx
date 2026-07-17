@@ -53,7 +53,11 @@ const upcomingEvents = [
       { icon: Users, label: "All ages — family friendly" }
     ],
     image: "/images/Event_5_Orange_Street/AUSTIN_POSTER_1.jpg",
-    ticketUrl: "https://orangestreetaustin.eventbrite.com",
+    // First entry is the primary link (also used in the ticket schema).
+    ticketLinks: [
+      { label: "Eventbrite", url: "https://orangestreetaustin.eventbrite.com" },
+      { label: "Eventprix", url: "https://eventprix.com/event/Orange-Street-Live-at-Austin" }
+    ],
     ticketsOnSaleDate: "2026-07-10",
     // Public tiers only — the $24.99 General Admission is Hidden in the
     // ticketing platform, so it is intentionally not listed here.
@@ -227,18 +231,25 @@ const UpcomingEvent = ({ event }) => (
           </div>
         </dl>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
-          <a
-            href={event.ticketUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackCustomEvents.initiateCheckout(event.title)}
-            className="px-8 py-4 bg-brand-orange text-white rounded-full font-bold tracking-wide hover:bg-orange-600 shadow-[0_0_20px_rgba(255,140,66,0.3)] hover:shadow-[0_0_30px_rgba(255,140,66,0.5)] transition-all duration-300 flex items-center"
-          >
-            <Ticket className="w-5 h-5 mr-3" />
-            Buy Tickets
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </a>
+        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4">
+          {event.ticketLinks.map((link, i) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackCustomEvents.initiateCheckout(`${event.title} — ${link.label}`)}
+              className={`px-8 py-4 rounded-full font-bold tracking-wide transition-all duration-300 flex items-center ${
+                i === 0
+                  ? 'bg-brand-orange text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(255,140,66,0.3)] hover:shadow-[0_0_30px_rgba(255,140,66,0.5)]'
+                  : 'bg-white/5 border border-brand-orange/40 text-white hover:bg-brand-orange/10'
+              }`}
+            >
+              <Ticket className={`w-5 h-5 mr-3 ${i === 0 ? 'text-white' : 'text-brand-orange'}`} />
+              Buy on {link.label}
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </a>
+          ))}
           <Link
             to="/newsletter"
             className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold tracking-wide hover:bg-white/10 transition-all duration-300 flex items-center"
@@ -398,7 +409,7 @@ const Events = () => {
           "price": t.price.toFixed(2),
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "url": nextEvent.ticketUrl,
+          "url": nextEvent.ticketLinks[0].url,
           "validFrom": nextEvent.ticketsOnSaleDate
         })),
         "performer": {
