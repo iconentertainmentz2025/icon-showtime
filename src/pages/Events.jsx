@@ -62,7 +62,7 @@ const upcomingEvents = [
     // Public tiers only — the $24.99 General Admission is Hidden in the
     // ticketing platform, so it is intentionally not listed here.
     tickets: [
-      { name: "General Admission", price: 19.99, badge: "Early Bird", tier: "ga" },
+      { name: "General Admission", price: 19.99, badge: "Early Bird", tier: "ga", soldOut: true },
       { name: "General Admission — Couple", price: 44.99, tier: "ga" },
       { name: "VIP Single", price: 64.99, tier: "vip" },
       { name: "VIP Couple", price: 119.99, tier: "vip" },
@@ -307,30 +307,52 @@ const UpcomingEvent = ({ event }) => (
           <li
             key={t.name}
             className={`flex items-center justify-between gap-4 rounded-2xl border px-5 py-4 backdrop-blur-sm ${
-              t.tier === 'vip'
-                ? 'border-brand-orange/40 bg-brand-orange/5'
-                : 'border-white/10 bg-white/5'
+              t.soldOut
+                ? 'border-white/10 bg-white/[0.02] opacity-60'
+                : t.tier === 'vip'
+                  ? 'border-brand-orange/40 bg-brand-orange/5'
+                  : 'border-white/10 bg-white/5'
             }`}
           >
             <div className="min-w-0">
               <p className="text-white font-medium leading-snug">{t.name}</p>
               <p className="text-gray-500 text-xs mt-0.5">
                 {t.badge && (
-                  <span className="text-brand-orange font-semibold">{t.badge}</span>
+                  <span className={`font-semibold ${t.soldOut ? 'text-gray-400' : 'text-brand-orange'}`}>{t.badge}</span>
                 )}
                 {t.badge && t.note && ' · '}
                 {t.note}
               </p>
             </div>
-            <span className="text-white text-lg font-bold tabular-nums whitespace-nowrap">
-              ${t.price.toFixed(2)}
-            </span>
+            {t.soldOut ? (
+              <span className="flex flex-col items-end whitespace-nowrap">
+                <span className="text-[10px] font-bold uppercase tracking-wide text-red-400 bg-red-500/10 border border-red-500/30 rounded-full px-2 py-0.5">
+                  Sold Out
+                </span>
+                <span className="text-gray-500 text-sm line-through tabular-nums mt-1">
+                  ${t.price.toFixed(2)}
+                </span>
+              </span>
+            ) : (
+              <span className="text-white text-lg font-bold tabular-nums whitespace-nowrap">
+                ${t.price.toFixed(2)}
+              </span>
+            )}
           </li>
         ))}
       </ul>
 
-      {/* Group discounts & no-tax callout */}
+      {/* Phone-booking perks: group discounts & no-tax callout */}
       <div className="mt-6 rounded-2xl border border-brand-orange/40 bg-gradient-to-br from-brand-orange/15 to-purple-600/10 p-6 md:p-8">
+        <div className="mb-6">
+          <p className="text-brand-orange text-xs font-bold uppercase tracking-[0.2em]">
+            Phone bookings only
+          </p>
+          <p className="text-white/60 text-sm mt-1">
+            The perks below are available when you book by phone — not on Eventbrite or Eventprix.
+          </p>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex items-start gap-4">
             <Tag className="w-6 h-6 text-brand-orange shrink-0 mt-0.5" />
@@ -408,7 +430,9 @@ const Events = () => {
           "name": t.name,
           "price": t.price.toFixed(2),
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
+          "availability": t.soldOut
+            ? "https://schema.org/SoldOut"
+            : "https://schema.org/InStock",
           "url": nextEvent.ticketLinks[0].url,
           "validFrom": nextEvent.ticketsOnSaleDate
         })),
