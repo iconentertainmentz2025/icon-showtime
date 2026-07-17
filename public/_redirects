@@ -1,0 +1,4 @@
+# SPA fallback for client-side routes. Static files (including the prerendered
+# events.html, about.html, etc.) are matched first, so this only catches routes
+# with no matching file. Shipped in dist/ so it travels with every deploy.
+/*    /index.html   200

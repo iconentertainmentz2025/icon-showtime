@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
+  # Skip Netlify's git-triggered build. Headless Chromium can't launch in
+  # Netlify's build image, so the prerender step (scripts/prerender.js) fails
+  # over to shipping the bare SPA shell, which overwrote the GitHub Action's
+  # prerendered deploy. The GitHub Action is the single deployer instead —
+  # `exit 0` here always cancels Netlify's own build.
+  ignore = "exit 0"
 
 [dev]
   command = "npm run dev"
