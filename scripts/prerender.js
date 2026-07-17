@@ -1,4 +1,12 @@
 /**
+ * DORMANT — not wired into the build. Prerendering is intentionally off (it had
+ * no authenticated path to production: the GitHub Action lacks Netlify
+ * credentials, and Netlify's own build image can't launch Chromium). To revive:
+ * `npm i -D puppeteer`, restore `&& node scripts/prerender.js` in the build
+ * script, and ensure a builder that can run headless Chromium (GitHub Actions
+ * works; add NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID secrets so the Action can
+ * deploy, and disable Netlify's own git-build).
+ *
  * Post-build prerender: boots the built SPA in headless Chromium, lets
  * react-helmet-async inject the per-route <head> (title, canonical, og/twitter,
  * JSON-LD), then writes the settled HTML back to dist/<route>/index.html.
