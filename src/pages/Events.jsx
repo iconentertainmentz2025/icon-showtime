@@ -2,12 +2,14 @@ import { Suspense, lazy } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
+  BadgePercent,
   Calendar,
   ChefHat,
   MapPin,
   Music,
   Phone,
   Sparkles,
+  Tag,
   Ticket,
   Users,
   UtensilsCrossed
@@ -53,6 +55,15 @@ const upcomingEvents = [
     image: "/images/Event_5_Orange_Street/AUSTIN_POSTER_1.jpg",
     ticketUrl: "https://orangestreetaustin.eventbrite.com",
     ticketsOnSaleDate: "2026-07-10",
+    // Public tiers only — the $24.99 General Admission is Hidden in the
+    // ticketing platform, so it is intentionally not listed here.
+    tickets: [
+      { name: "General Admission", price: 19.99, badge: "Early Bird", tier: "ga" },
+      { name: "General Admission — Couple", price: 44.99, tier: "ga" },
+      { name: "VIP Single", price: 64.99, tier: "vip" },
+      { name: "VIP Couple", price: 119.99, tier: "vip" },
+      { name: "VIP Table", price: 449.99, note: "Seats 8", tier: "vip" }
+    ],
     partner: "Sapphire Events & Production",
     bookings: [
       { display: "+1 (512) 884-0540", href: "tel:+15128840540" },
@@ -265,6 +276,92 @@ const UpcomingEvent = ({ event }) => (
       ))}
     </motion.ul>
 
+    {/* Tickets & pricing */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6 }}
+      className="mt-20"
+    >
+      <div className="flex items-end justify-between mb-6">
+        <h2 className="text-2xl md:text-3xl font-heading font-bold text-white">
+          Tickets
+        </h2>
+        <span className="text-gray-500 text-sm">All prices in USD</span>
+      </div>
+
+      <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {event.tickets.map((t) => (
+          <li
+            key={t.name}
+            className={`flex items-center justify-between gap-4 rounded-2xl border px-5 py-4 backdrop-blur-sm ${
+              t.tier === 'vip'
+                ? 'border-brand-orange/40 bg-brand-orange/5'
+                : 'border-white/10 bg-white/5'
+            }`}
+          >
+            <div className="min-w-0">
+              <p className="text-white font-medium leading-snug">{t.name}</p>
+              <p className="text-gray-500 text-xs mt-0.5">
+                {t.badge && (
+                  <span className="text-brand-orange font-semibold">{t.badge}</span>
+                )}
+                {t.badge && t.note && ' · '}
+                {t.note}
+              </p>
+            </div>
+            <span className="text-white text-lg font-bold tabular-nums whitespace-nowrap">
+              ${t.price.toFixed(2)}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      {/* Group discounts & no-tax callout */}
+      <div className="mt-6 rounded-2xl border border-brand-orange/40 bg-gradient-to-br from-brand-orange/15 to-purple-600/10 p-6 md:p-8">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex items-start gap-4">
+            <Tag className="w-6 h-6 text-brand-orange shrink-0 mt-0.5" />
+            <div>
+              <p className="text-white font-bold text-lg">Call for group discounts</p>
+              <p className="text-gray-300 text-sm mt-1">
+                Bringing a crew? We&apos;ll set you up with special group rates.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <BadgePercent className="w-6 h-6 text-brand-orange shrink-0 mt-0.5" />
+            <div>
+              <p className="text-white font-bold text-lg">No tax — no hidden fees</p>
+              <p className="text-gray-300 text-sm mt-1">
+                The price you see is the price you pay. No sales tax added at checkout.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center gap-3">
+          <span className="text-white/70 text-sm font-semibold tracking-wide uppercase">
+            Call to book:
+          </span>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {event.bookings.map((phone) => (
+              <a
+                key={phone.href}
+                href={phone.href}
+                onClick={() => trackCustomEvents.phoneCall()}
+                className="inline-flex items-center gap-2 text-white text-lg font-bold hover:text-brand-orange transition-colors duration-300"
+              >
+                <Phone className="w-4 h-4 text-brand-orange" />
+                {phone.display}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+
     <div className="mt-12 text-center space-y-2">
       <p className="text-gray-500 text-sm">
         Presented by ICON Entertainmentz in association with {event.partner}
@@ -295,13 +392,15 @@ const Events = () => {
         "image": `https://icon-entertainmentz.com${nextEvent.image}`,
         "isAccessibleForFree": false,
         "typicalAgeRange": "0-",
-        "offers": {
+        "offers": nextEvent.tickets.map((t) => ({
           "@type": "Offer",
-          "url": nextEvent.ticketUrl,
-          "availability": "https://schema.org/InStock",
+          "name": t.name,
+          "price": t.price.toFixed(2),
           "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": nextEvent.ticketUrl,
           "validFrom": nextEvent.ticketsOnSaleDate
-        },
+        })),
         "performer": {
           "@type": "MusicGroup",
           "name": nextEvent.title
