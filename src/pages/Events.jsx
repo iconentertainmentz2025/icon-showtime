@@ -59,10 +59,12 @@ const upcomingEvents = [
       { label: "Eventprix", url: "https://eventprix.com/event/Orange-Street-Live-at-Austin" }
     ],
     ticketsOnSaleDate: "2026-07-10",
-    // Public tiers only — the $24.99 General Admission is Hidden in the
-    // ticketing platform, so it is intentionally not listed here.
+    // Public tiers. Early Bird has ended (and is now hidden in the ticketing
+    // platform) but is kept visible as Sold Out for urgency; the $24.99 General
+    // Admission is now on sale as the entry tier.
     tickets: [
       { name: "General Admission", price: 19.99, badge: "Early Bird", tier: "ga", soldOut: true },
+      { name: "General Admission", price: 24.99, tier: "ga" },
       { name: "General Admission — Couple", price: 44.99, tier: "ga" },
       { name: "VIP Single", price: 64.99, tier: "vip" },
       { name: "VIP Couple", price: 119.99, tier: "vip" },
@@ -305,7 +307,7 @@ const UpcomingEvent = ({ event }) => (
       <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {event.tickets.map((t) => (
           <li
-            key={t.name}
+            key={`${t.name}-${t.price}`}
             className={`flex items-center justify-between gap-4 rounded-2xl border px-5 py-4 backdrop-blur-sm ${
               t.soldOut
                 ? 'border-white/10 bg-white/[0.02] opacity-60'
